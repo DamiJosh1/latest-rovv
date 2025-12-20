@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 // YOUR REAL ROVV IMAGES
 import rideImg from '../../../assets/images/pic-4.jpg'
