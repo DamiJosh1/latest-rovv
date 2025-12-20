@@ -81,7 +81,7 @@ export default function TestimonialsSection() {
                           <span key={i} className="text-accent text-3xl drop-shadow">★</span>
                         ))}
                       </div>
-                      <p className="text-lg md:text-xl leading-relaxed italic flex-1">“{t.text}”</p>
+                      <p className="text-lg md:text-xl leading-relaxed italic">“{t.text}”</p>
                       <div className="flex items-center gap-5 mt-10">
                         <img src={t.avatar} alt={t.author} className="w-16 h-16 rounded-full object-cover border-4 border-white/40 shadow-lg" />
                         <div>
