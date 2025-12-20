@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/* === IMPORT INTER FROM FONTSOURCE === */
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/inter/900.css';
+
+
+
+/* === NOHEMI FONTS (FROM public/fonts/) === */
+/* Replace with your actual file names */
+@font-face {
+  font-family: 'Nohemi';
+  src: url('../fonts/Nohemi-Regular.woff') format('woff');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nohemi';
+  src: url('../fonts/Nohemi-Medium.woff') format('woff');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nohemi';
+  src: url('../fonts/Nohemi-SemiBold-BF6438cc57db2ff.woff') format('woff');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nohemi';
+  src: url('../fonts/Nohemi-Bold-BF6438cc577b524.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* === CSS VARIABLES (SAFE, NO CONFLICT) === */
+@theme {
+  --color-primary: #5E239D;
+  --color-accent: #FF6A00;
+  --color-bg: #FFFAF2;
+  --color-dark: #141414;
+  --color-medium: #4A4A4A;
+  --color-light: #CDBBE1;
+  --color-orange-light: #FFD1B0;
+  --color-purple: #341356;
+}
+
+/* === TAILWIND HELPER CLASSES (OPTIONAL) === */
+.text-primary { color: var(--color-primary); }
+.text-accent { color: var(--color-accent); }
+.bg-bg { background-color: var(--color-bg); }
+.font-nohemi { font-family: 'Nohemi', sans-serif; }
+.font-sans { font-family: 'Inter', system-ui, sans-serif; }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* src/index.css */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* src/index.css */
+@keyframes fadeScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#safety-section {
+  transition: all 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.service-card {
+  opacity: 0;
+  transform: translateX(48px);
+  transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.service-card.animate-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ANIMATIONS */
+.animate-fade-scale-in {
+  animation: fadeScaleIn 0.4s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out both;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; } 
+
+@keyframes loadBar {
+  from {
+    width: 0;
+  }
+  to {
+    width: 8rem;
+  }
+}
+.animate-loadBar{
+  animation: loadBar 2.8s linear forwards;
+}
+
+@keyframes blobPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+.animate-blob-pulse {
+  animation: blobPulse 6s ease-in-out infinite;
+}
+
+@keyframes fadeScaleIn {
+  from { opacity: 0; transform: scale(0.7); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
