@@ -1,4 +1,3 @@
-
 // src/components/sections/DownloadSection.tsx
 import lightPng from '../../../assets/images/light.png'
 import lightMode from '../../../assets/images/light-1.png'
@@ -8,7 +7,6 @@ export default function DownloadSection() {
   return (
     <section className="py-24 px-6 bg-bg">
       <div className="max-w-7xl mx-auto text-center">
-
         <h3 className="text-3xl md:text-6xl font-nohemi font-bold text-dark mb-4">
           Download our app
         </h3>
@@ -16,75 +14,116 @@ export default function DownloadSection() {
           Available for iOS and Android devices.
         </p>
 
-        {/* Main Card + Light PNG */}
-        <div className="relative max-w-5xl mx-auto">
-
-          {/* THE ONE AND ONLY LIGHT PNG (FIXED RESPONSIVENESS) */}
-          <img
-            src={lightPng}
-            alt=""
-            className="
-              pointer-events-none absolute z-20 rounded-2xl
-              w-full lg:w-[25.7%]
-              left-full lg:left-[869px]
-              md:w-[30%] hidden lg:block
-
-
-              
-            "
-          />
-          <img
-            src={light}
-            alt=""
-            className="
-              pointer-events-none absolute z-20 rounded-2xl
-             md:mt-106 md:left-19 md:block
-              md:w-[80%] lg:hidden hidden
-
-
-              
-            "
-          />
-          <img
-            src={lightMode}
-            alt=""
-            className="
-              pointer-events-none absolute mt-[265px] z-20 rounded-2xl
-             sm:w-full 
-              
-              md:hidden lg:hidden
-
-
-              
-            "
-          />
-          
-
+        {/* Main Card Container */}
+        <div className="relative max-w-[343px] md:max-w-[572px] lg:max-w-[1049px] mx-auto">
           {/* Purple Card */}
-          <div className="relative bg-purple h-[400px] lg:w-[121%] lg:h-[350px] lg:right-27  lg:ml-0
-                          md:w-[80%] md:h-[650px] md:ml-19
-                          rounded-2xl p-12 md:p-20 text-bg
-                          shadow-2xl overflow-hidden">
-           
-            <div className="relative z-10 lg:ml-1 text-center md:text-center lg:text-left">
-              <h4 className="text-xl md:text-3xl font-nohemi font-bold  mb-4 lg:text-[20px]">
-                Experience Smarter<br />Mobility on the Go
-              </h4>
-              <p className="text-light text-[10px]  font-bold font-sans mb-4 lg:mb-10">
-                ROVV gives you control, comfort, and choice, <br /> all from one app.
-                Book rides, bid your price, <br /> track drivers in real time, and enjoy
-                safe, fair, <br /> and flexible mobility wherever you are.
-              </p>
+          <div className="
+            relative bg-purple rounded-xl shadow-2xl overflow-hidden
+            
+            /* Mobile: 343x398 */
+            h-[398px] p-4
+            
+            /* Tablet: 572x683 */
+            md:h-[683px] md:p-6
+            
+            /* Desktop: 1049x454 */
+            lg:h-[454px] lg:p-20
+            lg:flex lg:flex-row lg:justify-between lg:items-center lg:gap-12
+          ">
+            
+            {/* Content Container */}
+            <div className="
+              relative z-10
+              flex flex-col gap-3 md:gap-6 lg:gap-6
+              items-center lg:items-start
+              pt-4 md:pt-6 lg:pt-0
+              max-w-[311px] md:max-w-[524px] lg:max-w-[456px]
+              mx-auto lg:mx-0
+            ">
+              {/* Text Container */}
+              <div className="flex flex-col gap-2 md:gap-4 lg:gap-3 items-center lg:items-start">
+                {/* Heading */}
+                <h4 className="
+                  font-nohemi font-medium lg:font-medium text-white
+                  text-center lg:text-left
+                  
+                  /* Mobile: 24px/28px */
+                  text-2xl leading-7
+                  
+                  /* Tablet: 45px/54px */
+                  md:text-[45px] md:leading-[54px] md:font-bold
+                  
+                  /* Desktop: 24px/30px */
+                  lg:text-2xl lg:leading-[30px]
+                ">
+                  Experience Smarter Mobility on the Go
+                </h4>
 
-              {/* Only ONE button */}
-              <button className="bg-accent hover:bg-orange-600 text-bg
-                                 px-6 py-2 rounded-[8px] font-sans font-bold
-                                 shadow-xl hover:scale-105 transition-all duration-300">
-                Download the app
+                {/* Description */}
+                <p className="
+                  font-sans text-light
+                  text-center lg:text-left
+                  
+                  /* Mobile: 16px/24px, bold */
+                  text-base leading-6 font-bold
+                  
+                  /* Tablet: 26px/36px, bold */
+                  md:text-[26px] md:leading-9 md:font-bold
+                  
+                  /* Desktop: 18px/24px, regular */
+                  lg:text-lg lg:leading-6 lg:font-normal
+                ">
+                  ROVV gives you control, comfort, and choice, all from one app. Book rides, bid your price, track drivers in real time, and enjoy safe, fair, and flexible mobility wherever you are.
+                </p>
+              </div>
+
+              {/* Button */}
+              <button className="
+                bg-accent hover:bg-orange-600 text-dark
+                font-sans font-bold rounded-lg
+                shadow-xl hover:scale-105 transition-all duration-300
+                
+                /* Mobile: 184x39, 16px text, 10px padding */
+                w-[184px] h-[39px] text-base py-2.5 px-6
+                
+                /* Tablet & Desktop: 217x52, 20px text, 14px padding */
+                md:w-[217px] md:h-[52px] md:text-xl md:py-3.5 md:px-6
+              ">
+                Learn more
               </button>
             </div>
+
+            {/* Light Image - Desktop Only (right side) */}
+            <div className="hidden lg:block relative  lg:-mr-[85px] lg:-mb-[20px] shrink-0">
+              <img
+                src={lightPng}
+                alt=""
+                className="w-full h-[500px] object-contain pointer-events-none "
+              />
+            </div>
+          </div>
+
+          {/* Light Image - Tablet (bottom, rotated 90deg) */}
+          <div className="hidden md:block lg:hidden absolute left-0 right-0 -bottom-[177px] h-[583px] pointer-events-none">
+            <img
+              src={light}
+              alt=""
+              className="w-full h-full object-contain "
+            />
+          </div>
+
+          {/* Light Image - Mobile (bottom, rotated 90deg) */}
+          <div className="block md:hidden absolute left-0 right-0 -bottom-[119px] h-[357px] pointer-events-none">
+            <img
+              src={lightMode}
+              alt=""
+              className="w-full h-full object-contain"
+            />
           </div>
         </div>
+
+        {/* Spacer for overlapping light images */}
+        <div className="h-[200px] md:h-[300px] lg:h-0" />
       </div>
     </section>
   )
