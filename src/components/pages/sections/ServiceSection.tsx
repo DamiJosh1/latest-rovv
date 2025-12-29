@@ -1,6 +1,3 @@
-
-// src/components/sections/ServicesSection.tsx  
-
 'use client'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
@@ -57,9 +54,10 @@ const services = [
     img: airportImg,
   },
 ];
-export default function ServicesSection() {
 
-  const [selectedCard, setSelectedCard] = useState<null | { title: string; desc: string; learn: string; img: string }>(null);
+
+export default function ServicesSection() {
+  const [selectedCard, setSelectedCard] = useState<null | { title: string; desc: string; learn: string; img: string }>(null)
 
   useEffect(() => {
     const cards = document.querySelectorAll('.service-card')
@@ -79,38 +77,36 @@ export default function ServicesSection() {
       if (card.getBoundingClientRect().top < window.innerHeight) {
         card.classList.add('animate-in')
       }
-        observer.observe(card)
+      observer.observe(card)
     })
     return () => cards.forEach((card) => observer.unobserve(card))
   }, [])
 
   return (
-    <section className="py-19 px-4 bg-bg overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-
+    <section className="bg-[#FFFAF2] px-4 md:px-8 lg:px-[79px] py-10 md:py-[39px] lg:py-20">
+      <div className="max-w-[343px] md:max-w-[704px] lg:max-w-[1282px] mx-auto flex flex-col items-center gap-[23px] md:gap-[26px] lg:gap-6">
+        
         {/* Top Badge */}
-        <div className="text-center mb-6">
-          <span className="inline-flex items-center gap-2 font-sans font-bold bg-dark text-bg px-4 py-2 rounded-[40px] text-sm">
+        <div className="text-center">
+          <span className="inline-flex items-center justify-center font-medium bg-[#FFF2DE] text-[#141414] px-4 md:px-5 lg:px-6 py-1 md:py-[5px] lg:py-[6px] rounded-[34.463px] md:rounded-[40px] lg:rounded-[40px] text-[13px] md:text-[14px] lg:text-[16px] leading-[13px] md:leading-[14px] lg:leading-[16px]">
             ROVV app
           </span>
         </div>
 
         {/* Title */}
-        <h2 className="text-center text-[23px] font-nohemi font-bold lg:text-5xl text-dark mb-16 leading-tight">
+        <h2 className="text-center text-[24px] md:text-[35px] lg:text-[40px] font-bold leading-[24px] md:leading-[40px] lg:leading-[48px] text-[#141414] max-w-[332px] md:max-w-[483px] lg:max-w-[803px]">
           Every journey, one ROVV app
         </h2>
 
-        {/* Grid: mobile = 1, tablet = 2, desktop = 3 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center ">
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-x-[38.21px] md:gap-y-[29.15px] lg:gap-x-6 lg:gap-y-8 w-full max-w-[343px] md:max-w-[703px] lg:max-w-[1282px] mt-0 md:mt-0 lg:mt-0">
           {services.map((s, i) => (
             <article
               key={i}
-              className="service-card group w-full bg-bg rounded-2xl border  border-light  shadow-xl overflow-hidden
-                         flex flex-col transition-all duration-500 hover:shadow-2xl
-                         opacity-0 translate-y-12"
+              className="service-card group w-full md:w-[344.79px] lg:w-[411px] bg-white rounded-[20.0169px] md:rounded-[20.1336px] lg:rounded-[24px] border-[0.834px] md:border-[0.839px] lg:border border-[#CDBBE1] overflow-hidden flex flex-col transition-all duration-500 hover:shadow-2xl opacity-0 translate-y-12"
             >
               {/* IMAGE */}
-              <div className="w-full h-[350px]  overflow-hidden">
+              <div className="relative w-full h-[215.18px] md:h-[216.44px] lg:h-[258px] overflow-hidden">
                 <img
                   src={s.img}
                   alt={s.title}
@@ -119,24 +115,34 @@ export default function ServicesSection() {
               </div>
 
               {/* CONTENT */}
-              <div className="px-6 pt-6 pb-8 flex flex-col gap-3">
-                <h3 className="text-2xl font-nohemi font-bold text-dark group-hover:text-primary transition-colors duration-300">
-                  {s.title}
-                </h3>
+              <div className="flex flex-col items-center pt-[20.02px] md:pt-[20.13px] lg:pt-6 pb-0 px-0">
+                <div className="w-[302.76px] md:w-[304.52px] lg:w-[363px] flex flex-col gap-1 md:gap-2 lg:gap-2">
+                  {/* Text content wrapper */}
+                  <div className="flex flex-col gap-[2px] md:gap-0 lg:gap-0">
+                    <h3 className="text-[18px] md:text-[18px] lg:text-[24px] font-bold md:font-bold lg:font-medium leading-[25px] md:leading-[25px] lg:leading-[30px] text-[#141414]">
+                      {s.title}
+                    </h3>
 
-                <p className="text-base font-medium">{s.desc}</p>
+                    <p className="text-[14px] md:text-[14px] lg:text-[18px] leading-[20px] md:leading-[20px] lg:leading-[24px] font-bold md:font-bold lg:font-normal text-[#4A4A4A]">
+                      {s.desc}
+                    </p>
+                  </div>
 
-                {/* UNDERLINE-LINE ANIMATED LINK */}
-                <button
-                  onClick={() => setSelectedCard(s)}
-                  className="relative mt-4  w-fit text-medium font-bold text-sm
-                             after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-gray-500
-                             hover:after:bg-medium after:transition-all after:duration-300
-                             hover:after:w-full "
-                >
-                  Learn more
-                </button>
+                  {/* Learn more link */}
+                  <button
+                    onClick={() => setSelectedCard(s)}
+                    className="flex flex-col items-start gap-[3.34px] md:gap-[3.36px] lg:gap-1 mt-0"
+                  >
+                    <span className="text-[13.3446px] md:text-[13.4224px] lg:text-[16px] leading-[16px] md:leading-[16px] lg:leading-[22px] font-normal text-[#666666] text-center">
+                      Learn more
+                    </span>
+                    <div className="w-[66px] md:w-[67px] lg:w-20 h-[1.67px] md:h-[1.68px] lg:h-[2px] bg-[#A7A7A7] rounded-[8.34px] md:rounded-[8.39px] lg:rounded-[10px] transition-all duration-300 group-hover:bg-[#666666]"></div>
+                  </button>
+                </div>
               </div>
+
+              {/* Bottom padding spacer */}
+              <div className="h-[20.02px] md:h-[20.13px] lg:h-6"></div>
             </article>
           ))}
         </div>
@@ -152,24 +158,22 @@ export default function ServicesSection() {
           >
             <button
               onClick={() => setSelectedCard(null)}
-              className="absolute top-3 right-3 text-gray-700 text-xl"
+              className="absolute top-3 right-3 text-gray-700 text-xl hover:text-gray-900"
             >
               ×
             </button>
 
-            <h2 className="text-center text-2xl font-nohemi font-bold mb-6">
+            <h2 className="text-center text-2xl font-bold mb-6">
               {selectedCard.title}
             </h2>
 
-            
-
-
-            <p className="text-center text-medium font-bold font-sans text-sm mt-4">
+            <p className="text-center text-[#4A4A4A] font-normal text-sm">
               {selectedCard.learn}
             </p>
           </motion.div>
         </div>
       )}
+
       
     </section>
   )
