@@ -1,207 +1,183 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 
-// YOUR REAL ROVV IMAGES
-import rideImg from '../../../assets/images/pic-4.jpg'
-import deliveryImg from '../../../assets/images/pics-2.png'
-import earnImg from '../../../assets/images/pics1.png'
-import badgeIcon from '../../../assets/images/journ.png'
+import bgImage from '../../../assets/images/bg.png'
 
-// QR IMAGES
-import passengerQR from '../../../assets/qr/passenger-qr.png'
-import driverQR from '../../../assets/qr/driver-qr.png'
+import user1 from '../../../assets/testimonials/j2.png'
+import user2 from '../../../assets/testimonials/j1.png'
+import user3 from '../../../assets/testimonials/j2.png'
+import user4 from '../../../assets/testimonials/j1.png'
 
-const images = [rideImg, deliveryImg, earnImg]
-const tabNames = ['Ride', 'Delivery', 'Earn']
+const testimonials = [
+  {
+    text:
+      "ROVV changed how I see ride-hailing completely. I used to worry about drivers cancelling or overcharging, but now I just set my price and go.",
+    author: 'Laura Anita',
+    role: 'Rider, Benin',
+    avatar: user1,
+  },
+  {
+    text:
+      "It feels safe, fair, and personal. Every driver I’ve met has been respectful and professional.",
+    author: 'Samuel C.',
+    role: 'Driver, Abuja',
+    avatar: user2,
+  },
+  {
+    text:
+      "This app actually cares about people, not just profit. The experience is calm and smooth.",
+    author: 'Chioma Okeke',
+    role: 'Business Owner, PH',
+    avatar: user3,
+  },
+  {
+    text:
+      "ROVV gives me control. No stress, no guessing, just ride and arrive.",
+    author: 'David Okafor',
+    role: 'Traveler',
+    avatar: user4,
+  },
+]
 
-export default function Hero() {
-  const [showModal, setShowModal] = useState(false)
-  const [currentTab, setCurrentTab] = useState(0)
-  const [progress, setProgress] = useState(0)
-  const [counter, setCounter] = useState(0)
 
-  // QR TYPE STATE
-  const [qrType, setQrType] = useState<'for passenger' | 'for driver'>('for passenger')
+export default function TestimonialsSection() {
+  const [index, setIndex] = useState(0)
 
-  // Counter animation — untouched
+  const next = () => setIndex((i) => (i + 1) % testimonials.length)
+  const prev = () => setIndex((i) => (i - 1 + testimonials.length) % testimonials.length)
+
   useEffect(() => {
-    const target = 16087
-    const duration = 2000
-    const steps = 60
-    const increment = target / steps
-    const stepDuration = duration / steps
-
-    let current = 0
-    const timer = setInterval(() => {
-      current += increment
-      if (current >= target) {
-        setCounter(target)
-        clearInterval(timer)
-      } else {
-        setCounter(Math.floor(current))
-      }
-    }, stepDuration)
-
-    return () => clearInterval(timer)
+    const id = setInterval(next, 6000)
+    return () => clearInterval(id)
   }, [])
 
-  // Tab auto-rotation with progress bar — untouched
-  useEffect(() => {
-    const duration = 5000
-    const intervalTime = 50
-    const increment = (100 / duration) * intervalTime
-
-    const progressTimer = setInterval(() => {
-      setProgress((prev) => {
-        const newProgress = prev + increment
-        if (newProgress >= 100) {
-          return 0
-        }
-        return newProgress
-      })
-    }, intervalTime)
-
-    const tabTimer = setInterval(() => {
-      setCurrentTab((prev) => (prev + 1) % 3)
-      setProgress(0)
-    }, duration)
-
-    return () => {
-      clearInterval(progressTimer)
-      clearInterval(tabTimer)
-    }
-  }, [])
-
-  const handleTabClick = (index: number) => {
-    setCurrentTab(index)
-    setProgress(0)
-  }
+  const t = testimonials[index]
 
   return (
-    <section className="pt-30 pb-30 px-4 sm:px-6 md:px-10 lg:px-16 bg-bg">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <section className="bg-[#FFFAF2] py-10 md:py-5 lg:py-10 px-4 md:px-8 lg:px-[194px]">
+      <div className="max-w-[1052px] mx-auto flex flex-col items-center gap-7 md:gap-7 lg:gap-10">
 
-        {/* LEFT TEXT */}
-        <div className="text-center lg:text-left md:text-left">
-          <h1 className="font-nohemi font-bold text-4xl sm:text-5xl md:text-6xl lg:text-6xl leading-tight text-dark">
-            Your Ride <br />
-            Starts Here
-          </h1>
-
-          <p className="mt-4 text-base sm:text-lg lg:text-xl font-bold text-dark/80 leading-relaxed">
-            A mobility platform made for people.<br className="hidden sm:block" />
-            Because every ride should be safe,<br className="hidden sm:block" />
-            affordable, and fair, for riders and drivers
-          </p>
-
-          <button
-            onClick={() => setShowModal(true)}
-            className="mt-8 bg-primary text-bg px-8 py-4 rounded-xl font-bold text-lg hover:bg-accent transition-all duration-200 shadow-lg"
-          >
-            Download the app
-          </button>
-
-          <div className="mt-8 flex items-center justify-center md:justify-start lg:justify-start gap-4">
-            <img src={badgeIcon} alt="ROVV" className="w-10 h-10 rounded-full object-cover" />
-            <p className="font-bold text-xl lg:text-lg">
-              <span className="text-accent">{counter.toLocaleString()}+</span>{' '}
-              <span className="text-dark">Rides Completed</span>
-            </p>
-          </div>
+        {/* Eyebrow */}
+        <div className="bg-[#FFF2DE] px-4 py-1 md:px-5 md:py-[5px] lg:px-6 lg:py-[6px] rounded-full">
+          <span className="font-nohemi text-[13px] md:text-sm lg:text-base leading-[13px] md:leading-[14px] lg:leading-4 text-[#141414] font-medium">
+            Stories of success
+          </span>
         </div>
 
-        {/* RIGHT IMAGE + TABS */}
-        <div className="relative">
-          <div className="rounded-2xl overflow-hidden shadow-2xl">
-            <img
-              src={images[currentTab]}
-              alt={tabNames[currentTab]}
-              className="w-full h-[330px] sm:h-[380px] md:h-[430px] lg:h-[550px] object-cover"
-            />
-            <div className="absolute inset-0 rounded-2xl pointer-events-none overflow-hidden">
-              <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/95 via-black/70 to-transparent" />
+        {/* Glass container */}
+        <div className="w-full bg-[rgba(94,35,157,0.2)] backdrop-blur-[50px] rounded-3xl shadow-[inset_0_0_40px_8px_#fff] p-4 md:p-4 lg:p-7">
+          
+          {/* Desktop & Tablet Layout */}
+          <div className="hidden md:flex md:gap-6 lg:gap-[87px]">
+            
+            {/* LEFT CARD */}
+            <div className="md:w-[161px] lg:w-[312px] flex flex-col justify-between">
+              <img
+                src={bgImage}
+                alt=""
+                className="w-full md:h-[183px] lg:h-[355px] object-contain"
+              />
+
+              <div className="flex md:flex-col lg:flex-row items-start md:items-start lg:items-center md:gap-2 lg:gap-3 md:mt-[135px] lg:mt-[57px]">
+                <img
+                  src={t.avatar}
+                  alt={t.author}
+                  className="w-[60px] h-[60px] rounded-lg bg-[#7E4FB1] object-cover flex-shrink-0"
+                />
+                <div>
+                  <p className="font-nohemi md:text-[26px] md:leading-9 lg:text-2xl lg:leading-[30px] text-[#270F42] font-medium md:font-bold lg:font-medium">
+                    {t.author}
+                  </p>
+                  <p className="text-[#341356] md:text-base md:leading-[19px] md:italic md:font-bold lg:text-lg lg:leading-6 lg:not-italic lg:font-normal">
+                    {t.role}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT CARD */}
+            <div className="flex-1 bg-[#5E239D] rounded-3xl md:px-9 md:py-10 lg:px-12 lg:py-10 text-white flex flex-col justify-between md:min-h-[502px]">
+              
+              <div className="flex flex-col md:gap-[60px] lg:gap-[60px]">
+                {/* Stars */}
+                <div className="flex gap-[6.21px]">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-[#FFEFD6] text-[29.31px] leading-none">★</span>
+                  ))}
+                </div>
+
+                {/* Quote */}
+                <p className="font-nohemi text-2xl leading-[30px] text-[#FAFAFA]">
+                  {t.text}
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-8 sm:gap-12">
-            {tabNames.map((tab, index) => (
-              <button
-                key={tab}
-                onClick={() => handleTabClick(index)}
-                className="relative px-4 sm:px-6 py-4 text-white font-bold text-sm sm:text-base select-none transition-opacity hover:opacity-80"
-              >
-                {tab}
-                <div className="absolute bottom-3 left-0 w-full h-0.5 bg-white/30 rounded-full" />
-                <div
-                  className="absolute bottom-3 left-0 h-0.5 bg-white rounded-full transition-all duration-100 ease-linear"
-                  style={{ width: currentTab === index ? `${progress}%` : '0%' }}
-                />
-              </button>
-            ))}
+          {/* Mobile Layout */}
+          <div className="md:hidden flex flex-col">
+            
+            {/* Image at top */}
+            <img
+              src={bgImage}
+              alt=""
+              className="w-[161px] h-[183px] object-contain mx-auto mb-2 rotate-90"
+            />
+
+            {/* Purple card */}
+            <div className="bg-[#5E239D] rounded-3xl p-4 mb-3">
+              <div className="flex flex-col gap-5">
+                {/* Stars */}
+                <div className="flex gap-[3.39px]">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-[#FFEFD6] text-base leading-none">★</span>
+                  ))}
+                </div>
+
+                {/* Quote */}
+                <p className="font-nohemi text-base leading-6 text-[#FAFAFA]">
+                  {t.text}
+                </p>
+              </div>
+            </div>
+
+            {/* Author info */}
+            <div className="flex items-center gap-2">
+              <img
+                src={t.avatar}
+                alt={t.author}
+                className="w-9 h-9 rounded-lg bg-[#7E4FB1] object-cover"
+              />
+              <div>
+                <p className="font-[Product_Sans] text-base leading-[19px] text-[#270F42] font-bold">
+                  {t.author}
+                </p>
+                <p className="text-[#341356] text-sm leading-[17px]">
+                  {t.role}
+                </p>
+              </div>
+            </div>
           </div>
+        </div>
+
+        {/* Controls */}
+        <div className="flex gap-2 md:gap-4">
+          <button
+            onClick={prev}
+            className="w-10 h-10 md:w-[60px] md:h-[60px] bg-[#CDBBE1] rounded-lg flex items-center justify-center hover:scale-105 transition"
+          >
+            <ArrowLeft className="text-[#5E239D] w-4 h-4 md:w-6 md:h-6" />
+          </button>
+          <button
+            onClick={next}
+            className="w-10 h-10 md:w-[60px] md:h-[60px] bg-[#CDBBE1] rounded-lg flex items-center justify-center hover:scale-105 transition"
+          >
+            <ArrowRight className="text-[#5E239D] w-4 h-4 md:w-6 md:h-6" />
+          </button>
         </div>
       </div>
-
-      {/* MODAL */}
-      {showModal && (
-        <div className="fixed inset-0 bg-dark/60 backdrop-blur-sm z-50 flex items-center justify-center p-6 transition-all duration-500 ease-in-out">
-          <div className="bg-white rounded-2xl p-8 max-w-md w-full relative">
-            <button
-              onClick={() => setShowModal(false)}
-              className="absolute top-4 right-4 text-3xl font-bold text-gray-600 hover:text-gray-900 leading-none"
-            >
-              ×
-            </button>
-
-            <h2 className="text-2xl font-nohemi font-bold text-center mb-6">
-              Get the ROVV App
-            </h2>
-
-            {/* QR SWITCH */}
-            <div className="inline-flex items-center justify-center px-1 py-1 ml-11 md:ml-20 relative border rounded-sm border-light bg-light">
-              <button
-                onClick={() => setQrType('for passenger')}
-                className={`py-2 w-30 rounded-sm font-bold text-sm ${
-                  qrType === 'for passenger'
-                    ? 'bg-primary text-white'
-                    : ' text-purple'
-                }`}
-              >
-               For  Passenger
-              </button>
-
-              <button
-                onClick={() => setQrType('for driver')}
-                className={`px-4 py-2 rounded-sm font-bold text-sm ${
-                  qrType === 'for driver'
-                    ? 'bg-primary text-white'
-                    : ' text-purple'
-                }`}
-              >
-               For  Driver
-              </button>
-            </div>
-
-            {/* QR IMAGE */}
-            <div className="w-48 h-48 mx-auto mb-4 flex items-center justify-center">
-              <img
-                src={qrType === 'for passenger' ? passengerQR : driverQR}
-                alt="ROVV QR Code"
-                className="w-full h-full object-contain"
-              />
-            </div>
-
-            {/* QR TEXT */}
-            <p className="text-center text-gray-600 font-medium">
-              {qrType === 'for passenger'
-                ? 'Scan the QR Code with your mobile device to download the ROVV app for passengers'
-                : 'Scan the QR Code with your mobile device to download the ROVV app for drivers'}
-            </p>
-          </div>
-        </div>
-      )}
-      
     </section>
   )
 }
