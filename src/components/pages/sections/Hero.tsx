@@ -1,183 +1,270 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
-import bgImage from '../../../assets/images/bg.png'
+// YOUR REAL ROVV IMAGES
+import rideImg from '../../../assets/images/pic-4.jpg'
+import deliveryImg from '../../../assets/images/pics-2.png'
+import earnImg from '../../../assets/images/pics1.png'
+import badgeIcon from '../../../assets/images/journ.png'
 
-import user1 from '../../../assets/testimonials/j2.png'
-import user2 from '../../../assets/testimonials/j1.png'
-import user3 from '../../../assets/testimonials/j2.png'
-import user4 from '../../../assets/testimonials/j1.png'
+// QR IMAGES
+import passengerQR from '../../../assets/qr/passenger-qr.png'
+import driverQR from '../../../assets/qr/driver-qr.png'
 
-const testimonials = [
-  {
-    text:
-      "ROVV changed how I see ride-hailing completely. I used to worry about drivers cancelling or overcharging, but now I just set my price and go.",
-    author: 'Laura Anita',
-    role: 'Rider, Benin',
-    avatar: user1,
-  },
-  {
-    text:
-      "It feels safe, fair, and personal. Every driver I’ve met has been respectful and professional.",
-    author: 'Samuel C.',
-    role: 'Driver, Abuja',
-    avatar: user2,
-  },
-  {
-    text:
-      "This app actually cares about people, not just profit. The experience is calm and smooth.",
-    author: 'Chioma Okeke',
-    role: 'Business Owner, PH',
-    avatar: user3,
-  },
-  {
-    text:
-      "ROVV gives me control. No stress, no guessing, just ride and arrive.",
-    author: 'David Okafor',
-    role: 'Traveler',
-    avatar: user4,
-  },
-]
+const images = [rideImg, deliveryImg, earnImg]
+const tabNames = ['Ride', 'Delivery', 'Earn']
 
+// Typewriter words
+const typewriterWords = ['Mobility', 'E-Hailing', 'Delivery', 'Car Rental', 'Outstation']
 
-export default function TestimonialsSection() {
-  const [index, setIndex] = useState(0)
+export default function Hero() {
+  const [showModal, setShowModal] = useState(false)
+  const [currentTab, setCurrentTab] = useState(0)
+  const [progress, setProgress] = useState(0)
+  const [counter, setCounter] = useState(0)
+  const [qrType, setQrType] = useState<'for passenger' | 'for driver'>('for passenger')
 
-  const next = () => setIndex((i) => (i + 1) % testimonials.length)
-  const prev = () => setIndex((i) => (i - 1 + testimonials.length) % testimonials.length)
+  // Typewriter state
+  const [typewriterIndex, setTypewriterIndex] = useState(0)
+  const [displayText, setDisplayText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
 
+  // Counter animation
   useEffect(() => {
-    const id = setInterval(next, 6000)
-    return () => clearInterval(id)
+    const target = 16087
+    const duration = 2000
+    const steps = 60
+    const increment = target / steps
+    const stepDuration = duration / steps
+
+    let current = 0
+    const timer = setInterval(() => {
+      current += increment
+      if (current >= target) {
+        setCounter(target)
+        clearInterval(timer)
+      } else {
+        setCounter(Math.floor(current))
+      }
+    }, stepDuration)
+
+    return () => clearInterval(timer)
   }, [])
 
-  const t = testimonials[index]
+  // Typewriter animation
+  useEffect(() => {
+    const currentWord = typewriterWords[typewriterIndex]
+    const typingSpeed = isDeleting ? 50 : 100
+    const pauseDuration = 2000
+
+    const timer = setTimeout(() => {
+      if (!isDeleting && displayText === currentWord) {
+        setTimeout(() => setIsDeleting(true), pauseDuration)
+      } else if (isDeleting && displayText === '') {
+        setIsDeleting(false)
+        setTypewriterIndex((prev) => (prev + 1) % typewriterWords.length)
+      } else {
+        setDisplayText(
+          isDeleting
+            ? currentWord.substring(0, displayText.length - 1)
+            : currentWord.substring(0, displayText.length + 1)
+        )
+      }
+    }, typingSpeed)
+
+    return () => clearTimeout(timer)
+  }, [displayText, isDeleting, typewriterIndex])
+
+  // Tab auto-rotation with progress bar
+  useEffect(() => {
+    const duration = 5000
+    const intervalTime = 50
+    const increment = (100 / duration) * intervalTime
+
+    const progressTimer = setInterval(() => {
+      setProgress((prev) => {
+        const newProgress = prev + increment
+        if (newProgress >= 100) {
+          return 100
+        }
+        return newProgress
+      })
+    }, intervalTime)
+
+    const tabTimer = setInterval(() => {
+      setCurrentTab((prev) => (prev + 1) % 3)
+      setProgress(0)
+    }, duration)
+
+    return () => {
+      clearInterval(progressTimer)
+      clearInterval(tabTimer)
+    }
+  }, [])
+
+  const handleTabClick = (index: number) => {
+    setCurrentTab(index)
+    setProgress(0)
+  }
 
   return (
-    <section className="bg-[#FFFAF2] py-10 md:py-5 lg:py-10 px-4 md:px-8 lg:px-[194px]">
-      <div className="max-w-[1052px] mx-auto flex flex-col items-center gap-7 md:gap-7 lg:gap-10">
-
-        {/* Eyebrow */}
-        <div className="bg-[#FFF2DE] px-4 py-1 md:px-5 md:py-[5px] lg:px-6 lg:py-[6px] rounded-full">
-          <span className="font-nohemi text-[13px] md:text-sm lg:text-base leading-[13px] md:leading-[14px] lg:leading-4 text-[#141414] font-medium">
-            Stories of success
-          </span>
-        </div>
-
-        {/* Glass container */}
-        <div className="w-full bg-[rgba(94,35,157,0.2)] backdrop-blur-[50px] rounded-3xl shadow-[inset_0_0_40px_8px_#fff] p-4 md:p-4 lg:p-7">
+    <section className="bg-[#FFFAF2] px-4 py-20 md:px-2 md:py-10 md:mt-20 lg:px-20 lg:py-10 lg:mt-20">
+      <div className="max-w-[1280px] mx-auto">
+        <div className="flex flex-col lg:flex-row flex-wrap justify-between items-center lg:gap-x-[206px] gap-y-2">
           
-          {/* Desktop & Tablet Layout */}
-          <div className="hidden md:flex md:gap-6 lg:gap-[87px]">
-            
-            {/* LEFT CARD */}
-            <div className="md:w-[161px] lg:w-[312px] flex flex-col justify-between">
-              <img
-                src={bgImage}
-                alt=""
-                className="w-full md:h-[183px] lg:h-[355px] object-contain"
-              />
-
-              <div className="flex md:flex-col lg:flex-row items-start md:items-start lg:items-center md:gap-2 lg:gap-3 md:mt-[135px] lg:mt-[57px]">
-                <img
-                  src={t.avatar}
-                  alt={t.author}
-                  className="w-[60px] h-[60px] rounded-lg bg-[#7E4FB1] object-cover flex-shrink-0"
-                />
-                <div>
-                  <p className="font-nohemi md:text-[26px] md:leading-9 lg:text-2xl lg:leading-[30px] text-[#270F42] font-medium md:font-bold lg:font-medium">
-                    {t.author}
-                  </p>
-                  <p className="text-[#341356] md:text-base md:leading-[19px] md:italic md:font-bold lg:text-lg lg:leading-6 lg:not-italic lg:font-normal">
-                    {t.role}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* RIGHT CARD */}
-            <div className="flex-1 bg-[#5E239D] rounded-3xl md:px-9 md:py-10 lg:px-12 lg:py-10 text-white flex flex-col justify-between md:min-h-[502px]">
-              
-              <div className="flex flex-col md:gap-[60px] lg:gap-[60px]">
-                {/* Stars */}
-                <div className="flex gap-[6.21px]">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-[#FFEFD6] text-[29.31px] leading-none">★</span>
-                  ))}
+          {/* LEFT TEXT */}
+          <div className="w-full lg:w-auto lg:min-w-[355px] lg:max-w-[446px] flex flex-col items-center lg:items-start gap-7 md:gap-10 lg:gap-20">
+            <div className="flex flex-col items-center lg:items-start gap-3 md:gap-9 lg:gap-9 w-full">
+              <div className="flex flex-col items-start gap-2 lg:gap-1 w-full">
+                {/* Title with typewriter */}
+                <h1 className="font-nohemi font-bold text-[45px] leading-[40px] md:text-[64px] md:leading-[60px] lg:text-[64px] lg:leading-[60px] text-[#141414] text-center md:text-left lg:text-left w-full">
+                  The Future of
+                </h1>
+                
+                {/* Typewriter text */}
+                <div 
+                  className="font-nohemi font-bold text-[45px] leading-[40px] md:text-[64px] md:leading-[64px] lg:text-[64px] lg:leading-[64px] w-full text-center md:text-left lg:text-left text-accent"
+                  style={{
+                    background: '',
+                    WebkitBackgroundClip: '',
+                    WebkitTextFillColor: '',
+                    backgroundClip: '',
+                    minHeight: '64px'
+                  }}
+                >
+                  {displayText}
+                  <span className="animate-pulse">|</span>
                 </div>
 
-                {/* Quote */}
-                <p className="font-nohemi text-2xl leading-[30px] text-[#FAFAFA]">
-                  {t.text}
+                {/* Description */}
+                <p className="font-normal text-base leading-5 md:text-[23px] md:leading-[30px] md:font-bold lg:text-lg lg:leading-6 text-[#4A4A4A] text-center lg:text-left md:text-left w-full mt-2 lg:mt-4">
+                  A mobility platform made for people. Because every ride should be safe, affordable, and fair, for riders and drivers
                 </p>
               </div>
+
+              {/* Button */}
+              <button
+            onClick={() => setShowModal(true)}
+            className="mt-8 bg-primary text-bg lg:w-[246px] px-10 py-5 rounded-lg font-bold text-lg hover:bg-pup transition-all duration-200 shadow-lg"
+          >
+            
+                Download the app
+              </button>
+            </div>
+
+            {/* Counter badge */}
+            <div className="flex items-center justify-center lg:justify-start gap-2 w-full">
+              <div className="w-8 h-8 border border-[#CDBBE1] rounded-full flex items-center justify-center overflow-hidden">
+                <img src={badgeIcon} alt="ROVV" className="w-16 h-[35px] object-cover" />
+              </div>
+              <p className="font-normal md:font-bold text-sm md:text-lg lg:text-base text-center">
+                <span className="text-[#FF6A00]">{counter.toLocaleString()}+</span>{' '}
+                <span className="text-[#141414]">Rides Completed</span>
+              </p>
             </div>
           </div>
 
-          {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col">
-            
-            {/* Image at top */}
-            <img
-              src={bgImage}
-              alt=""
-              className="w-[161px] h-[183px] object-contain mx-auto mb-2 rotate-90"
-            />
-
-            {/* Purple card */}
-            <div className="bg-[#5E239D] rounded-3xl p-4 mb-3">
-              <div className="flex flex-col gap-5">
-                {/* Stars */}
-                <div className="flex gap-[3.39px]">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-[#FFEFD6] text-base leading-none">★</span>
-                  ))}
-                </div>
-
-                {/* Quote */}
-                <p className="font-nohemi text-base leading-6 text-[#FAFAFA]">
-                  {t.text}
-                </p>
+          {/* RIGHT IMAGE + TABS */}
+          <div className="relative w-full lg:w-auto mt-0">
+            <div className="relative w-full lg:w-[628px] h-[312.41px] md:h-[641.22px] lg:h-[572px] rounded-[13.11px] md:rounded-[26.9px] lg:rounded-3xl overflow-hidden bg-[#BABABA]">
+              <img
+                src={images[currentTab]}
+                alt={tabNames[currentTab]}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-x-0 bottom-0 h-48 rounded-[13.11px] md:rounded-[26.9px] lg:rounded-3xl" 
+                     style={{background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 60.8%, #000000 71.91%)'}} />
               </div>
             </div>
 
-            {/* Author info */}
-            <div className="flex items-center gap-2">
-              <img
-                src={t.avatar}
-                alt={t.author}
-                className="w-9 h-9 rounded-lg bg-[#7E4FB1] object-cover"
-              />
-              <div>
-                <p className="font-[Product_Sans] text-base leading-[19px] text-[#270F42] font-bold">
-                  {t.author}
-                </p>
-                <p className="text-[#341356] text-sm leading-[17px]">
-                  {t.role}
-                </p>
-              </div>
+            {/* Tabs */}
+            <div className="absolute bottom-[14px] md:bottom-[53.8px] lg:bottom-12 left-1/2 -translate-x-1/2 flex gap-[43.69px] md:gap-[89.68px] lg:gap-20">
+              {tabNames.map((tab, index) => (
+                <button
+                  key={tab}
+                  onClick={() => handleTabClick(index)}
+                  className="relative flex flex-col items-start gap-[1.09px] md:gap-[2.24px] lg:gap-0.5 w-[65.54px] md:w-[134.52px] lg:w-[120px]"
+                >
+                  <span className={`font-bold text-[9.83px] leading-[15px] md:text-[20.18px] md:leading-[30px] lg:text-base lg:leading-[22px] text-center w-full transition-opacity ${
+                    currentTab === index ? 'text-white' : 'text-[#CCCCCC]'
+                  }`}>
+                    {tab}
+                  </span>
+                  
+                  {/* Progress track */}
+                  <div className="w-full h-[1.09px] md:h-[2.24px] lg:h-0.5 bg-[#A7A7A7] rounded-full overflow-hidden relative">
+                    <div
+                      className="absolute left-0 top-0 h-full bg-white rounded-full transition-all duration-100 ease-linear"
+                      style={{ width: currentTab === index ? `${progress}%` : '0%' }}
+                    />
+                  </div>
+                </button>
+              ))}
             </div>
           </div>
-        </div>
-
-        {/* Controls */}
-        <div className="flex gap-2 md:gap-4">
-          <button
-            onClick={prev}
-            className="w-10 h-10 md:w-[60px] md:h-[60px] bg-[#CDBBE1] rounded-lg flex items-center justify-center hover:scale-105 transition"
-          >
-            <ArrowLeft className="text-[#5E239D] w-4 h-4 md:w-6 md:h-6" />
-          </button>
-          <button
-            onClick={next}
-            className="w-10 h-10 md:w-[60px] md:h-[60px] bg-[#CDBBE1] rounded-lg flex items-center justify-center hover:scale-105 transition"
-          >
-            <ArrowRight className="text-[#5E239D] w-4 h-4 md:w-6 md:h-6" />
-          </button>
         </div>
       </div>
+
+      {/* MODAL */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6">
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full relative">
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 text-3xl font-bold text-gray-600 hover:text-gray-900 leading-none"
+            >
+              ×
+            </button>
+
+            <h2 className="text-2xl font-nohemi font-bold text-center mb-6">
+              Get the ROVV App
+            </h2>
+
+            {/* QR SWITCH */}
+            <div className="flex items-center justify-center gap-1 p-1 bg-[#F5F5F5] border border-[#E0E0E0] rounded-sm mb-4">
+              <button
+                onClick={() => setQrType('for passenger')}
+                className={`px-4 py-2 rounded-sm font-bold text-sm transition-colors ${
+                  qrType === 'for passenger'
+                    ? 'bg-[#5E239D] text-white'
+                    : 'text-[#5E239D]'
+                }`}
+              >
+                For Passenger
+              </button>
+
+              <button
+                onClick={() => setQrType('for driver')}
+                className={`px-4 py-2 rounded-sm font-bold text-sm transition-colors ${
+                  qrType === 'for driver'
+                    ? 'bg-[#5E239D] text-white'
+                    : 'text-[#5E239D]'
+                }`}
+              >
+                For Driver
+              </button>
+            </div>
+
+            {/* QR IMAGE */}
+            <div className="w-48 h-48 mx-auto mb-4 flex items-center justify-center">
+              <img
+                src={qrType === 'for passenger' ? passengerQR : driverQR}
+                alt="ROVV QR Code"
+                className="w-full h-full object-contain"
+              />
+            </div>
+
+            {/* QR TEXT */}
+            <p className="text-center text-gray-600 font-medium">
+              {qrType === 'for passenger'
+                ? 'Scan the QR Code with your mobile device to download the ROVV app for passengers'
+                : 'Scan the QR Code with your mobile device to download the ROVV app for drivers'}
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
