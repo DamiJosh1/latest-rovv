@@ -38,26 +38,26 @@ export default function Header() {
   return (
     <>
       {/* MAIN HEADER */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-bg backdrop-blur-md border-b border-bg">
-        <div className="max-w-7xl mx-auto px-6 lg:px-5 py-5 flex items-center justify-between">
+      <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-bg backdrop-blur-md border-b border-bg gap-2.5 ">
+        <div className="lg:max-w-[1276px] mx-auto px-4  lg:py-5 flex items-center justify-between h-20">
           {/* Logo */}
           <a href="/" className="shrink-0">
             <RovvLogo className="h-9 lg:h-10 w-auto" />
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-7">
             {navItems.map((item) => (
               <div key={item.name} className="relative">
                 {item.items ? (
                   <button
                     onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="flex items-center gap-1 text-dark font-bold font-sans hover:text-primary transition"
+                    className="flex items-center gap-1 text-#4A4A4A font-bold font-sans hover:text-primary transition"
                   >
                     {item.name} <ChevronDown size={16} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
                   </button>
                 ) : (
-                  <a href={item.href} className="text-dark font-bold font-sans hover:text-primary transition">
+                  <a href={item.href} className="text-#4A4A4A font-bold font-sans hover:text-primary transition">
                     {item.name}
                   </a>
                 )}
