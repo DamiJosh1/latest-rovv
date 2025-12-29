@@ -1,115 +1,181 @@
-// src/components/sections/TestimonialsSection.tsx
 'use client'
 
-import useEmblaCarousel from 'embla-carousel-react'
-import Autoplay from 'embla-carousel-autoplay'
+import { useEffect, useState } from 'react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 
-import LeftCurve from '../../../assets/masks/left-curve.png'
-import RightCurve from "../../../assets/masks/right-curve.png"
+import bgImage from '../../../assets/images/bg.png'
 
-import user1 from '../../../assets/testimonials/tolu.jpg'
-import user2 from '../../../assets/testimonials/samuel.jpg'
-import user3 from '../../../assets/testimonials/chioma.jpg'
-import user4 from '../../../assets/testimonials/david.jpg'
+import user1 from '../../../assets/testimonials/j2.png'
+import user2 from '../../../assets/testimonials/j1.png'
+import user3 from '../../../assets/testimonials/j2.png'
+import user4 from '../../../assets/testimonials/j1.png'
 
-interface Testimonial {
-  text: string
-  author: string
-  role: string
-  avatar: string
-}
+const testimonials = [
+  {
+    text:
+      "ROVV changed how I see ride-hailing completely. I used to worry about drivers cancelling or overcharging, but now I just set my price and go.",
+    author: 'Laura Anita',
+    role: 'Rider, Benin',
+    avatar: user1,
+  },
+  {
+    text:
+      "It feels safe, fair, and personal. Every driver I’ve met has been respectful and professional.",
+    author: 'Samuel C.',
+    role: 'Driver, Abuja',
+    avatar: user2,
+  },
+  {
+    text:
+      "This app actually cares about people, not just profit. The experience is calm and smooth.",
+    author: 'Chioma Okeke',
+    role: 'Business Owner, PH',
+    avatar: user3,
+  },
+  {
+    text:
+      "ROVV gives me control. No stress, no guessing, just ride and arrive.",
+    author: 'David Okafor',
+    role: 'Traveler',
+    avatar: user4,
+  },
+]
 
-const testimonials: Testimonial[] = [
-    { text: "ROVV has honestly made my daily trips so much easier. I love that i can offer what i can afford", author:"Tolu Abraham", role: "Rider, Lagos", avatar: user1},
-    { text: "ROVV has honestly made my daily trips so much easier. I love that i can offer what i can afford", author:"Samuel C.", role: "Driver, Abuja", avatar: user2},
-    { text: "ROVV has honestly made my daily trips so much easier. I love that i can offer what i can afford", author:"Chioma Okeke", role: "Buisness Owner, Port Harcourt", avatar: user3},
-    { text: "ROVV has honestly made my daily trips so much easier. I love that i can offer what i can afford", author:"David Okafor", role: "Traveler, Enugu - Lagos", avatar: user4},
- ]
 
 export default function TestimonialsSection() {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: 'center', containScroll: 'trimSnaps' },
-    [Autoplay({ delay: 6000, stopOnInteraction: false })]
-  )
+  const [index, setIndex] = useState(0)
 
-  const scrollPrev = () => emblaApi?.scrollPrev()
-  const scrollNext = () => emblaApi?.scrollNext()
+  const next = () => setIndex((i) => (i + 1) % testimonials.length)
+  const prev = () => setIndex((i) => (i - 1 + testimonials.length) % testimonials.length)
+
+  useEffect(() => {
+    const id = setInterval(next, 6000)
+    return () => clearInterval(id)
+  }, [])
+
+  const t = testimonials[index]
 
   return (
-    <section className="py-24 bg-bg text-dark ">
-      {/* Title */}
-      <div className="text-center mb-16 px-6">
-        <h2 className="md:text-5xl lg:text-7xl text-2xl font-nohemi font-bold leading-tight">
-          What Our Users Are Saying
-        </h2>
-        <p className="mt-4 text-medium font-bold font-sans text-center mx-auto">
-          Hear from riders and drivers who’ve made ROVV part of their everyday journeys
-        </p>
-      </div>
+    <section className="bg-[#FFFAF2] py-10 md:py-5 lg:py-10 px-4 md:px-8 lg:px-[194px]">
+      <div className="max-w-[1052px] mx-auto flex flex-col items-center gap-7 md:gap-7 lg:gap-10">
 
-      {/* FULL-SCREEN CONTAINER FOR FIXED MASKS */}
-      <div className="relative">
+        {/* Eyebrow */}
+        <div className="bg-[#FFF2DE] px-4 py-1 md:px-5 md:py-[5px] lg:px-6 lg:py-[6px] rounded-full">
+          <span className="font-nohemi text-[13px] md:text-sm lg:text-base leading-[13px] md:leading-[14px] lg:leading-4 text-[#141414] font-medium">
+            Stories of success
+          </span>
+        </div>
 
-        {/* FIXED LEFT MASK — never moves, full bleed */}
-        <img
-          src={LeftCurve}
-          alt=""
-          className="pointer-events-none absolute left-45 top-[175px] -translate-y-1/2 h-[350px] w-auto z-40 lg:block md:hidden hidden"
-           // tweak -20vw to taste
-        />
+        {/* Glass container */}
+        <div className="w-full bg-[rgba(94,35,157,0.2)] backdrop-blur-[50px] rounded-3xl shadow-[inset_0_0_40px_8px_#fff] p-4 md:p-4 lg:p-7">
+          
+          {/* Desktop & Tablet Layout */}
+          <div className="hidden md:flex md:gap-6 lg:gap-[87px]">
+            
+            {/* LEFT CARD */}
+            <div className="md:w-[161px] lg:w-[312px] flex flex-col justify-between">
+              <img
+                src={bgImage}
+                alt=""
+                className="w-full md:h-[183px] lg:h-[355px] object-contain"
+              />
 
-        {/* FIXED RIGHT MASK — never moves, full bleed */}
-        <img
-          src={RightCurve}
-          alt=""
-          className="pointer-events-none absolute right-45 top-[175px] -translate-y-1/2 h-[350px] w-auto z-40 hidden lg:block"
-          // tweak -20vw to taste
-        />
-
-        {/* CENTERED CAROUSEL — slides under the fixed masks */}
-        <div className="relative max-w-7xl mx-auto ">
-          <div className="overflow-hidden cursor-grab active:cursor-grabbing select-none" ref={emblaRef}>
-            <div className="flex">
-              {testimonials.map((t, i) => (
-                <div key={i} className="flex-none lg:w-[60%] md:w-[80%] w-full px-2">
-                  <div className="bg-purple rounded-3xl overflow-hidden shadow-2x lg:h-[350px] md:h-[270px] h-[270px]">
-                    <div className="p-10 md:p-14 text-white flex flex-col min-h-[560px]">
-                      {/* Stars */}
-                      <div className="flex gap-1 mb-6">
-                        {[...Array(5)].map((_, i) => (
-                          <span key={i} className="text-accent text-3xl drop-shadow">★</span>
-                        ))}
-                      </div>
-                      <p className="text-lg md:text-xl leading-relaxed italic">“{t.text}”</p>
-                      <div className="flex items-center gap-5 mt-10">
-                        <img src={t.avatar} alt={t.author} className="w-16 h-16 rounded-full object-cover border-4 border-white/40 shadow-lg" />
-                        <div>
-                          <p className="font-bold text-xl">{t.author}</p>
-                          <p className="text-sm opacity-90">{t.role}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <div className="flex md:flex-col lg:flex-row items-start md:items-start lg:items-center md:gap-2 lg:gap-3 md:mt-[135px] lg:mt-[57px]">
+                <img
+                  src={t.avatar}
+                  alt={t.author}
+                  className="w-[60px] h-[60px] rounded-lg bg-[#7E4FB1] object-cover flex-shrink-0"
+                />
+                <div>
+                  <p className="font-nohemi md:text-[26px] md:leading-9 lg:text-2xl lg:leading-[30px] text-[#270F42] font-medium md:font-bold lg:font-medium">
+                    {t.author}
+                  </p>
+                  <p className="text-[#341356] md:text-base md:leading-[19px] md:italic md:font-bold lg:text-lg lg:leading-6 lg:not-italic lg:font-normal">
+                    {t.role}
+                  </p>
                 </div>
-              ))}
+              </div>
+            </div>
+
+            {/* RIGHT CARD */}
+            <div className="flex-1 bg-[#5E239D] rounded-3xl md:px-9 md:py-10 lg:px-12 lg:py-10 text-white flex flex-col justify-between md:min-h-[502px]">
+              
+              <div className="flex flex-col md:gap-[60px] lg:gap-[60px]">
+                {/* Stars */}
+                <div className="flex gap-[6.21px]">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-[#FFEFD6] text-[29.31px] leading-none">★</span>
+                  ))}
+                </div>
+
+                {/* Quote */}
+                <p className="font-nohemi text-2xl leading-[30px] text-[#FAFAFA]">
+                  {t.text}
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Bottom buttons */}
-          <div className="flex justify-center gap-4 mt-12">
-            <button aria-label='Previous testimonial'
-                onClick={scrollPrev} 
-                className="w-12 h-12 bg-light shadow-lg rounded-[10px] hover:scale-110 transition"
-                >
-              <ArrowLeft className="w-7 h-7 ml-2 text-dark" />
-            </button>
-            <button aria-label='Next testimonial'
-                onClick={scrollNext} className="w-11.5 h-12  bg-light rounded-[10px] shadow-lg hover:scale-110 transition"
-                >
-              <ArrowRight className="w-11 h-7 text-dark mr-2" />
-            </button>
+          {/* Mobile Layout */}
+          <div className="md:hidden flex flex-col">
+            
+            {/* Image at top */}
+            <img
+              src={bgImage}
+              alt=""
+              className="w-[161px] h-[183px] object-contain mx-auto mb-2 rotate-90"
+            />
+
+            {/* Purple card */}
+            <div className="bg-[#5E239D] rounded-3xl p-4 mb-3">
+              <div className="flex flex-col gap-5">
+                {/* Stars */}
+                <div className="flex gap-[3.39px]">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-[#FFEFD6] text-base leading-none">★</span>
+                  ))}
+                </div>
+
+                {/* Quote */}
+                <p className="font-nohemi text-base leading-6 text-[#FAFAFA]">
+                  {t.text}
+                </p>
+              </div>
+            </div>
+
+            {/* Author info */}
+            <div className="flex items-center gap-2">
+              <img
+                src={t.avatar}
+                alt={t.author}
+                className="w-9 h-9 rounded-lg bg-[#7E4FB1] object-cover"
+              />
+              <div>
+                <p className="font-[Product_Sans] text-base leading-[19px] text-[#270F42] font-bold">
+                  {t.author}
+                </p>
+                <p className="text-[#341356] text-sm leading-[17px]">
+                  {t.role}
+                </p>
+              </div>
+            </div>
           </div>
+        </div>
+
+        {/* Controls */}
+        <div className="flex gap-2 md:gap-4">
+          <button
+            onClick={prev}
+            className="w-10 h-10 md:w-[60px] md:h-[60px] bg-[#CDBBE1] rounded-lg flex items-center justify-center hover:scale-105 transition"
+          >
+            <ArrowLeft className="text-[#5E239D] w-4 h-4 md:w-6 md:h-6" />
+          </button>
+          <button
+            onClick={next}
+            className="w-10 h-10 md:w-[60px] md:h-[60px] bg-[#CDBBE1] rounded-lg flex items-center justify-center hover:scale-105 transition"
+          >
+            <ArrowRight className="text-[#5E239D] w-4 h-4 md:w-6 md:h-6" />
+          </button>
         </div>
       </div>
     </section>
