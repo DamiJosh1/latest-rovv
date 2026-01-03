@@ -8,37 +8,30 @@ import bgImage from '../../../assets/images/bg.png'
 import user1 from '../../../assets/testimonials/j2.png'
 import user2 from '../../../assets/testimonials/j1.png'
 import user3 from '../../../assets/testimonials/j2.png'
-import user4 from '../../../assets/testimonials/j1.png'
+
 
 const testimonials = [
   {
-    text:
-      "ROVV changed how I see ride-hailing completely. I used to worry about drivers cancelling or overcharging, but now I just set my price and go.",
-    author: 'Laura Anita',
-    role: 'Rider, Benin',
+    text:"ROVV has honestly made my daily trips so much easier. I love that I can offer what I can afford, and drivers still respond kindly. The rides feel safe, the cars are clean, and there’s this calm experience you just don’t get elsewhere. It’s more than an app, it’s comfort on demand.",
+    author: 'Tolu Abraham',
+    role: 'Rider, Lagos',
     avatar: user1,
   },
   {
     text:
-      "It feels safe, fair, and personal. Every driver I’ve met has been respectful and professional.",
-    author: 'Samuel C.',
-    role: 'Driver, Abuja',
-    avatar: user2,
-  },
-  {
-    text:
-      "This app actually cares about people, not just profit. The experience is calm and smooth.",
-    author: 'Chioma Okeke',
-    role: 'Business Owner, PH',
+      "ROVV changed how I see ride-hailing completely. I used to worry about drivers cancelling or overcharging, but now I just set my price and go. Every driver I’ve met has been respectful and professional. It feels safe, fair, and personal, like the app actually cares about people, not just profit.",
+    author: 'Laura Anita',
+    role: 'Rider, Benin',
     avatar: user3,
   },
   {
     text:
-      "ROVV gives me control. No stress, no guessing, just ride and arrive.",
-    author: 'David Okafor',
-    role: 'Traveler',
-    avatar: user4,
+      "ROVV came into my life when I needed a breakthrough the most. I had lost my previous job and didn’t know how to support my family. Driving with ROVV not only helped me get back on my feet, but it gave me confidence again. I’m proud to say I now provide for my loved ones through this platform.",
+    author: 'Samuel Ben',
+    role: 'Driver, Abuja',
+    avatar: user2,
   },
+
 ]
 
 
@@ -87,7 +80,7 @@ export default function TestimonialsSection() {
                   className="w-[60px] h-[60px] rounded-lg bg-[#7E4FB1] object-cover flex-shrink-0"
                 />
                 <div>
-                  <p className="font-nohemi md:text-[26px] md:leading-9 lg:text-2xl lg:leading-[30px] text-[#270F42] font-medium md:font-bold lg:font-medium">
+                  <p className="font-nohemi font-medium md:text-[24px] md:leading-tight lg:text-2xl lg:leading-[30px] text-[#270F42]">
                     {t.author}
                   </p>
                   <p className="text-[#341356] md:text-base md:leading-[19px] md:italic md:font-bold lg:text-lg lg:leading-6 lg:not-italic lg:font-normal">
@@ -99,7 +92,6 @@ export default function TestimonialsSection() {
 
             {/* RIGHT CARD */}
             <div className="flex-1 bg-[#5E239D] rounded-3xl md:px-9 md:py-10 lg:px-12 lg:py-10 text-white flex flex-col justify-between md:min-h-[502px]">
-              
               <div className="flex flex-col md:gap-[60px] lg:gap-[60px]">
                 {/* Stars */}
                 <div className="flex gap-[6.21px]">
@@ -109,7 +101,7 @@ export default function TestimonialsSection() {
                 </div>
 
                 {/* Quote */}
-                <p className="font-nohemi text-2xl leading-[30px] text-[#FAFAFA]">
+                <p className="font-nohemi md:text-[20px] md:w-[415px] md:h-[210px] md:leading-[30px] lg:text-[24px] lg:w-[501px] lg:h-[238px] lg:leading-[34px] text-[#FAFAFA]">
                   {t.text}
                 </p>
               </div>
@@ -137,7 +129,7 @@ export default function TestimonialsSection() {
                 </div>
 
                 {/* Quote */}
-                <p className="font-nohemi text-base leading-6 text-[#FAFAFA]">
+                <p className="font-nohemi font-medium lg:text-[24px] lg:leading-8.5 leading-6 text-[#FAFAFA]">
                   {t.text}
                 </p>
               </div>
@@ -151,10 +143,10 @@ export default function TestimonialsSection() {
                 className="w-9 h-9 rounded-lg bg-[#7E4FB1] object-cover"
               />
               <div>
-                <p className="font-[Product_Sans] text-base leading-[19px] text-[#270F42] font-bold">
+                <p className="font-nohemi text-base leading-[19px] text-[#270F42] font-bold lg:text-[24px]">
                   {t.author}
                 </p>
-                <p className="text-[#341356] text-sm leading-[17px]">
+                <p className="text-[#341356] font-[Product_Sans] font-normal lg:text-[18px] lg:leading-[24px]">
                   {t.role}
                 </p>
               </div>
@@ -168,13 +160,13 @@ export default function TestimonialsSection() {
             onClick={prev}
             className="w-10 h-10 md:w-[60px] md:h-[60px] bg-[#CDBBE1] rounded-lg flex items-center justify-center hover:scale-105 transition"
           >
-            <ArrowLeft className="text-[#5E239D] w-4 h-4 md:w-6 md:h-6" />
+            <ArrowLeft  className="text-[#5E239D] w-4 h-4 md:w-6 md:h-6" strokeWidth={5} />
           </button>
           <button
             onClick={next}
             className="w-10 h-10 md:w-[60px] md:h-[60px] bg-[#CDBBE1] rounded-lg flex items-center justify-center hover:scale-105 transition"
           >
-            <ArrowRight className="text-[#5E239D] w-4 h-4 md:w-6 md:h-6" />
+            <ArrowRight className="text-[#5E239D] w-4 h-4 md:w-6 md:h-6" strokeWidth={5} />
           </button>
         </div>
       </div>
