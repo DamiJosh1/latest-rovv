@@ -97,7 +97,7 @@ return (
         </div>
 
         {/* CTA Card */}
-        <div className="flex flex-col gap-[14px] md:gap-[14px] lg:gap-[14px] p-7 md:p-10 lg:p-10 w-full max-w-[38px] md:max-w-[519px] lg:max-w-[519px] mx-auto lg:mx-0 bg-[#FFEFD6] rounded-[4px]">
+        <div className="flex flex-col gap-[14px] md:gap-[14px] lg:gap-[14px] p-7 md:p-10 lg:p-10 w-full max-w-[388px] md:max-w-[519px] lg:max-w-[519px] mx-auto lg:mx-0 bg-[#FFEFD6] rounded-[4px]">
           <div className="flex flex-col gap-4 md:gap-4 lg:gap-5">
             <div className="flex flex-col gap-1 md:gap-0 lg:gap-1">
               <h4 className="text-lg md:text-2xl lg:text-2xl leading-[18px] md:leading-[34px] lg:leading-[34px] font-medium font-nohemi text-[#141414]">
@@ -116,4 +116,5 @@ return (
       </div>
     </div>
   </section>
+
 )}
