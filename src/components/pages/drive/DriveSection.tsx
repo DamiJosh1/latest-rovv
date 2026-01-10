@@ -12,7 +12,7 @@ export default function DriveSection() {
 
   const requirements = ["Valid Driver's License", "Vehicle Inspection", "Proof of Insurance", "Background Check"]
 return (
-  <section className="py-12 md:py-16 lg:py-20 px-4 md:px-6 bg-[#FFFAF2]">
+  <section className="py-20 md:py-16 lg:py-20 px-4 md:px-6 bg-[#FFFAF2]">
     <div className="max-w-7xl mx-auto">
       {/* Header Section */}
       <div className="flex flex-col items-center gap-1 md:gap-2 lg:gap-2 mb-6 md:mb-5 lg:mb-6">
@@ -118,3 +118,4 @@ return (
   </section>
 
 )}
+
