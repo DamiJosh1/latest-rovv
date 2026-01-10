@@ -1,7 +1,7 @@
 // src/pages/how-it-works/HowItWorks.tsx
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import missionImg from '../../../assets/images/new- (4).png'
+import missionImg from '../../../assets/images/ima.png'
 
 const passengerFeatures = [
   { 
@@ -48,7 +48,7 @@ export default function HowItWork() {
     <section className="py-20 lg:py-25 px-6 bg-bg">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-5">
-          <span className="inline-flex items-center gap-2 font-sans font-bold bg-dark text-bg px-4 py-2 rounded-[40px] text-sm">
+          <span className="inline-flex items-center gap-2 font-sans font-bold bg-back text-dark px-4 py-2 rounded-[40px] text-sm">
             How It Works
           </span>
         </div>

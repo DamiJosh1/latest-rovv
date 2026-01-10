@@ -1,7 +1,7 @@
 // src/pages/get-to-know-rovv/AbujaSection.tsx
 import { motion } from 'framer-motion'
 import { MapPin, Zap, Car, Navigation } from 'lucide-react'
-import mapImg from '../../../assets/images/safety-full.png'
+import mapImg from '../../../assets/images/city2.png'
 
 const stats = [
   { icon: MapPin, label: "1.8 millions+ rides completed in Lagos in the last year" },
@@ -12,8 +12,8 @@ const stats = [
 
 export default function LagosSection() {
   return (
-    <section className=" px-4 py-8 lg:py-20 lg:px-6 overflow- bg-bg">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+    <section className=" px-4 lg:py-20 lg:px-6 overflow-hidden bg-bg">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-1 items-center">
 
         {/* Content - Right */}
         <motion.div

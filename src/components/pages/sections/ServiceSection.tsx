@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 import ridesImg from '../../../assets/images/pic (1).png'
@@ -50,6 +50,8 @@ const services = [
 
 export default function ServicesSection() {
   const [selectedCard, setSelectedCard] = useState<null | typeof services[0]>(null)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const cards = document.querySelectorAll('.service-card')
@@ -72,6 +74,23 @@ export default function ServicesSection() {
     return () => cards.forEach((card) => observer.unobserve(card))
   }, [])
 
+  // Trigger animation for mobile cards immediately
+  useEffect(() => {
+    const mobileCards = document.querySelectorAll('.mobile-service-card')
+    mobileCards.forEach((card) => {
+      card.classList.add('animate-in')
+    })
+  }, [])
+
+  // Update current slide based on scroll position
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const container = e.currentTarget
+    const cardWidth = 253 + 16 // card width + gap
+    const scrollLeft = container.scrollLeft
+    const index = Math.round(scrollLeft / cardWidth)
+    setCurrentSlide(index)
+  }
+
   return (
     <section className="bg-[#FFFAF2] px-0 py-10 md:px-8 md:py-20 lg:px-[79px] lg:py-20">
       <div className="max-w-[343px] md:max-w-[704px] lg:max-w-[1282px] mx-auto flex flex-col items-center gap-3 md:gap-4">
@@ -85,42 +104,72 @@ export default function ServicesSection() {
           </h2>
         </div>
 
-        {/* Mobile: Horizontal Scroll Carousel */}
-        <div className="w-full md:hidden overflow-x-auto scrollbar-hide ml-0 pt-5-mx-4 px-4">
-          <div className="inline-flex gap-4">
-            {services.map((s, i) => (
-              <article
-                key={i}
-                className="service-card flex-none w-[253px] h-[335px] bg-white border border-[#CDBBE1] rounded-3xl overflow-hidden flex flex-col opacity-0 translate-y-12"
-              >
-                <div className="w-full h-[215px] overflow-hidden">
-                  <img
-                    src={s.img}
-                    alt={s.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="flex flex-col justify-between px-4 pt-2 pb-5 gap-2 h-[155.18px]">
-                  <div className="w-[221px] flex flex-col gap-2 text-left">
-                    <h3 className="text-[20px] font-medium font-nohemi text-[#141414]">
-                      {s.title}
-                    </h3>
-                    <p className="text-[16px] leading-[18px] text-[#4A4A4A] font-product-sans">
-                      {s.desc}
-                    </p>
+        {/* Mobile: Horizontal Scroll Carousel with Auto-slide */}
+        <div className="w-full md:hidden flex flex-col items-center gap-4 pt-5">
+          <div 
+            ref={scrollContainerRef}
+            className="w-full overflow-x-auto scrollbar-hide pl-6 pr-6"
+            onScroll={handleScroll}
+          >
+            <div className="inline-flex gap-4">
+              {services.map((s, i) => (
+                <article
+                  key={i}
+                  className="mobile-service-card service-card flex-none w-[280px] h-[335px] bg-white border border-[#CDBBE1] rounded-3xl overflow-hidden flex flex-col "
+                >
+                  <div className="w-full h-[215px] overflow-hidden">
+                    <img
+                      src={s.img}
+                      alt={s.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <button
-                    onClick={() => setSelectedCard(s)}
-                    className="mt-2 flex flex-col text-left gap-1"
-                  >
-            <span className="text-[13px] md:text-[13px] lg:text-[16px] text-[#666666]">
-                      Learn more
-                    </span>
-                    <div className="w-[66px] md:w-[67px] lg:w-20 h-[1.67px] md:h-[1.68px] lg:h-0.5 bg-[#A7A7A7] rounded-full transition-colors group-hover:bg-[#666666]" />
- 
-                  </button>
-                </div>
-              </article>
+                  <div className="flex flex-col justify-between px-4 pt-2 pb-5 gap-2 h-[155.18px]">
+                    <div className="w-[221px] flex flex-col gap-2 text-left">
+                      <h3 className="text-[20px] font-medium font-nohemi text-[#141414]">
+                        {s.title}
+                      </h3>
+                      <p className="text-[16px] leading-[18px] text-[#4A4A4A] font-product-sans">
+                        {s.desc}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => setSelectedCard(s)}
+                      className="mt-2 flex flex-col text-left gap-1"
+                    >
+                      <span className="text-[13px] text-[#666666]">
+                        Learn more
+                      </span>
+                      <div className="w-[66px] h-[1.67px] bg-[#A7A7A7] rounded-full transition-colors group-hover:bg-[#666666]" />
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          {/* Slide Indicators */}
+          <div className="flex gap-2">
+            {services.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  if (scrollContainerRef.current) {
+                    const cardWidth = 253 + 16
+                    scrollContainerRef.current.scrollTo({
+                      left: i * cardWidth,
+                      behavior: 'smooth'
+                    })
+                  }
+                  setCurrentSlide(i)
+                }}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === currentSlide 
+                    ? 'w-8 bg-[#141414]' 
+                    : 'w-2 bg-[#D9D9D9]'
+                }`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
             ))}
           </div>
         </div>
@@ -160,7 +209,6 @@ export default function ServicesSection() {
               </div>
             </article>
           ))}
-          
         </div>
       </div>
 

@@ -1,7 +1,7 @@
 // src/pages/get-to-know-rovv/AbujaSection.tsx
 import { motion } from 'framer-motion'
 import { MapPin, Zap, Car, Navigation } from 'lucide-react'
-import mapImg from '../../../assets/images/safety-full.png'
+import mapImg from '../../../assets/images/city1.png'
 
 const stats = [
   { icon: MapPin, label: "Reliable pickups across major business and residential districts" },

@@ -4,17 +4,20 @@ import valuesImg from '../../../assets/images/why-2.png'
 
 export default function WhyROVVSection() {
   return (
-    <section className="py-16 px-4 mt-6 bg-bg">
+    <section className="py-10 px-4 bg-bg">
       <div className="max-w-6xl mx-auto">
         {/* Badge */}
-        <div className="text-center mb-12">
-          <span className="inline-flex font-sans items-center gap-2 bg-dark text-bg px-6 py-2 rounded-full text-sm font-medium">
+        <div className="text-center mb-2">
+          <span className="inline-flex font-nohemi items-center gap-2 bg-back text-dark px-6 py-2 rounded-full text-sm font-medium">
             Why ROVV?
           </span>
-        </div>
+
+          </div>
+          <h1 className='font-bold font-nohemi mb-2 text-center xl:text-[40px] md:text-[28px] text-[16px] '>A Smarter Way to Move Across Cities</h1>
+ 
 
         {/* Mission */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
           <div className="w-full">
             <img
               src={missionImg}
@@ -26,7 +29,7 @@ export default function WhyROVVSection() {
             <h3 className="text-2xl sm:text-3xl md:text-[35px] font-nohemi font-bold text-dark">
               Our Mission
             </h3>
-            <p className="text-base sm:text-lg md:text-[20px] text-medium font-bold font-sans leading-relaxed">
+            <p className="text-base sm:text-lg md:text-[18px] text-medium font-medium d font-sans leading-relaxed">
               We are redefining movement in Africa, <span className='lg:block' />
               creating smarter, safer, and fairer <span className='lg:block' /> 
               mobility powered by trust, <span className='lg:block' />
@@ -42,7 +45,7 @@ export default function WhyROVVSection() {
             <h3 className="text-2xl sm:text-3xl md:text-[35px] font-nohemi font-bold text-dark">
               Values
             </h3>
-            <p className="text-base sm:text-lg md:text-[20px] text-medium font-bold font-sans leading-relaxed">
+            <p className="text-base sm:text-lg md:text-[18px] text-medium font-medium font-sans leading-relaxed">
               Fair earnings, real choice, full  <span className='lg:block' />
               transparency. At ROVV, we put people <span className='lg:block' />
               and community first, delivering <span className='lg:block' />

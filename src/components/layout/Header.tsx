@@ -39,7 +39,7 @@ export default function Header() {
     <>
       {/* MAIN HEADER */}
       <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-bg backdrop-blur-md border-b border-bg gap-2.5 ">
-        <div className="lg:max-w-[1276px] mx-auto px-4  lg:py-5 flex items-center justify-between h-20">
+        <div className="max-w-[410px] lg:max-w-[1308px] md:max-w-[704px] md:px-0 mx-auto lg:px-4  lg:py-5 flex items-center justify-between h-20 ">
           {/* Logo */}
           <a href="/" className="shrink-0">
             <RovvLogo className="h-9 lg:h-10 w-auto" />
@@ -99,9 +99,9 @@ export default function Header() {
           {/* Mobile menu button */}
           <button aria-label='Menu btn'
             onClick={() => setMobileOpen(true)}
-            className="lg:hidden p-2"
+            className="lg:hidden p-2 md:p-0"
           >
-            <Menu size={28} className="text-primary" />
+            <Menu size={28} className="text-purple leading-2 font-bold w-[44px] h-[44px] " />
           </button>
         </div>
       </header>
@@ -125,7 +125,7 @@ export default function Header() {
               transition={{ type: 'tween', duration: 0.35 }}
               className="fixed right-0 top-0 bottom-0 w-full h-165 bg-white z-50 "
             >
-              <div className="flex items-center  py-4  bg-bg justify-between p-[22.3px] ">
+              <div className="flex bg-bg justify-between w-[343px] h-[44px] ">
                 <RovvLogo className="h-10" />
                 <button aria-label='X'
                 onClick={() => setMobileOpen(false)} className="">

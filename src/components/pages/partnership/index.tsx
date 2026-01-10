@@ -1,7 +1,7 @@
 // src/pages/partnership/index.tsx
 
 import Footer from '../sections/Footer'
-import Header from '../../layout/Header'
+import Header from '../../../components/layout/Header'
 import PartnershipSection from './PartnershipSection'
 
 

@@ -1,65 +1,78 @@
-import bgImage from '../../../assets/images/journey-5.png'
-import girlImg from '../../../assets/images/why-1.png'// src/components/Hero.tsx
+'use client'
 
+import { useEffect, useState } from 'react'
 
-export default function Hero() {
+import bgImg from '../../../assets/images/journey-5.png'      // background image
+import heroImg from '../../../assets/images/why-1.png'     // right image
+
+export default function AboutSection() {
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    setShow(true)
+  }, [])
+
   return (
-    <section className="relative flex items-center mt-19 lg:mt:16">     
-      {/* Background image */}
-      <div
-        className="absolute inset-0 z-0  lg:h-[700px] bg-center bg-cover opacity-20"
-        style={{ backgroundImage: `url(${bgImage})` }}
+    <section
+      className="relative py-25 px-6 overflow-hidden"
+    >
+      {/* Background with opacity */}
+      <div 
+        className="absolute inset-0 opacity-50"
+        style={{
+          backgroundImage: `url(${bgImg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
       />
 
-      {/* Pastel gradient overlay */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 z-1 pointer-events-none"
-       
-      />
-
-       {/* Top-center About Us button */}
-     <div className="absolute top-5 sm:top-8 left-1/2 -translate-x-1/2 z-20">
-        <a
-          href="#about"
-          className="inline-flex items-center text-bg gap-2 px-5 sm:px-6 py-2 bg-dark sm:text-sm font-semibold rounded-full shadow-sm hover:opacity-90 transition"
-        >
-          About us
-        </a>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 w-full lg:max-w-[1400px] mx-auto lg:mt-[90px] px-8 md:px-12 lg:px-20 grid grid-cols-1 lg:grid-cols-2 md:gap-16 items-center">
-        {/* LEFT: Text */}
-        <div className="pt-20 sm:pt-16 pb-12 lg:pt-0 lg:pb-0 text-center md:text-left lg:text-left">
-          <h1 className="font-nohemi font-bold text-[22px] md:text-[40px] lg:text-[40px] leading-tight md:mt-5 md:mx-0 text-dark">
-            Building the Future of
-          
-            <span className='md:block' > Seamless Transportation</span>
-          </h1>
-
-          <p className="mt-4 sm:mt-6 text-medium font-sans font-bold  md:text-lg md:mr-50 leading-relaxed max-w-md sm:max-w-lg mx-auto lg:mx-0">
-            ROVV is a modern mobility platform <br /> built to make movement simple, safe <br />
-            and accessible for everyone, from city <br /> rides and intercity travel to
-            fast <br /> delivery and reliable vehicle services.
-          </p>
-
-          
-          <button className="mt-8 inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition">
-              Download the app
-            </button>
+      <div className="relative max-w-7xl mx-auto">
+        {/* CENTERED BADGE AT TOP */}
+        <div className="flex justify-center mb-8">
+          <span className="inline-block rounded-full bg-orange-100 px-5 py-2 text-sm font-medium">
+            About Us
+          </span>
         </div>
 
-        {/* RIGHT: Blob Image */}
-        <div className="flex justify-center lg:justify-end items-center mt-6 sm:mt-0">
-          <div className="relative h-96 md:h-full">
-            <div className="absolute inset-0 "></div>
-            <img 
-              src={girlImg} 
-              alt="Happy and safe passenger" 
-              className=" "
-            />
-            
+        {/* LEFT AND RIGHT CONTENT */}
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 items-center">
+          {/* LEFT */}
+          <div
+            className={`flex flex-col gap-9 text-center md:text-left transition-all duration-700
+            ${show ? 'opacity-100 translate-y-0' : 'opacity-70 translate-y-10'}`}
+          >
+            <div className="flex flex-col gap-4 items-center md:items-start md:justify-start md:mr-[280px]">
+              <h1 className="xl:text-[40px] xl:w-[491px] lg:text-[40px] lg:w-[491px] md:text-[32px] md:w-[401px] text-[20px] w-[249px] font-bold  font-nohemi leading-[120%] md:leading-[36px] lg:leading-[48px] text-[#141414]">
+                Building the Future of
+                Seamless Transportation
+              </h1>
+
+              <p className="text-[18px] leading-6 text-[#4A4A4A] max-w-[411px]">
+                ROVV is a modern mobility platform built to make movement simple,
+                safe and accessible for everyone. from city rides and intercity
+                travel to fast delivery and reliable vehicle services
+              </p>
+            </div>
+
+            <div className="flex justify-center md:justify-start">
+              <button className="flex justify-center items-center w-[246px] h-[60px] bg-[#5E239D] rounded-lg text-[#FFEFD6] text-xl font-bold hover:bg-purple-700 transition">
+                Download the app
+              </button>
+            </div>
+          </div>
+
+          {/* RIGHT IMAGE */}
+          <div
+            className={`transition-all duration-700 delay-200
+            ${show ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+          >
+            <div className="relative w-full max-w-[603.85px]  mx-auto overflow-hidden">
+              <img
+                src={heroImg}
+                alt="Passenger"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 // src/components/pages/Index.tsx
-import Header from '../layout/Header'
+import Header from '../../components/layout/Header'
 import Hero from './sections/Hero'
 import Testimonial from './sections/TestimonialSection'
 import Service from './sections/ServiceSection'

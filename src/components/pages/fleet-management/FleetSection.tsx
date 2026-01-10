@@ -15,14 +15,23 @@ const features = [
 
 export default function FleetSection() {
   return (
-    <section className="py-23 px-4 md:px-6 bg-bg">
+    <section className="py-10 mt-11 md:mt-0 md:py-20 px-4 md:px-6 bg-bg">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
-          <span className="inline-flex items-center gap-2 font-sans font-bold bg-dark text-bg px-4 py-2 rounded-[40px] text-sm"> Smart Fleet </span>
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-gray-900 mb-4"> Manage Your Fleet Smarter with ROVV </h2>
-          <p className="text-sm text-medium font-sans font-black max-w-2xl mx-auto"> Track, manage, and optimize your fleet with ease </p>
-        </div>
+        <div className="flex flex-col items-center gap-1 md:gap-2 lg:gap-3">
+  <span className="inline-flex items-center justify-center px-4 py-1 md:px-5 md:py-[5px] lg:px-6 lg:py-1.5 bg-[#FFF2DE] text-[#141414] rounded-[34.463px] md:rounded-[40px] text-[13px] md:text-[14px] lg:text-base leading-[13px] md:leading-[14px] lg:leading-4 font-medium font-nohemi"> 
+    Smart Fleet 
+  </span>
+  
+  <div className="flex flex-col items-center gap-1.5 md:gap-1 lg:gap-1">
+    <h2 className="text-[18px] md:text-[28px] lg:text-[40px] leading-[18px] md:leading-[40px] lg:leading-[48px] font-bold font-nohemi text-[#141414] text-center"> 
+      Manage Your Fleet Smarter with ROVV 
+    </h2>
+    <p className="text-[14px] md:text-[20px] lg:text-[24px] leading-[14px] md:leading-5 lg:leading-[34px] font-medium font-nohemi text-[#4A4A4A] text-center max-w-[326px] md:max-w-[466px] lg:max-w-[559px]"> 
+      Track, manage, and optimize your fleet with ease 
+    </p>
+  </div>
+</div>
         {/* Main Grid */}
         <div className="grid lg:grid-cols-2 gap-8 items-start lg:mr-30">
           {/* Image + CTA - Right */}
@@ -51,9 +60,9 @@ export default function FleetSection() {
         {/* CTA Card at bottom */}
         <div className="text-center mt-8">
           <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h3 className="text-lg md:text-xl lg:text-2xl font-bold font-nohemi text-gray-900 mb-2"> Partner with ROVV Fleet </h3>
-            <p className="text-sm font-bold font-sans text-medium mb-4"> Partner with ROVV Fleet for seamless control </p>
-            <a href="#" className="px-4 py-2 bg-purple text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"> Sign Up </a>
+            <h3 className="text-lg md:text-xl lg:text-2xl font-bold font-nohemi text-gray-900 mb-1"> Partner with ROVV Fleet </h3>
+            <p className="text-[18px] font-medium font-nohemi  mb-3"> Partner with ROVV Fleet for seamless control </p>
+            <a href="#" className="px-4 py-2 bg-primary text-white font-normal rounded-[4px] shadow-lg hover:shadow-xl transition-all duration-300"> Sign Up </a>
           </motion.div>
         </div>
       </div>

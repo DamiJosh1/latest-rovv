@@ -165,9 +165,9 @@ export default function Hero() {
             </h1>
             {/* Typewriter text */}
             <div
-              className="font-bold text-[40px] leading-[40px] mt-2 md:text-[64px] md:leading-tight lg:text-[64px] lg:mt-0 animate-fade-in-up opacity-0"
+              className="font-bold text-[40px] text-accent leading-[40px] mt-2 md:text-[64px] md:leading-tight lg:text-[64px] lg:mt-0 animate-fade-in-up opacity-0"
               style={{
-                background: 'accent',
+                background: '',
                 WebkitBackgroundClip: '',
                 WebkitTextFillColor: '',
                 backgroundClip: '',

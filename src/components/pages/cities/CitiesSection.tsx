@@ -1,5 +1,5 @@
 // src/components/sections/CitiesSection.tsx
-import mapImg from '../../../assets/images/safety-full.png'
+import mapImg from '../../../assets/images/city3.png'
 import { motion } from 'framer-motion'
 import { MapPin} from 'lucide-react'
 
@@ -14,7 +14,7 @@ const cities = [
 
 export default function CitiesSection() {
   return (
-    <section className="mt-20 lg:py-30 md:py-20 bg-bg">
+    <section className="py-20 lg:py-20 md:py-10 bg-bg">
       <div className="max-w-6xl lg:mx-80">
 
         {/* Map + Cities */}
@@ -23,7 +23,7 @@ export default function CitiesSection() {
             <img
               src={mapImg}
               alt="Nigeria Map"
-              className="scale-95 lg:w-full md:translate-x-3 "
+              className="scale-95 lg:w-full md:translate-x-0 "
             />
           </div>
           <div className=" lg:ml-25 text-center space-y-6">

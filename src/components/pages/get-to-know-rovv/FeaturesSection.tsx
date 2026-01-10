@@ -1,5 +1,5 @@
 // src/pages/get-to-know-rovv/FeaturesSection.tsx
-import Image from '../../../assets/images/safety-full.png'
+import Image from '../../../assets/images/cum.png'
 import { motion } from 'framer-motion'
 import {
   Wallet,
@@ -35,15 +35,15 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section className="py-20 px-6 overflow-hidden bg-bg">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-10 px-6 overflow-hidden bg-bg">
+      <div className="max-w-7xl mx-auto ">
 
         {/* Header */}
-        <div className="text-center mb-7">
-          <span className="inline-block px-4 py-1 bg-dark text-bg text-sm font-semibold rounded-full mb-4">
+        <div className="text-center mb-5">
+          <span className="inline-block px-4 py-1 bg-[#FFF2DE] text-dark md:text[14px] font-nohemi font-medium rounded-full mb-4">
             App Features
           </span>
-          <h2 className="text-[17px] md:text-6xl lg:text-4xl font-nohemi font-bold text-dark">
+          <h2 className="text-[17px] md:text-2xl lg:text-4xl font-nohemi font-bold text-dark">
             Tools That Power Easy, Reliable Movement
           </h2>
         </div>
@@ -75,10 +75,10 @@ export default function FeaturesSection() {
                   <feature.icon className="w-6 h-6 text-purple group-hover:text-bg transition-colors" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-xl text-gray-900 mb-1">
+                  <h3 className="font-bold text-xl text-gray-900 mb-3">
                     {feature.title}
                   </h3>
-                  <p className="text-medium  font-bold font-sans leading-relaxed">
+                  <p className="text-medium md:text-[16px] md:w-[280px]  font-normal font-sans leading-6">
                     {feature.desc}
                   </p>
                 </div>

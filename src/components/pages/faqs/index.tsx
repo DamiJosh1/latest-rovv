@@ -1,7 +1,7 @@
 // src/pages/faqs/index.tsx
 
 import Footer from '../sections/Footer'
-import Header from '../../layout/Header'
+import Header from '../../../components/layout/Header'
 import FAQSection from './FAQSection'
 
 
