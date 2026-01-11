@@ -27,7 +27,7 @@ export default function FleetSection() {
     <h2 className="text-[18px] md:text-[28px] lg:text-[40px] leading-[18px] md:leading-[40px] lg:leading-[48px] font-bold font-nohemi text-[#141414] text-center"> 
       Manage Your Fleet Smarter with ROVV 
     </h2>
-    <p className="text-[14px] md:text-[20px] lg:text-[24px] leading-[14px] md:leading-5 lg:leading-[34px] font-medium font-nohemi text-[#4A4A4A] text-center max-w-[326px] md:max-w-[466px] lg:max-w-[559px]"> 
+    <p className="text-[14px] md:text-[20px] lg:text-[24px] leading-[34px] md:leading-5 lg:leading-[34px] font-medium font-nohemi text-[#4A4A4A] text-center max-w-[326px] md:max-w-[466px] lg:max-w-[559px]"> 
       Track, manage, and optimize your fleet with ease 
     </p>
   </div>
@@ -69,3 +69,4 @@ export default function FleetSection() {
     </section>
   )
 }
+
