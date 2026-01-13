@@ -10,7 +10,7 @@ import Drive from './components/pages/drive/index.tsx'
 import FAQs from './components/pages/faqs/index.tsx'
 import HowItWork from './components/pages/how-it-works/index.tsx'
 import Privacy from './components/pages/privacy-policy/index.tsx'
-import TermsAndCondition from './components/terms&condition/TermsAndCondition.tsx'
+import TermsAndCondition from './components/pages/terms&condition/index.tsx'
 
 
 function App () {
