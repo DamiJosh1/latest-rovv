@@ -5,8 +5,8 @@ import deliveryImg from '../../../assets/images/pics-2.png'
 import earnImg from '../../../assets/images/pics1.png'
 import badgeIcon from '../../../assets/images/journ.png'
 // QR IMAGES
-import passengerQR from '../../assets/qr/passenger.png'
-import driverQR from '../../assets/qr/dr.png'
+import passengerQR from '../../../assets/qr/passenger.png'
+import driverQR from '../../../assets/qr/dr.png'
 const images = [rideImg, deliveryImg, earnImg]
 const tabNames = ['Ride', 'Delivery', 'Earn']
 const typewriterWords = ['Mobility', 'E-Hailing', 'Delivery', 'Car Rental', 'Outstation']
@@ -298,4 +298,5 @@ export default function Hero() {
       </section>
     </>
   )
+
 }
