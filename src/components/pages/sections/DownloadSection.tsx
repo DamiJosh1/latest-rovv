@@ -3,8 +3,8 @@ import { useState } from 'react'
 import lightPng from '../../../assets/images/light.png'
 import lightMode from '../../../assets/images/light-1.png'
 import light from '../../../assets/images/light-2.png'
-import passengerQR from '../../assets/qr/passenger.png'
-import driverQR from '../../assets/qr/dr.png'
+import passengerQR from '../../../assets/qr/passenger.png'
+import driverQR from '../../../assets/qr/dr.png'
 
 export default function DownloadSection() {
   const [showModal, setShowModal] = useState(false)
@@ -224,4 +224,5 @@ export default function DownloadSection() {
       )}
     </>
   )
+
 }
