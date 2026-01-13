@@ -235,59 +235,53 @@ export default function Header() {
             className="bg-white rounded-2xl p-8 max-w-md w-full relative animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">
-  Get the ROVV App
-</h2>
+            <h2 className="text-2xl font-nohemi font-bold text-center mb-6">
+              Get the ROVV App
+            </h2>
 
-{/* QR SWITCH */}
-<div className="flex justify-center mb-6">
-  <div className="inline-flex items-center justify-center gap-1 p-1 border rounded-sm border-light bg-light w-[300px] ">
-    <button
-      onClick={() => setQrType('for passenger')}
-      className={`flex-1 py-2 rounded-sm font-bold text-sm transition-transform duration-200 active:scale-95 ${
-        qrType === 'for passenger'
-          ? 'bg-purple-600 text-white'
-          : 'text-purple-600'
-      }`}
-    >
-      For Passenger
-    </button>
+            {/* QR SWITCH */}
+            <div className="inline-flex items-center justify-center px-1 py-1 ml-11 md:ml-20 relative border rounded-sm border-light bg-light">
+              <button
+                onClick={() => setQrType('for passenger')}
+                className={`py-2 w-30 rounded-sm font-bold text-sm transition-all duration-600 transform hover:scale-105 active:scale-95 ${
+                  qrType === 'for passenger'
+                    ? 'bg-primary text-white'
+                    : ' text-purple'
+                }`}
+              >
+               For  Passenger
+              </button>
 
-    <button
-      onClick={() => setQrType('for driver')}
-      className={`flex-1 py-2 rounded-sm font-bold text-sm transition-transform duration-200 active:scale-95 ${
-        qrType === 'for driver'
-          ? 'bg-purple-600 text-white'
-          : 'text-purple-600'
-      }`}
-    >
-      For Driver
-    </button>
-  </div>
-</div>
+              <button
+                onClick={() => setQrType('for driver')}
+                className={`px-4 py-2 rounded-sm font-bold text-sm transition-all duration-600 transform hover:scale-105 active:scale-95 ${
+                  qrType === 'for driver'
+                    ? 'bg-primary text-white'
+                    : ' text-purple'
+                }`}
+              >
+               For  Driver
+              </button>
+            </div>
 
-{/* QR IMAGE */}
-<div className="w-full flex justify-center mb-4">
-  <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 flex items-center justify-center">
-    <img
-      src={qrType === 'for passenger' ? passengerQR : driverQR}
-      alt="ROVV QR Code"
-      className="w-full h-full object-contain"
-    />
-  </div>
-</div>
+            {/* QR IMAGE */}
+            <div className="w-48 h-48 mx-auto mb-4 flex items-center justify-center">
+              <img
+                src={qrType === 'for passenger' ? passengerQR : driverQR}
+                alt="ROVV QR Code"
+                className="w-full h-full object-contain"
+              />
+            </div>
 
-{/* QR TEXT */}
-<p className="text-center text-gray-600 font-medium text-sm sm:text-base max-w-md mx-auto px-4">
-  {qrType === 'for passenger'
-    ? 'Scan the QR Code with your mobile device to download the ROVV app for passengers'
-    : 'Scan the QR Code with your mobile device to download the ROVV app for drivers'}
-</p>
-
+            {/* QR TEXT */}
+            <p className="text-center text-gray-600 font-medium">
+              {qrType === 'for passenger'
+                ? 'Scan the QR Code with your mobile device to download the ROVV app for passengers'
+                : 'Scan the QR Code with your mobile device to download the ROVV app for drivers'}
+            </p>
           </div>
         </div>
       )}
     </>
   )
-
 }
