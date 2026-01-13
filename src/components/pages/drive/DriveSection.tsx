@@ -97,9 +97,9 @@ return (
         </div>
 
         {/* CTA Card */}
-        <div className="flex flex-col gap-[14px] md:gap-[14px] lg:gap-[14px] p-7 md:p-10 lg:p-10 w-full max-w-[388px] md:max-w-[519px] lg:max-w-[519px] mx-auto lg:mx-0 bg-[#FFEFD6] rounded-[4px]">
+        <div className="flex flex-col gap-[14px] md:gap-[14px] lg:gap-[14px] p-7 md:p-10 lg:p-10 w-full max-w-[388px] md:max-w-[519px] lg:max-w-[775px] mx-auto lg:mx-0 bg-[#FFEFD6] rounded-[4px]">
           <div className="flex flex-col gap-4 md:gap-4 lg:gap-5">
-            <div className="flex flex-col gap-1 md:gap-0 lg:gap-1">
+            <div className="flex flex-col gap-1 md:gap-0 lg:gap-1 text-center">
               <h4 className="text-lg md:text-2xl lg:text-2xl leading-[18px] md:leading-[34px] lg:leading-[34px] font-medium font-nohemi text-[#141414]">
                 Join The Community
               </h4>
@@ -108,7 +108,7 @@ return (
               </p>
             </div>
             
-            <button className="flex justify-center items-center px-7 py-[14px] w-full h-[52px] bg-[#5E239D] rounded-lg text-white text-xl leading-6 font-bold font-sans hover:bg-purple-700 transition">
+            <button className="flex justify-center items-center  px-7 py-[14px] w-full lg:w-[350px] lg:translate-x-[175px] h-[52px] bg-[#5E239D] rounded-lg text-white text-xl leading-6 font-bold font-sans hover:bg-purple-700 transition">
               Sign up
             </button>
           </div>
@@ -116,6 +116,4 @@ return (
       </div>
     </div>
   </section>
-
 )}
-

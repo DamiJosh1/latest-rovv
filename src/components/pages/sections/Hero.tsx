@@ -5,9 +5,8 @@ import deliveryImg from '../../../assets/images/pics-2.png'
 import earnImg from '../../../assets/images/pics1.png'
 import badgeIcon from '../../../assets/images/journ.png'
 // QR IMAGES
-import passengerQR from '../../../assets/qr/passenger-qr.png'
-import driverQR from '../../../assets/qr/driver-qr.png'
-
+import passengerQR from '../../assets/qr/passenger.png'
+import driverQR from '../../assets/qr/dr.png'
 const images = [rideImg, deliveryImg, earnImg]
 const tabNames = ['Ride', 'Delivery', 'Earn']
 const typewriterWords = ['Mobility', 'E-Hailing', 'Delivery', 'Car Rental', 'Outstation']
@@ -113,11 +112,24 @@ export default function Hero() {
             transform: translateX(0);
           }
         }
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
         .animate-fade-in-up {
           animation: fadeInUp 0.8s ease-out forwards;
         }
         .animate-fade-in-right {
           animation: fadeInRight 0.8s ease-out forwards;
+        }
+        .animate-scale-in {
+          animation: scaleIn 0.3s ease-out forwards;
         }
         .levitate-letter {
           display: inline-block;
@@ -191,7 +203,7 @@ export default function Hero() {
             </div>
             <div className="mt-8 flex items-center justify-center lg:mt-20 flex lg:w-[329px] md:w-[329px] md:gap-0.5 md:mt-10 md:justify-start lg:gap-2 animate-fade-in-up opacity-0" style={{ animationDelay: '1s' }}>
               <div className="w-6 h-6 border border-[#CDBBE1] rounded-full flex items-center justify-center overflow-hidden">
-                <img src={badgeIcon} alt="ROVV" className="w-6 h-6 md:w-8 md:h-8 border border-gray-300 rounded-full object-cover" />
+                <img src={badgeIcon} alt="ROVV" className="w-6 h-6 md:w-8 md:h-8  border border-gray-300 rounded-full object-cover" />
               </div>
               <p className="text-[14px] leading-[20px] font-normal text-sm lg:text-[16px] md:text-[16px]">
                 <span className="text-[#FF6A00]">{counter.toLocaleString()}+</span>{' '}
@@ -232,22 +244,22 @@ export default function Hero() {
         </div>
         {/* MODAL */}
         {showModal && (
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6 transition-all duration-500 ease-in-out">
-            <div className="bg-white rounded-2xl p-8 max-w-md w-full relative animate-fade-in-up">
-              <button
-                onClick={() => setShowModal(false)}
-                className="absolute top-4 right-4 text-3xl font-bold text-gray-600 hover:text-gray-900 leading-none"
-              >
-                ×
-              </button>
+          <div 
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6 animate-fade-in-up"
+            onClick={() => setShowModal(false)}
+          >
+            <div 
+              className="bg-white rounded-2xl p-8 max-w-md w-full relative animate-scale-in"
+              onClick={(e) => e.stopPropagation()}
+            >
               <h2 className="text-2xl font-bold text-center mb-6">
                 Get the ROVV App
               </h2>
               {/* QR SWITCH */}
-              <div className="inline-flex items-center justify-center px-1 py-1 ml-11 md:ml-20 relative border rounded-sm border-gray-300 bg-gray-100">
+              <div className="inline-flex items-center justify-center px-1 py-1 ml-11 md:ml-20 relative border rounded-sm border-light bg-light">
                 <button
                   onClick={() => setQrType('for passenger')}
-                  className={`py-2 w-30 rounded-sm font-bold text-sm ${
+                  className={`py-2 w-30 rounded-sm font-bold text-sm transition-all duration-600 transform hover:scale-105 active:scale-95 ${
                     qrType === 'for passenger'
                       ? 'bg-purple-600 text-white'
                       : 'text-purple-600'
@@ -257,7 +269,7 @@ export default function Hero() {
                 </button>
                 <button
                   onClick={() => setQrType('for driver')}
-                  className={`px-4 py-2 rounded-sm font-bold text-sm ${
+                  className={`px-4 py-2 rounded-sm font-bold text-sm transition-all duration-600 transform hover:scale-105 active:scale-95 ${
                     qrType === 'for driver'
                       ? 'bg-purple-600 text-white'
                       : 'text-purple-600'
@@ -286,5 +298,4 @@ export default function Hero() {
       </section>
     </>
   )
-
 }

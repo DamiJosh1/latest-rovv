@@ -18,7 +18,7 @@ export default function PrivacyPolicy() {
       </div>
 
       {/* Main Content Card - White/light background on top of bg-bg */}
-      <div className="max-w-4xl mx-auto -mt-25 px-4 pb-2"> {/* Negative margin to slightly overlap hero */}
+      <div className="max-w-4xl lg:max-w-[1310px] mx-auto -mt-25 px-4 pb-2"> {/* Negative margin to slightly overlap hero */}
         <div className="bg-bg rounded-lg shadow-2xl p-8 md:p-12">
           {/* 1. Information We Collect */}
           <section className="mb-12">
