@@ -175,7 +175,7 @@ export default function DownloadSection() {
             className="bg-white rounded-2xl p-8 max-w-md w-full relative animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           >
-            <<h2 className="text-2xl font-bold text-center mb-6">
+            <h2 className="text-2xl font-bold text-center mb-6">
               Get the ROVV App
             </h2>
 
@@ -224,6 +224,4 @@ export default function DownloadSection() {
       )}
     </>
   )
-
 }
-

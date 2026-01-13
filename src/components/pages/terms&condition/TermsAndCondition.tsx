@@ -10,7 +10,7 @@ export default function TermsAndConditions() {
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Terms & Conditions
           </h1>
-          <p className="text-purple font-nohemi font-bold bg-light inline-block px-6 py-2 rounded-full text-sm md:text-base">
+          <p className="text-purple font-nohemi font-bold  bg-light inline-block px-6 py-2 rounded-full text-sm md:text-base">
             Effective From June 2023
           </p>
         </div>
@@ -20,29 +20,29 @@ export default function TermsAndConditions() {
       <div className="max-w-4xl mx-auto -mt-8 px-4 pb-16">
         <div className="bg-white rounded-lg shadow-2xl p-8 md:p-12 text-gray-700 leading-relaxed">
 
-          <h2 className="text-xl text-dark font-nohemi font-bold mb-4">ROVV Technologies Ltd - Terms & Conditions</h2>
+          <h2 className="text-xl text-dark font-nohemi font-bold  mb-4">Rovy Technologies Ltd - Terms & Conditions</h2>
 
           <p className="mb-6">
-            These Terms & Conditions (“Terms”) govern the relationship between ROVV Technologies Ltd (“ROVV”, “us”, “our”, or “we”) and all users of the ROVV platform, including both Drivers and Passengers. By using ROVV services, you agree to comply with these Terms and the specific provisions that apply to your user type.
+            These Terms & Conditions (“Terms”) govern the relationship between Rovy Technologies Ltd (“Rovy”, “us”, “our”, or “we”) and all users of the Rovy platform, including both Drivers and Passengers. By using Rovy services, you agree to comply with these Terms and the specific provisions that apply to your user type.
           </p>
 
           <p className="mb-8">
             This document contains separate terms for Drivers (Service Providers) and Passengers (Clients). Please review the section applicable to your use of the platform.
           </p>
 
-          {/* About ROVV Platform */}
-          <h3 className="text-2xl text-dark font-nohemi font-bold mb-4">About ROVV Platform</h3>
+          {/* About Rovy Platform */}
+          <h3 className="text-2xl text-dark font-nohemi font-bold  mb-4">About Rovy Platform</h3>
           <p className="mb-10">
-            ROVV is a mobility platform that connects independent Drivers with Passengers through a modern, data-powered mobile application. We facilitate safe, reliable, and convenient transportation services through two distinct operational modes: Driver Sessions (when drivers are available to receive request) and Ride Sessions (when active transportation services are being provided).
+            Rovy is a mobility platform that connects independent Drivers with Passengers through a modern, data-powered mobile application. We facilitate safe, reliable, and convenient transportation services through two distinct operational modes: Driver Sessions (when drivers are available to receive request) and Ride Sessions (when active transportation services are being provided).
           </p>
 
           {/* DRIVER TERMS & CONDITIONS */}
-          <h3 className="text-2xl text-dark font-nohemi font-bold mb-6 mt-12">DRIVER TERMS & CONDITIONS</h3>
-          <p className="mb-8">The following terms apply specifically to Drivers (Service Providers) using the ROVV Driver App</p>
+          <h3 className="text-2xl  text-dark font-nohemi font-bold mb-6 mt-12">DRIVER TERMS & CONDITIONS</h3>
+          <p className="mb-8">The following terms apply specifically to Drivers (Service Providers) using the Rovy Driver App</p>
 
           <h4 className="text-xl font-semibold text-purple-900 mb-4">1. Driver Platform Overview</h4>
           <p className="mb-8">
-            As a Driver on the ROVV platform, you operate as an independent contractor providing transportation services through our subscription-based model. Unlike traditional platforms, Drivers subscribe for access for ride requests instead of paying commission per trip.
+            As a Driver on the Rovy platform, you operate as an independent contractor providing transportation services through our subscription-based model. Unlike traditional platforms, Drivers subscribe for access for ride requests instead of paying commission per trip.
           </p>
 
           <h4 className="text-xl font-semibold text-purple-900 mb-4">2. Driver Sessions vs Ride Sessions</h4>
@@ -50,7 +50,7 @@ export default function TermsAndConditions() {
           <h5 className="text-lg font-medium mb-3">2.1 Driver Sessions</h5>
           <p className="mb-4">A Driver Session begins when you:</p>
           <ul className="list-disc list-inside space-y-2 mb-8 ml-6">
-            <li>Log into the ROVV Driver App with an active subscription</li>
+            <li>Log into the Rovy Driver App with an active subscription</li>
             <li>Set your status to “Available” or “Online”</li>
             <li>Position yourself within your designated service area</li>
             <li>Have your vehicle ready and legally compliant for service</li>
@@ -68,16 +68,16 @@ export default function TermsAndConditions() {
           <h4 className="text-xl font-semibold text-purple-900 mb-4">3. Driver Eligibility and Requirements</h4>
 
           <h5 className="text-lg font-medium mb-3">3.1 Eligibility Requirements</h5>
-          <p className="mb-4">To operate as a ROVV driver, you must:</p>
+          <p className="mb-4">To operate as a Rovy driver, you must:</p>
           <ul className="list-disc list-inside space-y-2 mb-8 ml-6">
             <li>Be at least 21 years old with a valid driver’s license for minimum 2 years</li>
             <li>Meet all local and federal regulatory requirements for commercial driving</li>
             <li>Own or legally operate a roadworthy, insured vehicle (not older than 10 years)</li>
             <li>Maintain comprehensive vehicle insurance coverage</li>
             <li>Pass background checks and vehicle inspections as required</li>
-            <li>Maintain an active ROVV subscription plan</li>
+            <li>Maintain an active Rovy subscription plan</li>
             <li>Provide accurate and up-to-date personal and vehicle information</li>
-            <li>Complete ROVV’s driver onboarding and safety training</li>
+            <li>Complete Rovy’s driver onboarding and safety training</li>
           </ul>
 
           <h5 className="text-lg font-medium mb-3">3.2 Professional Conduct Standards</h5>
@@ -88,7 +88,7 @@ export default function TermsAndConditions() {
             <li>Keep your vehicle clean, safe, and in good working condition</li>
             <li>Follow all traffic laws and drive safely and responsibly</li>
             <li>Verify rider identity and assist with reasonable requests</li>
-            <li>Process all payments exclusively through the ROVV app</li>
+            <li>Process all payments exclusively through the Rovy app</li>
             <li>Maintain confidentiality regarding rider information</li>
           </ul>
 
@@ -96,7 +96,7 @@ export default function TermsAndConditions() {
           <p className="mb-4">Drivers are strictly prohibited from:</p>
           <ul className="list-disc list-inside space-y-2 mb-8 ml-6">
             <li>Engaging in illegal, fraudulent, or deceptive activities</li>
-            <li>Processing ride payments outside the ROVV app</li>
+            <li>Processing ride payments outside the Rovy app</li>
             <li>Sharing, selling, or transferring driver accounts</li>
             <li>Manipulating GPS location or session data</li>
             <li>Operating under the influence of alcohol or substances</li>
@@ -104,17 +104,62 @@ export default function TermsAndConditions() {
             <li>Circumventing subscription or safety policies</li>
           </ul>
 
+          <h4 className="text-xl font-semibold text-purple-900 mb-4">4. Driver Subscription Model</h4>
+
+          <h5 className="text-lg font-medium mb-3">4.1 Subscription Benefits</h5>
+          <ul className="list-disc list-inside space-y-2 mb-8 ml-6">
+            <li>Unlimited access to ride requests within service area</li>
+            <li>Join driver support and emergency assistance</li>
+            <li>Real-time performance analytics and earnings tracking</li>
+            <li>Access to driver incentive and bonus programs</li>
+            <li>No commission deducted from individual ride earnings</li>
+          </ul>
+
+          <h5 className="text-lg font-medium mb-3">4.2 Payment Terms</h5>
+          <ul className="list-disc list-inside space-y-2 mb-8 ml-6">
+            <li>Subscription fixed billed monthly or weekly as selected</li>
+            <li>Failed payments result in immediate suspension of access</li>
+            <li>Earnings from completed rides processed weekly</li>
+            <li>No refunds for unused subscription periods</li>
+          </ul>
+
+          <h4 className="text-xl font-semibold text-purple-900 mb-4">5. Driver Safety and Performance</h4>
+
+          <h5 className="text-lg font-medium mb-3">5.1 Safety Protocols and Insurance Protection</h5>
+          <ul className="list-disc list-inside space-y-2 mb-6 ml-6">
+            <li>Verify rider identity before beginning any Ride Session</li>
+            <li>Use Rovy’s safety features and emergency protocols</li>
+            <li>Report suspicious behavior or safety concerns immediately</li>
+            <li>Maintain vehicle safety standards and regular inspections</li>
+            <li>Follow emergency procedures and cooperate with authorities</li>
+            <li>Personal Accident Cover (PAC): Rovy provides Personal Accident Cover up to $50C for drivers during active ride sessions only</li>
+          </ul>
+          <p className="mb-4 italic">Coverage Limitations: PAC covers personal injury and medical expenses but does not cover vehicle damage or property to damage</p>
+          <ul className="list-disc list-inside space-y-2 mb-8 ml-6">
+            <li>Active Session Coverage: Insurance protection applies only during active ride sessions from pickup to drop off</li>
+          </ul>
+
+          <h5 className="text-lg font-medium mb-3">5.2 Performance Standards</h5>
+          <ul className="list-disc list-inside space-y-2 mb-8 ml-6">
+            <li>Maintain minimum acceptance rates during driver sessions</li>
+            <li>Complete at least 70% of accepted ride sessions</li>
+            <li>Achieve satisfactory rider ratings and feedback</li>
+            <li>Respond to support requests promptly</li>
+            <li>Poor performance may result in account review or suspension</li>
+          </ul>
+
+          <h4 className="text-xl font-semibold text-purple-900 mb-4">6. Driver Account Management</h4>
+          <p className="mb-4">Driver accounts may be suspended or terminated for:</p>
+          <ul className="list-disc list-inside space-y-2 mb-12 ml-6">
+            <li>Breach of these Terms and Conditions</li>
+            <li>Subscription payment failures or inactive accounts</li>
+            <li>Safety violations or fraudulent activities</li>
+            <li>Multiple rider complaints or poor performance</li>
+            <li>Violation of local laws or regulations</li>
+          </ul>
+
           {/* PASSENGER TERMS & CONDITIONS */}
           <h3 className="text-2xl font-bold text-purple-900 mb-6 mt-12">PASSENGER TERMS & CONDITIONS</h3>
-          <p className="mb-8">The following terms apply specifically to Passengers (Clients) using the ROVV mobile app</p>
-
-          <p className="mb-4">To use ROVV services, you must comply with all platform policies.</p>
-
-        </div>
-      </div>
-    </div>
-  );
-}ont-bold text-purple-900 mb-6 mt-12">PASSENGER TERMS & CONDITIONS</h3>
           <p className="mb-8">The following terms apply specifically to Passengers (Clients) using the Rovy mobile app</p>
 
           <h4 className="text-xl font-semibold text-purple-900 mb-4">1. Rider Platform Overview</h4>
