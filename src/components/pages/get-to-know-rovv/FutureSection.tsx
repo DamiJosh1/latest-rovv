@@ -4,9 +4,14 @@ import { useEffect, useState } from 'react'
 
 import bgImg from '../../../assets/images/journey-5.png'      // background image
 import heroImg from '../../../assets/images/why-1.png'     // right image
+import passengerQR from '../../../assets/qr/passenger.png'
+import driverQR from '../../../assets/qr/dr.png'
+
 
 export default function AboutSection() {
   const [show, setShow] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [qrType, setQrType] = useState<'for passenger' | 'for driver'>('for passenger')
 
   useEffect(() => {
     setShow(true)
@@ -29,7 +34,7 @@ export default function AboutSection() {
       <div className="relative max-w-7xl mx-auto">
         {/* CENTERED BADGE AT TOP */}
         <div className="flex justify-center mb-8">
-          <span className="inline-block rounded-full bg-orange-100 px-5 py-2 text-sm font-medium">
+          <span className="inline-block rounded-full bg-orange-100 px-5 py-2 text-[14px] font-medium font-nohemi">
             About Us
           </span>
         </div>
@@ -55,7 +60,8 @@ export default function AboutSection() {
             </div>
 
             <div className="flex justify-center md:justify-start">
-              <button className="flex justify-center items-center w-[246px] h-[60px] bg-[#5E239D] rounded-lg text-[#FFEFD6] text-xl font-bold hover:bg-purple-700 transition">
+              <button onClick={() => setShowModal(true)}
+              className="flex justify-center items-center w-[246px] h-[60px] bg-[#5E239D] rounded-lg text-[#FFEFD6] text-xl font-bold hover:bg-purple-700 transition">
                 Download the app
               </button>
             </div>
@@ -66,7 +72,7 @@ export default function AboutSection() {
             className={`transition-all duration-700 delay-200
             ${show ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
           >
-            <div className="relative w-full max-w-[603.85px]  mx-auto overflow-hidden">
+            <div className="relative w-full   mx-auto overflow-hidden">
               <img
                 src={heroImg}
                 alt="Passenger"
@@ -76,6 +82,67 @@ export default function AboutSection() {
           </div>
         </div>
       </div>
+
+       {/* MODAL */}
+            {showModal && (
+              <div 
+                className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6 animate-fade-in-up"
+                onClick={() => setShowModal(false)}
+              >
+                <div 
+                  className="bg-white rounded-2xl p-8 max-w-md w-full relative animate-scale-in"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <h2 className="text-2xl font-bold text-center mb-6">
+                    Get the ROVV App
+                  </h2>
+      
+                              {/* QR SWITCH */}
+                      <div className="flex justify-center mb-6">
+                        <div className="inline-flex items-center justify-center gap-1 p-1 border rounded-sm border-light bg-light w-[300px] ">
+                          <button
+                            onClick={() => setQrType('for passenger')}
+                            className={`flex-1 py-2 rounded-sm font-bold text-sm transition-all duration-600 transform hover:scale-105 active:scale-95 ${
+                              qrType === 'for passenger'
+                                ? 'bg-purple-600 text-white'
+                                : 'text-purple-600'
+                            }`}
+                          >
+                            For Passenger
+                          </button>
+      
+                          <button
+                            onClick={() => setQrType('for driver')}
+                            className={`flex-1 py-2 rounded-sm font-bold text-sm transition-transform duration-200 active:scale-95 ${
+                              qrType === 'for driver'
+                                ? 'bg-purple-600 text-white'
+                                : 'text-purple-600'
+                            }`}
+                          >
+                            For Driver
+                          </button>
+                        </div>
+                      </div>
+      
+      
+                  {/* QR IMAGE */}
+                  <div className="w-48 h-48 mx-auto mb-4 flex items-center justify-center">
+                    <img
+                      src={qrType === 'for passenger' ? passengerQR : driverQR}
+                      alt="ROVV QR Code"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+      
+                  {/* QR TEXT */}
+                  <p className="text-center text-gray-600 font-medium">
+                    {qrType === 'for passenger'
+                      ? 'Scan the QR Code with your mobile device to download the ROVV app for passengers'
+                      : 'Scan the QR Code with your mobile device to download the ROVV app for drivers'}
+                  </p>
+                </div>
+              </div>
+            )}
     </section>
   )
 }

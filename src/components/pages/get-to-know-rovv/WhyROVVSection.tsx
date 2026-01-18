@@ -1,5 +1,5 @@
 // src/components/sections/WhyROVVSection.tsx
-import missionImg from '../../../assets/images/why-1.png'
+import missionImg from '../../../assets/images/i.png'
 import valuesImg from '../../../assets/images/why-2.png'
 
 export default function WhyROVVSection() {
@@ -14,7 +14,7 @@ export default function WhyROVVSection() {
 
           </div>
           <h1 className='font-bold font-nohemi mb-2 text-center xl:text-[40px] md:text-[28px] text-[16px] '>A Smarter Way to Move Across Cities</h1>
- 
+
 
         {/* Mission */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">

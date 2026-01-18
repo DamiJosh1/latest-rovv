@@ -41,12 +41,12 @@ export default function AbujaSection() {
           <h2 className="text-[15px] md:text-2xl lg:text-2xl font-bold font-sans text-dark mb-6">
             Abuja – Comfort, Clean Mobility & Smooth Travel
           </h2>
-          <p className="text-sm md:text-[16.5px]  text-medium font-bold font-sans leading-relaxed mb-10">
+          <p className="text-sm md:text-[16.5px] lg:text-[18px] text-medium font-normal font-sans leading-relaxed mb-10">
             Abuja is known for its calm, well-structured road networks, making it an ideal city for efficient on-demand mobility. 
             Rovv enhances this by offering steady ride availability, premium service quality, and environmentally conscious vehicles as part of our
             sustainabiity push.
           </p>
-          <p className="text-sm md:text-[17px] text-medium font-bold font-sans0 leading-relaxed mb-12">
+          <p className="text-sm md:text-[17px] lg:text-[18px] text-medium font-normal font-sans leading-relaxed mb-12">
             Our EV and CNG fleet supports cleaner air, reduced noise, and better long-term affordability for both riders and drivers.
           </p>
 
@@ -63,7 +63,7 @@ export default function AbujaSection() {
                   <item.icon className="w-6 h-6 text-medium" />
                 </div>
                 
-                <p className="text-medium text-[17px] mt-5 flex font-bold font-sans">{item.label}</p>
+                <p className="text-medium text-[16px] lg:w-[254px] mt-5 flex font-normal font-sans">{item.label}</p>
               </motion.div>
             ))}
           </div>

@@ -261,7 +261,7 @@ export default function Hero() {
   <div className="inline-flex items-center justify-center gap-1 p-1 border rounded-sm border-light bg-light w-[300px] ">
     <button
       onClick={() => setQrType('for passenger')}
-      className={`flex-1 py-2 rounded-sm font-bold text-sm transition-transform duration-200 active:scale-95 ${
+      className={`flex-1 py-2 rounded-sm font-bold text-sm transition-all duration-600 transform hover:scale-105 active:scale-95 ${
         qrType === 'for passenger'
           ? 'bg-purple-600 text-white'
           : 'text-purple-600'

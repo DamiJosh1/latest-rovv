@@ -77,7 +77,7 @@ export default function PartnershipSection() {
           </p>
         </div>
         
-        <button className="flex justify-center items-center px-6 py-[10px] md:px-7 md:py-[14px] lg:px-7 lg:py-[14px] w-[132px] h-[39px] md:w-[161px] md:h-[52px] lg:w-[161px] lg:h-[52px] bg-[#5E239D] rounded-lg text-white text-base md:text-xl lg:text-xl leading-[19px] md:leading-6 lg:leading-6 font-bold font-sans hover:bg-purple-700 transition">
+        <button className="flex justify-center items-center px-6 py-[10px] md:px-7 md:py-[14px] lg:px-7 lg:py-[13px] w-[132px] h-[39px] md:w-[161px] md:h-[52px] lg:w-[171px] lg:h-[52px] bg-[#5E239D] rounded-lg text-white text-base md:text-xl lg:text-xl leading-[19px] md:leading-6 lg:leading-6 font-medium font-sans hover:bg-purple-700 transition">
           Contact Us
         </button>
       </div>
