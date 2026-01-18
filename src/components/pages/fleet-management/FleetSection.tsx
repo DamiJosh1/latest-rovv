@@ -111,7 +111,7 @@ export default function FleetSection() {
               <div className="flex items-center gap-2 p-1.5 border border-gray-100 bg-light rounded-2xl">
                 {/* Passenger Link */}
                 <a 
-                  href="onelink.to/p95t3a"
+                  href="https://onelink.to/p95t3a"
                   className="flex-1 py-3 px-4 bg-primary text-white text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:opacity-90 active:scale-95"
                 >
                   For Passenger
@@ -138,4 +138,5 @@ export default function FleetSection() {
       </AnimatePresence>
     </section>
   )
+
 }
