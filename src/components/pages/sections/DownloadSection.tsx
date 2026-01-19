@@ -80,7 +80,7 @@ export default function DownloadSection() {
                 <div className="flex flex-col gap-2 md:gap-0 lg:gap-3 items-center lg:items-start">
                   {/* Heading */}
                   <h4 className="
-                    font-nohemi font-medium lg:font-medium text-white
+                    font-nohemi font-normal lg:font-normal text-white
                     text-center lg:text-left
                     
                     /* Mobile: 24px/28px */
@@ -90,24 +90,24 @@ export default function DownloadSection() {
                     md:text-[24px] md:w-[236px] md:leading-[34px] md:font-medium
                     
                     /* Desktop: 24px/30px */
-                    lg:text-2xl lg:leading-[30px]
+                    lg:text-2xl lg:leading-[30px] lg:w-[440px] 
                   ">
                     Experience Smarter Mobility on the Go
                   </h4>
 
                   {/* Description */}
                   <p className="
-                    font-sans text-light
+                    font-sans text-[#f5f5f5]
                     text-center lg:text-left
                     
                     /* Mobile: 16px/24px, bold */
                     text-[18px] leading-[22px] font-normal
                     
                     /* Tablet: 26px/36px, bold */
-                    md:text-[16px] md:leading-6 md:w-[360px] md:font-normal
+                    md:text-[18px] md:leading-6 md:w-[360px] md:font-normal
                     
                     /* Desktop: 18px/24px, regular */
-                    lg:text-lg lg:leading-6 lg:w-[456px] lg:font-normal
+                    lg:text-[18px] lg:leading-6 lg:w-[456px] lg:font-normal
                   ">
                     ROVV gives you control, comfort, and choice, all from one app. Book rides, bid your price, track drivers in real time, and enjoy safe, fair, and flexible mobility wherever you are.
                   </p>
