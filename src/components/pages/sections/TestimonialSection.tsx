@@ -5,35 +5,23 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 import bgImage from '../../../assets/images/bg.png'
 
-import user1 from '../../../assets/testimonials/j2.png'
-import user2 from '../../../assets/testimonials/j1.png'
-import user3 from '../../../assets/testimonials/j2.png'
-
-
 const testimonials = [
   {
-    text:"ROVV has honestly made my daily trips so much easier. I love that I can offer what I can afford, and drivers still respond kindly. The rides feel safe, the cars are clean, and there’s this calm experience you just don’t get elsewhere. It’s more than an app, it’s comfort on demand.",
-    author: 'Tolu Abraham',
+    text: "This app is Amazing, Jetride is Taking Over. Low Fares and Courteous drivers",
+    author: 'Kennedy Ighodalo',
     role: 'Rider, Lagos',
-    avatar: user1,
   },
   {
-    text:
-      "ROVV changed how I see ride-hailing completely. I used to worry about drivers cancelling or overcharging, but now I just set my price and go. Every driver I’ve met has been respectful and professional. It feels safe, fair, and personal, like the app actually cares about people, not just profit.",
-    author: 'Laura Anita',
+    text: "nice app with rates just need more drivers on the plartform",
+    author: 'Kelvin Martins',
     role: 'Rider, Benin',
-    avatar: user3,
   },
   {
-    text:
-      "ROVV came into my life when I needed a breakthrough the most. I had lost my previous job and didn’t know how to support my family. Driving with ROVV not only helped me get back on my feet, but it gave me confidence again. I’m proud to say I now provide for my loved ones through this platform.",
+    text: "ROVV came into my life when I needed a breakthrough the most. I had lost my previous job and didn’t know how to support my family. Driving with ROVV not only helped me get back on my feet, but it gave me confidence again.",
     author: 'Samuel Ben',
     role: 'Driver, Abuja',
-    avatar: user2,
   },
-
 ]
-
 
 export default function TestimonialsSection() {
   const [index, setIndex] = useState(0)
@@ -47,6 +35,9 @@ export default function TestimonialsSection() {
   }, [])
 
   const t = testimonials[index]
+
+  // Helper to get first letter of the name
+  const firstLetter = t.author.charAt(0).toUpperCase()
 
   return (
     <section className="bg-[#FFFAF2] py-10 md:py-5 lg:py-10 px-4 md:px-8 lg:px-[194px]">
@@ -74,11 +65,12 @@ export default function TestimonialsSection() {
               />
 
               <div className="flex md:flex-col lg:flex-row items-start md:items-start lg:items-center md:gap-2 lg:gap-3 md:mt-[135px] lg:mt-[57px]">
-                <img
-                  src={t.avatar}
-                  alt={t.author}
-                  className="w-[60px] h-[60px] rounded-lg bg-[#7E4FB1] object-cover flex-shrink-0"
-                />
+                {/* Alphabet Avatar Circle */}
+                <div className="w-[60px] h-[60px] rounded-lg bg-[#5E239D] flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-nohemi text-2xl font-bold">
+                    {firstLetter}
+                  </span>
+                </div>
                 <div>
                   <p className="font-nohemi font-medium md:text-[24px] md:leading-tight lg:text-2xl lg:leading-[30px] text-[#270F42]">
                     {t.author}
@@ -137,11 +129,12 @@ export default function TestimonialsSection() {
 
             {/* Author info */}
             <div className="flex items-center gap-2">
-              <img
-                src={t.avatar}
-                alt={t.author}
-                className="w-9 h-9 rounded-lg bg-[#7E4FB1] object-cover"
-              />
+               {/* Alphabet Avatar Circle Mobile */}
+               <div className="w-9 h-9 rounded-lg bg-[#5E239D] flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-nohemi text-lg font-bold">
+                    {firstLetter}
+                  </span>
+                </div>
               <div>
                 <p className="font-nohemi text-base leading-[19px] text-[#270F42] font-bold lg:text-[24px]">
                   {t.author}

@@ -6,6 +6,7 @@ import Service from './sections/ServiceSection'
 import Download from './sections/DownloadSection'
 import Footer from './sections/Footer'
 import NewsSection from './sections/News'
+import CarsSection from './sections/Cars'
 
 
 {/* At the very end */}
@@ -17,6 +18,7 @@ function App() {
     <>
      <Header />
     <Hero />
+    <CarsSection />
     <Service />
     <Testimonial />
     <Download />
