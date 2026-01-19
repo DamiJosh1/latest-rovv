@@ -7,7 +7,7 @@ import bgImage from '../../../assets/images/bg.png'
 
 const testimonials = [
   {
-    text: "This app is Amazing, Jetride is Taking Over. Low Fares and Courteous drivers",
+    text: "This app is Amazing, Rovv is Taking Over. Low Fares and Courteous drivers",
     author: 'Kennedy Ighodalo',
     role: 'Rider, Lagos',
   },
@@ -165,4 +165,5 @@ export default function TestimonialsSection() {
       </div>
     </section>
   )
+
 }
