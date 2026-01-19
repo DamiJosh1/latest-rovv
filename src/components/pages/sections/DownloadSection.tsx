@@ -9,7 +9,7 @@ import driverQR from '../../../assets/qr/dr.png'
 export default function DownloadSection() {
   const [showModal, setShowModal] = useState(false)
   const [qrType, setQrType] = useState<'for passenger' | 'for driver'>('for passenger')
-
+ 
   return (
     <>
       <style>{`
@@ -46,7 +46,7 @@ export default function DownloadSection() {
           <h3 className="text-2xl md:text-[40px] lg:text-[40px] font-nohemi font-bold text-dark ">
             Download our app
           </h3>
-          <p className="text-[16px]  text-medium font-medium font-Nohemi md:text-[24px] md:mb-2 lg:text-[24px] lg:leading-8.5 lg:mb-5">
+          <p className="text-[16px]  text-medium mb-3 font-medium font-Nohemi md:text-[24px] md:mb-2 lg:text-[24px] lg:leading-8.5 lg:mb-5">
             Available for iOS and Android devices.
           </p>
 
@@ -228,3 +228,4 @@ export default function DownloadSection() {
     </>
   )
 }
+
