@@ -1,8 +1,10 @@
 'use client'
 
-import conferenceImg from '../../../assets/images/news.png' // replace with your image path
+import conferenceImg from '../../../assets/images/news.png'
 
 export default function NewsSection() {
+  const externalLink = "https://qatar.websummit.com/appearances/qat26/f7b94279-e7c4-4043-9d9a-90923fa64f25/rovv/";
+
   return (
     <section className="px-4 -mt-40 md:-mt-90 md:px-8 lg:-mt-10 lg:px-[79px] py-10 md:py-10 lg:py-20 bg-bg">
       {/* Tag */}
@@ -26,8 +28,8 @@ export default function NewsSection() {
           </div>
 
           {/* Content */}
-          <div className="md:w-1/2 p-8 md:p-10 flex  lg:w-[486px] lg:h-[207px] lg:mt-10 flex-col justify-center">
-            <span className="text-sm font-bold font-sans tracking-widest md:text-[16px] lg:text-[18px] text-medium  uppercase mb-4">
+          <div className="md:w-[530px] md:scale-85 p-8 md:p-10 flex lg:w-[486px] lg:scale-none lg:h-[327px] lg:mt-0 flex-col justify-center">
+            <span className="text-sm font-bold font-sans tracking-widest md:text-[16px] lg:text-[18px] text-medium uppercase mb-4">
               International Tech Conference
             </span>
 
@@ -35,11 +37,31 @@ export default function NewsSection() {
               ROVV at Web Summit 2026
             </h3>
 
-            <p className="text-medium font-normal font-sans leading-relaxed md:text-[15px] lg:text-[16px] lg:w-[486px] lg:leading-5">
-  Taking African mobility innovation to the global stage in 2026.
-  <div className=" lg:block lg:mt-4"></div>
-  We’ll be attending the conference in Qatar in February, engaging with global leaders and innovators.
-</p>
+            <p className="text-medium font-normal font-sans leading-relaxed md:text-[15px] lg:text-[16px] lg:w-[486px] lg:leading-5 mb-8">
+              Taking African mobility innovation to the global stage in 2026.
+              <br className="hidden lg:block" />
+              We’ll be attending the conference in Qatar in February, engaging with global leaders and innovators.
+            </p>
+
+            {/* CTA Button */}
+            <div>
+              <a 
+                href={externalLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-8 py-3 bg-primary text-white text-sm font-medium font-nohemi rounded-xl transition-all duration-300 hover:bg-gray-800 hover:scale-105 active:scale-95 shadow-md"
+              >
+                Learn More
+                <svg 
+                  className="ml-2 w-4 h-4" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
           </div>
 
         </div>
