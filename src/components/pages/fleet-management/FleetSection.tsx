@@ -27,7 +27,7 @@ export default function FleetSection() {
           </span>
 
           <div className="flex flex-col items-center gap-1.5">
-            <h2 className="text-[24px] md:text-[32px] lg:text-[40px] leading-tight font-bold font-nohemi text-[#141414] text-center">
+            <h2 className="text-[18px] md:text-[32px] lg:text-[40px] leading-tight font-bold font-nohemi text-[#141414] text-center">
               Manage Your Fleet Smarter with ROVV
             </h2>
             <p className="text-[14px] md:text-[18px] lg:text-[20px] font-medium font-nohemi text-[#4A4A4A] text-center max-w-2xl">
@@ -111,7 +111,7 @@ export default function FleetSection() {
               <div className="flex items-center gap-2 p-1.5 border border-gray-100 bg-light rounded-2xl">
                 {/* Passenger Link */}
                 <a 
-                  href="onelink.to/p95t3a"
+                  href="https://onelink.to/p95t3a"
                   className="flex-1 py-3 px-4 bg-primary text-white text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:opacity-90 active:scale-95"
                 >
                   For Passenger
@@ -138,4 +138,5 @@ export default function FleetSection() {
       </AnimatePresence>
     </section>
   )
+
 }
