@@ -157,7 +157,7 @@ export default function Hero() {
         }
       `}</style>
       <section className="lg:pt-10 lg:pb-10 lg:mt-20 md:mt-10 lg:pr-20 lg:pl-20 sm:px-6 md:px-8 bg-bg gap-2.5">
-        <div className="hero-container max-w-[414px] md:max-w-[704px] md:h-[1049.22px] lg:max-w-[1276px] lg:h-[572px] justify-between mx-auto grid grid-cols-1 lg:grid-cols-2">
+        <div className="hero-container max-w-[414px] md:max-w-[704px] h-[800px] md:h-[1049.22px] lg:max-w-[1276px] lg:h-[572px] justify-between mx-auto grid grid-cols-1 lg:grid-cols-2">
           {/* LEFT TEXT */}
           <div className="hero-text-container max-w-[443px] lg:max-w-[443px] md:max-w-[704px] gap-20 md:text-left mt-20 lg:mt-0 px-4 lg:px-0 text-center lg:text-left animate-fade-in-up opacity-0" style={{ animationDelay: '0.2s' }}>
             <h1 className="font-bold text-5xl leading-[50px] md:text-6xl lg:text-[64px] lg:leading-[60px] text-gray-900">
@@ -307,4 +307,5 @@ export default function Hero() {
       </section>
     </>
   )
+
 }
