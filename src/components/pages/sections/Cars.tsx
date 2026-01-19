@@ -5,7 +5,7 @@ import videoSrc from '../../../assets/images/fu.mp4'
 
 export default function CarsSection() {
   return (
-   <section className="relative w-full aspect-[16/9] overflow-hidden bg-bg mt-4 ">
+   <section className="relative w-full aspect-[16/9] overflow-hidden bg-bg mt-8 md:mt-10 lg:mt-0 ">
   <video
     className="absolute inset-0 w-full h-full object-cover pointer-events-none"
     src="/videos/fu.mp4"
@@ -22,4 +22,5 @@ export default function CarsSection() {
 
   )
 }
+
 
