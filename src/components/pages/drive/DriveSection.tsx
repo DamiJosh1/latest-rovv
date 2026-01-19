@@ -108,7 +108,7 @@ export default function DriveSection() {
               <div className="flex items-center gap-2 p-1.5 border border-gray-100 bg-light rounded-2xl">
                 {/* For Passenger - With Purple Background */}
                 <a 
-                  href="/signup-passenger" 
+                  href="https://onelink.to/p95t3a" 
                   className="flex-1 py-3 px-4 bg-primary text-white text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:opacity-90"
                 >
                   For Passenger
@@ -116,7 +116,7 @@ export default function DriveSection() {
 
                 {/* For Driver - Background shows bg-light */}
                 <a 
-                  href="/signup-driver" 
+                  href="https://onelink.to/dzak96" 
                   className="flex-1 py-3 px-4 text-primary text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:bg-gray-100/50"
                 >
                   For Driver
@@ -135,4 +135,5 @@ export default function DriveSection() {
       </AnimatePresence>
     </section>
   )
+
 }
