@@ -5,10 +5,9 @@ import videoSrc from '../../../assets/images/fu.mp4'
 
 export default function CarsSection() {
   return (
-   <section className="relative w-full aspect-[16/9] overflow-hidden bg-black ">
+  <section className="relative w-full aspect-[16/9] overflow-hidden bg-black">
   <video
     className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-    src="/videos/fu.mp4"
     autoPlay
     loop
     muted
@@ -17,10 +16,14 @@ export default function CarsSection() {
     controls={false}
     disablePictureInPicture
     controlsList="nodownload nofullscreen noremoteplayback"
-  />
+  >
+    <source src={videoSrc} type="video/mp4" />
+  </video>
 </section>
+
 
   )
 }
+
 
 
