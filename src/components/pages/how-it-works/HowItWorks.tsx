@@ -1,7 +1,7 @@
 // src/pages/how-it-works/HowItWorks.tsx
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import missionImg from '../../../assets/images/ima.png'
+import missionImg from '../../../assets/images/ima.jpg'
 
 const passengerFeatures = [
   { 
@@ -68,7 +68,7 @@ export default function HowItWork() {
               <img
                 src={missionImg}
                 alt="Mission"
-                className="w-full lg:w-[80%] md:w-[95%] transition-all duration-900 ease-in-out hover:scale-80"
+                className="w-full lg:w-[80%] bg-bg md:w-[95%] transition-all duration-900 ease-in-out hover:scale-80"
               />
             </div>
           </div>

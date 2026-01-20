@@ -1,5 +1,5 @@
 // src/pages/fleet-management/FleetSection.tsx
-import Image from '../../../assets/images/new- (7).png'
+import Image from '../../../assets/images/ima (2) (1).png'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import { MapPinned, BarChart3, LineChart, BellRing, CarFront, ShieldCheck, FileText } from 'lucide-react'
@@ -111,7 +111,7 @@ export default function FleetSection() {
               <div className="flex items-center gap-2 p-1.5 border border-gray-100 bg-light rounded-2xl">
                 {/* Passenger Link */}
                 <a 
-                  href="https://onelink.to/p95t3a"
+                  href="onelink.to/p95t3a"
                   className="flex-1 py-3 px-4 bg-primary text-white text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:opacity-90 active:scale-95"
                 >
                   For Passenger
@@ -138,5 +138,4 @@ export default function FleetSection() {
       </AnimatePresence>
     </section>
   )
-
 }

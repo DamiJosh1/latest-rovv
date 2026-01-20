@@ -9,7 +9,7 @@ import driverQR from '../../../assets/qr/dr.png'
 export default function DownloadSection() {
   const [showModal, setShowModal] = useState(false)
   const [qrType, setQrType] = useState<'for passenger' | 'for driver'>('for passenger')
- 
+
   return (
     <>
       <style>{`
@@ -228,4 +228,3 @@ export default function DownloadSection() {
     </>
   )
 }
-
