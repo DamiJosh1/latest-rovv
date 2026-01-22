@@ -226,62 +226,92 @@ export default function Header() {
       </AnimatePresence>
 
       {/* MODAL */}
-      {showModal && (
-        <div 
-          className="fixed inset-0 bg-dark/60 backdrop-blur-sm z-50 flex items-center justify-center p-6 animate-fade-in-up"
-          onClick={() => setShowModal(false)}
-        >
-          <div 
-            className="bg-white rounded-2xl p-8 max-w-md w-full relative animate-scale-in"
-            onClick={(e) => e.stopPropagation()}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-dark/60 backdrop-blur-sm z-50 flex items-center justify-center p-6"
+            onClick={() => setShowModal(false)}
           >
-            <h2 className="text-2xl font-nohemi font-bold text-center mb-6">
-              Get the ROVV App
-            </h2>
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="bg-white rounded-[32px] p-8 max-w-md w-full relative shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h2 className="text-2xl font-nohemi font-bold text-center mb-10 text-[#141414]">
+                Get the ROVV App
+              </h2>
 
-            {/* QR SWITCH */}
-            <div className="inline-flex items-center justify-center px-1 py-1 ml-11 md:ml-20 relative border rounded-sm border-light bg-light">
-              <button
-                onClick={() => setQrType('for passenger')}
-                className={`py-2 w-30 rounded-sm font-bold text-sm transition-all duration-600 transform hover:scale-105 active:scale-95 ${
-                  qrType === 'for passenger'
-                    ? 'bg-primary text-white'
-                    : ' text-purple'
-                }`}
-              >
-               For  Passenger
-              </button>
+              {/* MOBILE VIEW: DIRECT LINKS (HIDDEN ON DESKTOP) */}
+              <div className="lg:hidden flex flex-col gap-4">
+                <div className="flex items-center gap-2 p-1.5 border border-gray-100 bg-[#FAFAFA] rounded-2xl">
+                  <a 
+                    href="https://onelink.to/p95t3a" 
+                    className="flex-1 py-3 px-4 bg-primary text-white text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:opacity-90"
+                  >
+                    For Passenger
+                  </a>
+                  <a 
+                    href="https://onelink.to/dzak96" 
+                    className="flex-1 py-3 px-4 text-primary text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:bg-gray-100/50"
+                  >
+                    For Driver
+                  </a>
+                </div>
+              </div>
 
-              <button
-                onClick={() => setQrType('for driver')}
-                className={`px-4 py-2 rounded-sm font-bold text-sm transition-all duration-600 transform hover:scale-105 active:scale-95 ${
-                  qrType === 'for driver'
-                    ? 'bg-primary text-white'
-                    : ' text-purple'
-                }`}
-              >
-               For  Driver
-              </button>
-            </div>
+              {/* DESKTOP VIEW: QR CODES (HIDDEN ON MOBILE) */}
+              <div className="hidden lg:block">
+                <div className="flex justify-center mb-6">
+                  <div className="inline-flex items-center justify-center gap-1 p-1 border rounded-sm border-light bg-light w-[300px]">
+                    <button
+                      onClick={() => setQrType('for passenger')}
+                      className={`flex-1 py-2 rounded-sm font-bold text-sm transition-all duration-300 ${
+                        qrType === 'for passenger' ? 'bg-purple-600 text-white' : 'text-purple-600'
+                      }`}
+                    >
+                      For Passenger
+                    </button>
+                    <button
+                      onClick={() => setQrType('for driver')}
+                      className={`flex-1 py-2 rounded-sm font-bold text-sm transition-all duration-300 ${
+                        qrType === 'for driver' ? 'bg-purple-600 text-white' : 'text-purple-600'
+                      }`}
+                    >
+                      For Driver
+                    </button>
+                  </div>
+                </div>
 
-            {/* QR IMAGE */}
-            <div className="w-48 h-48 mx-auto mb-4 flex items-center justify-center">
-              <img
-                src={qrType === 'for passenger' ? passengerQR : driverQR}
-                alt="ROVV QR Code"
-                className="w-full h-full object-contain"
-              />
-            </div>
+                <div className="w-48 h-48 mx-auto mb-4 flex items-center justify-center">
+                  <img
+                    src={qrType === 'for passenger' ? passengerQR : driverQR}
+                    alt="ROVV QR Code"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <p className="text-center text-gray-500 font-medium text-sm px-4">
+                  Scan the QR Code with your mobile device to download the ROVV app.
+                </p>
+              </div>
 
-            {/* QR TEXT */}
-            <p className="text-center text-gray-600 font-medium">
-              {qrType === 'for passenger'
-                ? 'Scan the QR Code with your mobile device to download the ROVV app for passengers'
-                : 'Scan the QR Code with your mobile device to download the ROVV app for drivers'}
-            </p>
-          </div>
-        </div>
-      )}
+              {/* CLOSE BRAND FOOTER */}
+              <div className="mt-10 flex justify-center">
+                <button 
+                  onClick={() => setShowModal(false)}
+                  className="text-gray-300 text-sm font-bold tracking-widest font-nohemi hover:text-primary transition-colors uppercase"
+                >
+                  ROVV
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }
