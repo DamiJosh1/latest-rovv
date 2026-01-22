@@ -14,7 +14,7 @@ import driverQR from '../../../assets/qr/dr.png'
 // Constants 
 const IMAGES = [rideImg, deliveryImg, earnImg]
 const TABS = ['Ride', 'Delivery', 'Earn']
-const WORDS = ['Mobility', 'E-Hailing', 'Delivery', 'Car Rental', 'Outstation']
+const WORDS = ['Mobility', 'E-Hailing', 'Delivery', 'Car Rental', 'City to City Ride']
 
 export default function Hero() {
   // --- State Management ---
@@ -277,4 +277,5 @@ export default function Hero() {
       </motion.section>
     </>
   )
+
 }
