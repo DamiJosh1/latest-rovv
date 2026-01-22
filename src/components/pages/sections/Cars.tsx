@@ -14,10 +14,10 @@ export default function CarsSection() {
         // ensures no context menu appears if they right-click
         onContextMenu={(e) => e.preventDefault()}
         preload="auto"
-        // standard attributes
+        // this is a standard attributes
         controls={false}
         disablePictureInPicture
-        // removes any remaining browser UI shadows
+        //this code removes any remaining browser UI shadows
         controlsList="nodownload nofullscreen noremoteplayback"
       >
         <source src={videoSrc} type="video/mp4" />

@@ -1,4 +1,5 @@
-// src/pages/fleet-management/FleetSection.tsx
+'use client'
+
 import Image from '../../../assets/images/ima (2) (1).png'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
@@ -20,8 +21,15 @@ export default function FleetSection() {
   return (
     <section className="py-10 mt-11 md:mt-0 md:py-20 px-4 md:px-6 bg-bg overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="flex flex-col items-center gap-1 md:gap-2 lg:gap-3 mb-12">
+        
+        {/* HEADER: Scroll up/down animation */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center gap-1 md:gap-2 lg:gap-3 mb-12"
+        >
           <span className="inline-flex items-center justify-center px-4 py-1 md:px-5 md:py-[5px] lg:px-6 lg:py-1.5 bg-[#FFF2DE] text-[#141414] rounded-full text-[13px] md:text-[14px] lg:text-base font-medium font-nohemi">
             Smart Fleet
           </span>
@@ -34,28 +42,52 @@ export default function FleetSection() {
               Track, manage, and optimize your fleet with ease
             </p>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Main Grid */}
+        {/* MAIN GRID */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-            <motion.img
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              src={Image}
-              alt="ROVV Fleet Dashboard"
-              className="w-full max-w-[500px] h-auto object-contain transition-all duration-700 ease-in-out hover:scale-105"
-            />
-          </div>
+          
+          {/* PHONE IMAGE: "Mad Pro" Floating & Scroll Animation */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+            className="relative order-1 lg:order-2 flex justify-center lg:justify-end"
+          >
+            {/* Continuous Floating Effect */}
+            <motion.div
+              animate={{ 
+                y: [0, -20, 0],
+                rotate: [0, 1, -1, 0]
+              }}
+              transition={{ 
+                duration: 5, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="relative z-10"
+            >
+              <img
+                src={Image}
+                alt="ROVV Fleet Dashboard"
+                loading="lazy"
+                className="w-full max-w-[500px] h-auto object-contain transition-all duration-700 hover:drop-shadow-2xl"
+              />
+            </motion.div>
+            
+            {/* Background Glow for Depth */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/10 blur-[100px] -z-10" />
+          </motion.div>
 
+          {/* FEATURES: Staggered Scroll up/down */}
           <div className="order-2 lg:order-1 space-y-6">
             {features.map((feature, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="flex gap-4 group"
               >
@@ -71,22 +103,25 @@ export default function FleetSection() {
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="text-center mt-16">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h3 className="text-xl md:text-2xl font-bold font-nohemi text-gray-900 mb-2"> Partner with ROVV Fleet </h3>
-            <p className="text-lg font-medium font-nohemi mb-6"> Partner with ROVV Fleet for seamless control </p>
-            <button
-              onClick={() => setShowModal(true)}
-              className="px-8 py-3 bg-primary text-white font-semibold rounded-md shadow-lg hover:bg-primary/90 transition-all active:scale-95 font-nohemi"
-            >
-              Sign Up
-            </button>
-          </motion.div>
-        </div>
+        {/* CTA: Scroll up/down animation */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          className="text-center mt-16"
+        >
+          <h3 className="text-xl md:text-2xl font-bold font-nohemi text-gray-900 mb-2"> Partner with ROVV Fleet </h3>
+          <p className="text-lg font-medium font-nohemi mb-6"> Partner with ROVV Fleet for seamless control </p>
+          <button
+            onClick={() => setShowModal(true)}
+            className="px-8 py-3 bg-primary text-white font-semibold rounded-md shadow-lg hover:bg-primary/90 transition-all active:scale-95 font-nohemi"
+          >
+            Sign Up
+          </button>
+        </motion.div>
       </div>
 
-      {/* SIGN UP MODAL */}
+      {/* MODAL: Strict to your design */}
       <AnimatePresence>
         {showModal && (
           <motion.div
@@ -103,35 +138,12 @@ export default function FleetSection() {
               className="bg-white rounded-3xl p-8 max-w-md w-full relative shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <h2 className="text-2xl font-bold text-center mb-10 font-nohemi text-gray-900">
-                Sign Up
-              </h2>
-
-              {/* THE NEW DESIGN: FLEX MODE INSIDE SINGLE BORDER */}
+              <h2 className="text-2xl font-bold text-center mb-10 font-nohemi text-gray-900">Sign Up</h2>
               <div className="flex items-center gap-2 p-1.5 border border-gray-100 bg-light rounded-2xl">
-                {/* Passenger Link */}
-                <a 
-                  href="onelink.to/p95t3a"
-                  className="flex-1 py-3 px-4 bg-primary text-white text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:opacity-90 active:scale-95"
-                >
-                  For Passenger
-                </a>
-
-                {/* Driver Link */}
-                <a 
-                  href="https://onelink.to/dzak96" 
-                  className="flex-1 py-3 px-4 text-primary text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:bg-gray-100 active:scale-95"
-                >
-                  For Driver
-                </a>
+                <a href="onelink.to/p95t3a" className="flex-1 py-3 px-4 bg-primary text-white text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:opacity-90 active:scale-95">For Passenger</a>
+                <a href="https://onelink.to/dzak96" className="flex-1 py-3 px-4 text-primary text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:bg-gray-100 active:scale-95">For Driver</a>
               </div>
-
-              <button 
-                onClick={() => setShowModal(false)}
-                className="mt-10 w-full text-gray-400 text-sm font-medium hover:text-gray-600 transition-colors font-nohemi"
-              >
-               ROVV
-              </button>
+              <button onClick={() => setShowModal(false)} className="mt-10 w-full text-gray-400 text-sm font-medium hover:text-gray-600 transition-colors font-nohemi">ROVV</button>
             </motion.div>
           </motion.div>
         )}

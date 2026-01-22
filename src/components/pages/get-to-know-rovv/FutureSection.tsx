@@ -1,29 +1,32 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
-import bgImg from '../../../assets/images/journey-5.png'      // background image
-import heroImg from '../../../assets/images/why-1.png'     // right image
+import bgImg from '../../../assets/images/journey-5.png'
+import heroImg from '../../../assets/images/why-1.png'
 import passengerQR from '../../../assets/qr/passenger.png'
 import driverQR from '../../../assets/qr/dr.png'
 
-
 export default function AboutSection() {
-  const [show, setShow] = useState(false)
   const [showModal, setShowModal] = useState(false)
-  const [qrType, setQrType] = useState<'for passenger' | 'for driver'>('for passenger')
+  const [isMobile, setIsMobile] = useState(false)
 
+  // Device detection to swap between Link design and QR design
   useEffect(() => {
-    setShow(true)
+    const checkDevice = () => {
+      setIsMobile(window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent))
+    }
+    checkDevice()
+    window.addEventListener('resize', checkDevice)
+    return () => window.removeEventListener('resize', checkDevice)
   }, [])
 
   return (
-    <section
-      className="relative py-25 px-6 overflow-hidden"
-    >
+    <section className="relative py-25 px-6 overflow-hidden">
       {/* Background with opacity */}
       <div 
-        className="absolute inset-0 opacity-50"
+        className="absolute inset-0 opacity-50 pointer-events-none"
         style={{
           backgroundImage: `url(${bgImg})`,
           backgroundSize: 'cover',
@@ -32,117 +35,148 @@ export default function AboutSection() {
       />
 
       <div className="relative max-w-7xl mx-auto">
-        {/* CENTERED BADGE AT TOP */}
-        <div className="flex justify-center mb-8">
+        {/* Scroll animation for the Tag */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.5 }}
+          className="flex justify-center mb-8"
+        >
           <span className="inline-block rounded-full bg-orange-100 px-5 py-2 text-[14px] font-medium font-nohemi">
             About Us
           </span>
-        </div>
+        </motion.div>
 
-        {/* LEFT AND RIGHT CONTENT */}
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 items-center">
-          {/* LEFT */}
-          <div
-            className={`flex flex-col gap-9 text-center md:text-left transition-all duration-700
-            ${show ? 'opacity-100 translate-y-0' : 'opacity-70 translate-y-10'}`}
-          >
-            <div className="flex flex-col gap-4 items-center md:items-start md:justify-start md:mr-[280px]">
-              <h1 className="xl:text-[40px] xl:w-[491px] lg:text-[40px] lg:w-[491px] md:text-[32px] md:w-[401px] text-[20px] w-[249px] font-bold  font-nohemi leading-[120%] md:leading-[36px] lg:leading-[48px] text-[#141414]">
-                Building the Future of
-                Seamless Transportation
-              </h1>
+          {/* Left Content Column */}
+          <div className="flex flex-col gap-9 text-center md:text-left">
+            <div className="flex flex-col gap-4 items-center md:items-start md:justify-start">
+              {/* Scroll animation for Header Text */}
+              <motion.h1 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="xl:text-[40px] md:text-[32px] text-[20px] font-bold font-nohemi leading-tight text-[#141414]"
+              >
+                Building the Future of Seamless Transportation
+              </motion.h1>
 
-              <p className="text-[18px] leading-6 text-[#4A4A4A] max-w-[411px]">
+              {/* Scroll animation for Description Text */}
+              <motion.p 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-[18px] leading-6 text-[#4A4A4A] max-w-[411px]"
+              >
                 ROVV is a modern mobility platform built to make movement simple,
-                safe and accessible for everyone. from city rides and intercity
-                travel to fast delivery and reliable vehicle services
-              </p>
+                safe and accessible for everyone.
+              </motion.p>
             </div>
 
-            <div className="flex justify-center md:justify-start">
-              <button onClick={() => setShowModal(true)}
-              className="flex justify-center items-center w-[246px] h-[60px] bg-[#5E239D] rounded-lg text-[#FFEFD6] text-xl font-bold hover:bg-purple-700 transition">
+            {/* Scroll animation for CTA Button */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex justify-center md:justify-start"
+            >
+              <button 
+                onClick={() => setShowModal(true)}
+                className="flex justify-center items-center w-[246px] h-[60px] bg-[#5E239D] rounded-lg text-[#FFEFD6] text-xl font-bold hover:bg-purple-700 transition"
+              >
                 Download the app
               </button>
-            </div>
+            </motion.div>
           </div>
 
-          {/* RIGHT IMAGE */}
-          <div
-            className={`transition-all duration-700 delay-200
-            ${show ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+          {/* Right Image Column - Scroll animation and Lazy Load */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="relative w-full mx-auto overflow-hidden rounded-2xl"
           >
-            <div className="relative w-full   mx-auto overflow-hidden">
-              <img
-                src={heroImg}
-                alt="Passenger"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+            <img
+              src={heroImg}
+              alt="Passenger"
+              loading="lazy"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
         </div>
       </div>
 
-       {/* MODAL */}
-            {showModal && (
-              <div 
-                className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6 animate-fade-in-up"
-                onClick={() => setShowModal(false)}
-              >
-                <div 
-                  className="bg-white rounded-2xl p-8 max-w-md w-full relative animate-scale-in"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <h2 className="text-2xl font-bold text-center mb-6">
-                    Get the ROVV App
-                  </h2>
-      
-                              {/* QR SWITCH */}
-                      <div className="flex justify-center mb-6">
-                        <div className="inline-flex items-center justify-center gap-1 p-1 border rounded-sm border-light bg-light w-[300px] ">
-                          <button
-                            onClick={() => setQrType('for passenger')}
-                            className={`flex-1 py-2 rounded-sm font-bold text-sm transition-all duration-600 transform hover:scale-105 active:scale-95 ${
-                              qrType === 'for passenger'
-                                ? 'bg-purple-600 text-white'
-                                : 'text-purple-600'
-                            }`}
-                          >
-                            For Passenger
-                          </button>
-      
-                          <button
-                            onClick={() => setQrType('for driver')}
-                            className={`flex-1 py-2 rounded-sm font-bold text-sm transition-transform duration-200 active:scale-95 ${
-                              qrType === 'for driver'
-                                ? 'bg-purple-600 text-white'
-                                : 'text-purple-600'
-                            }`}
-                          >
-                            For Driver
-                          </button>
-                        </div>
-                      </div>
-      
-      
-                  {/* QR IMAGE */}
-                  <div className="w-48 h-48 mx-auto mb-4 flex items-center justify-center">
-                    <img
-                      src={qrType === 'for passenger' ? passengerQR : driverQR}
-                      alt="ROVV QR Code"
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-      
-                  {/* QR TEXT */}
-                  <p className="text-center text-gray-600 font-medium">
-                    {qrType === 'for passenger'
-                      ? 'Scan the QR Code with your mobile device to download the ROVV app for passengers'
-                      : 'Scan the QR Code with your mobile device to download the ROVV app for drivers'}
-                  </p>
+      {/* SIGN UP MODAL */}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6"
+            onClick={() => setShowModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="bg-white rounded-3xl p-8 max-w-md w-full relative shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h2 className="text-2xl font-bold text-center mb-10 font-nohemi text-gray-900">
+                {isMobile ? "Sign Up" : "Scan to Download"}
+              </h2>
+
+              {isMobile ? (
+                /* YOUR EXACT DESIGN FOR MOBILE */
+                <div className="flex items-center gap-2 p-1.5 border border-gray-100 bg-light rounded-2xl">
+                  <a 
+                    href="https://onelink.to/p95t3a" 
+                    className="flex-1 py-3 px-4 bg-primary text-white text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:opacity-90"
+                  >
+                    For Passenger
+                  </a>
+                  <a 
+                    href="https://onelink.to/dzak96" 
+                    className="flex-1 py-3 px-4 text-primary text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:bg-gray-100/50"
+                  >
+                    For Driver
+                  </a>
                 </div>
-              </div>
-            )}
+              ) : (
+                /* QR DESIGN FOR DESKTOP */
+                <div className="flex flex-col items-center gap-6">
+                   <div className="flex gap-4">
+                      <div className="text-center">
+                        <img src={passengerQR} alt="Passenger QR" className="w-32 h-32 object-contain mb-2" />
+                        <span className="text-[10px] font-bold font-nohemi text-primary">PASSENGER</span>
+                      </div>
+                      <div className="text-center border-l pl-4">
+                        <img src={driverQR} alt="Driver QR" className="w-32 h-32 object-contain mb-2" />
+                        <span className="text-[10px] font-bold font-nohemi text-primary">DRIVER</span>
+                      </div>
+                   </div>
+                   <p className="text-gray-500 text-xs text-center font-nohemi">
+                     Scan with your phone camera to download
+                   </p>
+                </div>
+              )}
+
+              <button 
+                onClick={() => setShowModal(false)}
+                className="mt-10 w-full text-gray-400 text-sm font-medium hover:text-gray-600 transition-colors font-nohemi"
+              >
+                ROVV
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
