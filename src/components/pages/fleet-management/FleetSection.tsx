@@ -116,12 +116,12 @@ export default function FleetSection() {
             onClick={() => setShowModal(true)}
             className="px-8 py-3 bg-primary text-white font-semibold rounded-md shadow-lg hover:bg-primary/90 transition-all active:scale-95 font-nohemi"
           >
-            Tap to Download
+            Sign Up
           </button>
         </motion.div>
       </div>
 
-      {/* MODAL: Strict to your design */}
+      {/* MODAL: Strict design */}
       <AnimatePresence>
         {showModal && (
           <motion.div
@@ -138,7 +138,7 @@ export default function FleetSection() {
               className="bg-white rounded-3xl p-8 max-w-md w-full relative shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <h2 className="text-2xl font-bold text-center mb-10 font-nohemi text-gray-900">Sign Up</h2>
+              <h2 className="text-2xl font-bold text-center mb-10 font-nohemi text-gray-900">Tap to Download</h2>
               <div className="flex items-center gap-2 p-1.5 border border-gray-100 bg-light rounded-2xl">
                 <a href="onelink.to/p95t3a" className="flex-1 py-3 px-4 bg-primary text-white text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:opacity-90 active:scale-95">For Passenger</a>
                 <a href="https://onelink.to/dzak96" className="flex-1 py-3 px-4 text-primary text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:bg-gray-100 active:scale-95">For Driver</a>
@@ -152,3 +152,4 @@ export default function FleetSection() {
   )
 
 }
+
