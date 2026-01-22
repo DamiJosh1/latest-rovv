@@ -117,7 +117,7 @@ export default function DriveSection() {
                 onClick={() => setShowModal(true)}
                 className="flex justify-center items-center px-7 py-[14px] w-full lg:w-[350px] lg:mx-auto h-[52px] bg-[#5E239D] rounded-lg text-white text-xl font-bold hover:bg-purple-700 transition active:scale-95"
               >
-                Sign up
+                 Tap to Download
               </button>
             </div>
           </motion.div>
@@ -153,4 +153,5 @@ export default function DriveSection() {
       </AnimatePresence>
     </section>
   )
+
 }
