@@ -116,7 +116,7 @@ export default function FleetSection() {
             onClick={() => setShowModal(true)}
             className="px-8 py-3 bg-primary text-white font-semibold rounded-md shadow-lg hover:bg-primary/90 transition-all active:scale-95 font-nohemi"
           >
-            Sign Up
+            Tap to Download
           </button>
         </motion.div>
       </div>
@@ -150,4 +150,5 @@ export default function FleetSection() {
       </AnimatePresence>
     </section>
   )
+
 }
