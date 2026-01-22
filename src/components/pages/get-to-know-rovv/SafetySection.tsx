@@ -109,7 +109,7 @@ export default function SafetySection() {
                 onClick={() => setIsModalOpen(false)}
                 className="mt-6 text-primary font-bold text-sm text-left hover:underline"
               >
-                Close
+                
               </button>
             </motion.div>
           </motion.div>
@@ -117,4 +117,5 @@ export default function SafetySection() {
       </AnimatePresence>
     </section>
   )
+
 }
