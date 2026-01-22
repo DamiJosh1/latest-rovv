@@ -165,31 +165,55 @@ export default function Footer() {
           onClick={() => setShowModal(false)}
         >
           <div
-            className="bg-white rounded-2xl p-6 md:p-8 max-w-sm md:max-w-md w-full relative animate-scale-in"
+            className="bg-white rounded-[32px] p-6 md:p-8 max-w-sm md:max-w-md w-full relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={() => setShowModal(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl font-bold"
-            >
-              ×
-            </button>
-
-            <h3 className="text-xl md:text-2xl font-bold text-center mb-6">
-              Download ROVV {activeTab === 'passenger' ? 'Passenger' : 'Driver'} App
+            <h3 className="text-xl md:text-2xl font-nohemi font-bold text-center mb-10 text-[#141414]">
+              Get the ROVV App
             </h3>
 
-            <div className="flex justify-center mb-6">
-              <img
-                src={activeTab === 'passenger' ? passengerQR : driverQR}
-                alt="QR Code"
-                className="w-48 h-48 md:w-56 md:h-56 object-contain rounded-lg shadow-md"
-              />
+            {/* MOBILE VIEW: DIRECT LINKS */}
+            <div className="lg:hidden flex flex-col gap-4">
+              <div className="flex items-center gap-2 p-1.5 border border-gray-100 bg-[#FAFAFA] rounded-2xl">
+                <a 
+                  href="https://onelink.to/p95t3a" 
+                  className="flex-1 py-3 px-4 bg-primary text-white text-center rounded-xl font-bold font-nohemi text-sm transition-all"
+                >
+                  For Passenger
+                </a>
+                <a 
+                  href="https://onelink.to/dzak96" 
+                  className="flex-1 py-3 px-4 text-primary text-center rounded-xl font-bold font-nohemi text-sm transition-all"
+                >
+                  For Driver
+                </a>
+              </div>
             </div>
 
-            <p className="text-center text-gray-600 text-sm md:text-base">
-              Scan to download the {activeTab === 'passenger' ? 'Passenger' : 'Driver'} app
-            </p>
+            {/* DESKTOP VIEW: QR CODES */}
+            <div className="hidden lg:block">
+              <div className="flex justify-center mb-6">
+                <img
+                  src={activeTab === 'passenger' ? passengerQR : driverQR}
+                  alt="QR Code"
+                  className="w-48 h-48 md:w-56 md:h-56 object-contain"
+                />
+              </div>
+
+              <p className="text-center text-gray-500 font-medium text-sm px-4">
+                Scan to download the {activeTab === 'passenger' ? 'Passenger' : 'Driver'} app
+              </p>
+            </div>
+
+            {/* BRAND FOOTER / CLOSE */}
+            <div className="mt-10 flex justify-center">
+              <button 
+                onClick={() => setShowModal(false)}
+                className="text-gray-300 text-sm font-bold tracking-widest font-nohemi hover:text-primary transition-colors uppercase"
+              >
+                ROVV
+              </button>
+            </div>
           </div>
         </div>
       )}
