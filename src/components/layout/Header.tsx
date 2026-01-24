@@ -242,9 +242,9 @@ export default function Header() {
               className="bg-white rounded-[32px] p-8 max-w-md w-full relative shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <h2 className="text-2xl font-nohemi font-bold text-center mb-10 text-[#141414]">
-                Get the ROVV App
-              </h2>
+              <h2 className="text-2xl font-bold text-center mb-0 lg:mb-5 font-nohemi text-[#141414]">Get the ROVV App</h2>
+              <p className="lg:hidden text-sm font-normal text-center mb-7 font-sans text-medium">Tap to Download</p>
+
 
               {/* MOBILE VIEW: DIRECT LINKS (HIDDEN ON DESKTOP) */}
               <div className="lg:hidden flex flex-col gap-4">
