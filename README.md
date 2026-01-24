@@ -1,73 +1,83 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# ROVV – Modern Mobility Platform
 
-Currently, two official plugins are available:
+A high-performance, responsive landing page for **ROVV**, built with **React**, **TypeScript**, and **Vite**. This project features a smart fleet management dashboard, driver onboarding flows, and a custom responsive modal system for app downloads.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Key Features
 
-## React Compiler
+* **Responsive Modal System:** Context-aware download modals that switch between **QR Codes (Desktop)** and **Direct Links (Mobile)** based on device detection.
+* **Fluid Animations:** Smooth entry and scroll-triggered animations powered by `framer-motion`.
+* **Smart Fleet Management:** Interactive UI showcasing real-time GPS tracking, analytics, and vehicle management features.
+* **Performance First:** Built with Vite for near-instant Hot Module Replacement (HMR) and optimized asset loading.
+* **Custom Design System:** Implementation of the **Nohemi** font and a custom purple/gold brand palette.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+| Category | Technology |
+| --- | --- |
+| **Frontend** | React 18, TypeScript |
+| **Build Tool** | Vite |
+| **Styling** | Tailwind CSS |
+| **Animation** | Framer Motion |
+| **Icons** | Lucide React |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📦 Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Prerequisites
+
+* **Node.js** (v18 or higher)
+* **npm** or **yarn**
+
+### Installation
+
+1. **Clone the repository:**
+```bash
+git clone https://github.com/DamiJosh1/original.git
+cd original
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2. **Install dependencies:**
+```bash
+npm install
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+
+
+3. **Start the development server:**
+```bash
+npm run dev
+
+```
+
+
+4. **Build for production:**
+```bash
+npm run build
+
+```
+
+
+
+---
+
+## 🎨 Component Architecture
+
+The project follows a modular structure where each section is a self-contained component:
+
+* `AboutSection`: Brand storytelling with dynamic device-aware modals.
+* `FleetSection`: Feature-rich grid showcasing the B2B fleet tools.
+* `DriveSection`: Onboarding flow for new partners/drivers.
+* `Custom Modal`: A reusable `AnimatePresence` wrapper that handles the responsive QR/Link logic.
+
+
+## 📄 License
+
+This project is private and intended for the ROVV mobility platform.
+
+
+**Built with ❤️ by the DamiJosh.**
+
