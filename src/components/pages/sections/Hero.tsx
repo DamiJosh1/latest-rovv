@@ -267,7 +267,7 @@ export default function Hero() {
                   </div>
                 </div>
 
-                 <p className="text-center text-gray-500 font-medium text-sm px-4">
+                 <p className="hidden lg:text-center lg:text-gray-500 lg:font-medium lg:text-sm lg:px-4">
                   Scan the QR Code with your mobile device to download the ROVV app.
                 </p>
 
@@ -281,4 +281,5 @@ export default function Hero() {
       </motion.section>
     </>
   )
+
 }
