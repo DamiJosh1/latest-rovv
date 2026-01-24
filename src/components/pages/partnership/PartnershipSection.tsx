@@ -3,8 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
-  Car, Building2, Handshake, X, 
-  Facebook, Mail, Instagram, Linkedin, MessageCircle 
+  Car, Building2, Handshake, X, Mail, Instagram, Linkedin
 } from 'lucide-react'
 import mapImg from '../../../assets/images/new- (6).png'
 
@@ -27,19 +26,18 @@ export default function PartnershipSection() {
   ]
 
   const socials = [
-    { icon: <Facebook className="w-6 h-6" />, label: "Facebook", href: "#", color: "hover:text-blue-600" },
     { icon: <XIcon />, label: "X", href: "https://x.com/rovvafrica", color: "hover:text-black" },
-    { icon: <Mail className="w-6 h-6" />, label: "Gmail", href: "hi@getrovv.com", color: "hover:text-red-500" },
-    { icon: <MessageCircle className="w-6 h-6" />, label: "WhatsApp", href: "#", color: "hover:text-green-500" },
-    { icon: <Instagram className="w-6 h-6" />, label: "Instagram", href: "hhtps://www.instagram.com/rovvafrica?ighs=MTh3eY3M0Mg", color: "hover:text-pink-600" },
-    { icon: <Linkedin className="w-6 h-6" />, label: "LinkedIn", href: "https://www.linnkedin.com/company/getrovv/", color: "hover:text-blue-700" },
+    // mailto: opens the default email client (Gmail/Outlook)
+    { icon: <Mail className="w-6 h-6" />, label: "Gmail", href: "mailto:hi@getrovv.com", color: "hover:text-red-500" },
+    { icon: <Instagram className="w-6 h-6" />, label: "Instagram", href: "https://www.instagram.com/rovvafrica", color: "hover:text-pink-600" },
+    { icon: <Linkedin className="w-6 h-6" />, label: "LinkedIn", href: "https://www.linkedin.com/company/getrovv/", color: "hover:text-blue-700" },
   ]
 
   return (
     <section className="relative py-20 md:py-24 lg:py-26 px-6 bg-bg overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
-        {/* Header Section: Scroll Up Animation */}
+        {/* Header Section */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +61,7 @@ export default function PartnershipSection() {
         {/* Main Content Grid */}
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-12 lg:gap-20 mb-16">
           
-          {/* Left Side: Map Image with Scroll & Lazy Load */}
+          {/* Left Side: Map Image */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -71,7 +69,7 @@ export default function PartnershipSection() {
             transition={{ duration: 0.7 }}
             className="w-full lg:w-auto flex justify-center lg:justify-start"
           >
-            <div className="relative w-full max-w-[628px] h-[337px] md:h-[414px] lg:h-[600px] rounded-[32px] md:rounded-[40px] overflow-hidden shadow-xl">
+            <div className="relative w-full max-w-[628px] h-[337px] md:h-[414px] lg:h-[600px] overflow-hidden ">
               <img 
                 src={mapImg} 
                 alt="Partnership Illustration" 
@@ -81,7 +79,7 @@ export default function PartnershipSection() {
             </div>
           </motion.div>
 
-          {/* Right Side: Partnership Detail Cards (Staggered Scroll) */}
+          {/* Right Side: Partnership Detail Cards */}
           <div className="flex flex-col gap-6 w-full lg:max-w-[434px]">
             {partnerships.map((item, i) => (
               <motion.div 
@@ -132,11 +130,10 @@ export default function PartnershipSection() {
         </motion.div>
       </div>
 
-      {/* MODAL: Animation In and Out */}
+      {/* MODAL */}
       <AnimatePresence>
         {isOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            {/* Backdrop */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -145,7 +142,6 @@ export default function PartnershipSection() {
               className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             />
             
-            {/* Modal Content */}
             <motion.div
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -166,6 +162,8 @@ export default function PartnershipSection() {
                 {socials.map((social, idx) => (
                   <motion.a 
                     key={idx}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ y: -5 }}
                     href={social.href}
                     className={`flex flex-col items-center gap-2 transition-colors ${social.color}`}

@@ -236,9 +236,9 @@ export default function Hero() {
                 className="bg-white rounded-[32px] p-8 max-w-md w-full relative shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
               >
-                <h2 className="text-2xl font-bold text-center mb-10 font-nohemi text-gray-900">
-                  Get the ROVV App
-                </h2>
+                <h2 className="text-2xl font-bold text-center mb-0 lg:mb-5 font-nohemi text-[#141414]">Get the ROVV App</h2>
+              <p className="lg:hidden text-sm font-normal text-center mb-7 font-sans text-medium">Tap to Download</p>
+              
 
                 {/* MOBILE VIEW: DIRECT LINKS */}
                 <div className="lg:hidden flex flex-col gap-4">
@@ -267,6 +267,10 @@ export default function Hero() {
                   </div>
                 </div>
 
+                 <p className="text-center text-gray-500 font-medium text-sm px-4">
+                  Scan the QR Code with your mobile device to download the ROVV app.
+                </p>
+
                 <div className="mt-10 flex justify-center">
                   <button onClick={() => setShowModal(false)} className="text-gray-300 text-sm font-bold tracking-widest uppercase">ROVV</button>
                 </div>
@@ -277,5 +281,4 @@ export default function Hero() {
       </motion.section>
     </>
   )
-
 }

@@ -1,12 +1,26 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import arrow from '../../../assets/images/arrow.png'
 import Image from '../../../assets/images/new- (5).png'
+import passengerQR from '../../../assets/qr/passenger.png'
+import driverQR from '../../../assets/qr/dr.png'
 
 export default function DriveSection() {
   const [showModal, setShowModal] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const [activeTab, setActiveTab] = useState<'passenger' | 'driver'>('driver') // Default to driver for this section
+
+  // Device detection to swap between Link design and QR design
+  useEffect(() => {
+    const checkDevice = () => {
+      setIsMobile(window.innerWidth < 1024)
+    }
+    checkDevice()
+    window.addEventListener('resize', checkDevice)
+    return () => window.removeEventListener('resize', checkDevice)
+  }, [])
 
   const steps = [
     { title: "Sign Up Online ", desc: " Fill out the registration form" },
@@ -21,7 +35,7 @@ export default function DriveSection() {
     <section className="py-20 md:py-16 lg:py-20 px-4 md:px-6 bg-[#FFFAF2] overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
-        {/* Header Section: Scroll Animation */}
+        {/* Header Section */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,10 +51,8 @@ export default function DriveSection() {
           </h2>
         </motion.div>
 
-        {/* Main Content: Image and Features */}
+        {/* Main Content */}
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-3 md:gap-6 lg:gap-20 mb-6 md:mb-10 lg:mb-10">
-          
-          {/* Driver Image: Scroll Animation & Lazy Load */}
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +65,6 @@ export default function DriveSection() {
             </div>
           </motion.div>
 
-          {/* Steps List: Staggered Scroll Animation */}
           <div className="flex flex-col gap-4 w-full max-w-[343px] md:max-w-[519px] lg:max-w-[519px] mx-auto lg:mx-0">
             {steps.map((step, i) => (
               <motion.div 
@@ -76,7 +87,7 @@ export default function DriveSection() {
           </div>
         </div>
 
-        {/* Requirements & CTA: Scroll Animation */}
+        {/* Requirements & CTA */}
         <div className="flex flex-col lg:flex-row lg:items-center gap-6 md:gap-6 lg:gap-[132px]">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -115,43 +126,85 @@ export default function DriveSection() {
               </div>
               <button 
                 onClick={() => setShowModal(true)}
-                className="flex justify-center items-center px-7 py-[14px] w-full lg:w-[350px] lg:mx-auto h-[52px] bg-[#5E239D] rounded-lg text-white text-xl font-bold hover:bg-purple-700 transition active:scale-95"
+                className="flex justify-center items-center px-7 py-[14px] w-full lg:w-[350px] lg:mx-auto h-[52px] bg-[#5E239D] rounded-lg text-white text-xl font-bold hover:bg-purple-700 transition active:scale-95 shadow-md"
               >
-                 Tap to Download
+                Sign Up
               </button>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* MODAL: Animation In and Out */}
+      {/* MODAL */}
       <AnimatePresence>
         {showModal && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-6"
             onClick={() => setShowModal(false)}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="bg-white rounded-3xl p-8 max-w-md w-full relative shadow-2xl"
+              className="bg-white rounded-[32px] p-8 max-w-md w-full relative shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <h2 className="text-2xl font-bold text-center mb-10 font-nohemi text-gray-900">Sign Up</h2>
-              <div className="flex items-center gap-2 p-1.5 border border-gray-100 bg-light rounded-2xl">
-                <a href="https://onelink.to/p95t3a" className="flex-1 py-3 px-4 bg-primary text-white text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:opacity-90">For Passenger</a>
-                <a href="https://onelink.to/dzak96" className="flex-1 py-3 px-4 text-primary text-center rounded-xl font-bold font-nohemi text-sm transition-all hover:bg-gray-100/50">For Driver</a>
-              </div>
-              <button onClick={() => setShowModal(false)} className="mt-10 w-full text-gray-400 text-sm font-medium hover:text-gray-600 transition-colors font-nohemi">ROVV</button>
+              <h2 className="text-2xl font-bold text-center mb-0 lg:mb-5 font-nohemi text-[#141414]">Get the ROVV App</h2>
+              <p className="lg:hidden text-sm font-normal text-center mb-7 font-sans text-medium">Tap to Download</p>
+
+              {isMobile ? (
+                /* MOBILE VIEW: DIRECT LINKS */
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center gap-2 p-1.5 border border-gray-100 bg-[#FAFAFA] rounded-2xl">
+                    <a href="https://onelink.to/p95t3a" className="flex-1 py-3 px-4 bg-primary text-white text-center rounded-xl font-bold font-nohemi text-sm transition-all active:scale-95">For Passenger</a>
+                    <a href="https://onelink.to/dzak96" className="flex-1 py-3 px-4 text-primary text-center rounded-xl font-bold font-nohemi text-sm transition-all active:scale-95">For Driver</a>
+                  </div>
+                </div>
+              ) : (
+                /* DESKTOP VIEW: TOGGLE + QR */
+                <div className="hidden lg:block">
+                  <div className="flex justify-center mb-6">
+                    <div className="inline-flex items-center gap-1 p-1 border rounded-sm border-light bg-light w-[300px]">
+                      <button
+                        onClick={() => setActiveTab('passenger')}
+                        className={`flex-1 py-2 rounded-sm font-bold text-sm transition-all ${activeTab === 'passenger' ? 'bg-primary text-white' : 'text-primary'}`}
+                      >
+                        For Passenger
+                      </button>
+                      <button
+                        onClick={() => setActiveTab('driver')}
+                        className={`flex-1 py-2 rounded-sm font-bold text-sm transition-all ${activeTab === 'driver' ? 'bg-primary text-white' : 'text-primary'}`}
+                      >
+                        For Driver
+                      </button>
+                    </div>
+                  </div>
+                  <div className="w-48 h-48 mx-auto mb-4 flex items-center justify-center">
+                    <img
+                      src={activeTab === 'passenger' ? passengerQR : driverQR}
+                      alt="ROVV QR Code"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <p className="text-center text-gray-500 font-medium text-sm px-4 font-sans">
+                    Scan to download the {activeTab} app
+                  </p>
+                </div>
+              )}
+
+              <button 
+                onClick={() => setShowModal(false)} 
+                className="mt-10 w-full text-gray-300 text-sm font-bold tracking-[0.2em] hover:text-primary transition-colors font-nohemi uppercase"
+              >
+                ROVV
+              </button>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
     </section>
   )
-
 }
