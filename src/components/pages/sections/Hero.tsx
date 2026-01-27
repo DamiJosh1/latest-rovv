@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 // Hero images
 import rideImg from '../../../assets/images/pic-4.jpg'
-import deliveryImg from '../../../assets/images/pics-2.png'
-import earnImg from '../../../assets/images/pics1.png'
+import deliveryImg from '../../../assets/images/pics1.png'
+import earnImg from '../../../assets/images/pics-2.png'
 import badgeIcon from '../../../assets/images/journ.png'
 import passengerQR from '../../../assets/qr/passenger.png'
 import driverQR from '../../../assets/qr/dr.png'
@@ -283,3 +283,4 @@ export default function Hero() {
   )
 
 }
+
