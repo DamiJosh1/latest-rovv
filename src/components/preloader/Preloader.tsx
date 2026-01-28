@@ -14,7 +14,7 @@ export default function Preloader() {
     // 1. Hidden 15-second timer for internet check
     const internetTimer = setTimeout(() => {
       setShowError(true)
-    }, 15000)
+    }, 8000)
 
     // 2. Performance: Ensure video plays immediately
     if (videoRef.current) {
@@ -90,4 +90,5 @@ export default function Preloader() {
       )}
     </motion.div>
   )
+
 }
