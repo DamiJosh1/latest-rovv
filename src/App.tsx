@@ -1,10 +1,8 @@
 import {Routes, Route} from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import { AnimatePresence } from 'framer-motion'
 
 
 
-import Preloader from './components/preloader/Preloader.tsx'
+
 
 import HomePage from './components/pages/index.tsx'
 import GetToKnowRovvPage from './components/pages/get-to-know-rovv/index.tsx'
@@ -20,35 +18,13 @@ import TermsAndCondition from './components/pages/terms&condition/index.tsx'
 
 
 
-
-function App () {
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    // Hidden timer
-    const handleLoad = () => {
-      setTimeout(() => setLoading(false), 2500)
-    }
-
-    if (document.readyState === 'complete') {
-      handleLoad()
-    }
-    else{
-      window.addEventListener('load', handleLoad)
-    }
-
-    return () => window.removeEventListener('load', handleLoad)
-  },[])
-
+function App() {
 
 
   return (
     <>
 
-      <AnimatePresence mode="wait">
-        {loading && <Preloader />}
-      </AnimatePresence>
-
+    
     <Routes>
       <Route path='/' element={<HomePage />} />
       <Route path='/get-to-know-rovv' element={<GetToKnowRovvPage />} />

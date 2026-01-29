@@ -1,4 +1,11 @@
+import { useState, useEffect } from 'react'
+import { AnimatePresence } from 'framer-motion'
+
+
+
+
 // src/components/pages/Index.tsx
+import Preloader from '../preloader/Preloader.tsx'
 import Header from '../../components/layout/Header'
 import Hero from './sections/Hero'
 import Testimonial from './sections/TestimonialSection'
@@ -14,8 +21,33 @@ import CarsSection from './sections/Cars'
 
 function App() {
 
+    const [loading, setLoading] = useState(true)
+  
+    useEffect(() => {
+      // Hidden timer
+      const handleLoad = () => {
+        setTimeout(() => setLoading(false), 2500)
+      }
+  
+      if (document.readyState === 'complete') {
+        handleLoad()
+      }
+      else{
+        window.addEventListener('load', handleLoad)
+      }
+  
+      return () => window.removeEventListener('load', handleLoad)
+    },[])
+  
+  
+
   return (
     <>
+
+     <AnimatePresence mode="wait">
+        {loading && <Preloader />}
+      </AnimatePresence>
+    
      <Header />
     <Hero />
     <CarsSection />

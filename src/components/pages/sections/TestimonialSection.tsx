@@ -7,22 +7,60 @@ import { motion, AnimatePresence } from 'framer-motion'
 import bgImage from '../../../assets/images/bg.png'
 
 const testimonials = [
+  // --- RIDER TESTIMONIALS ---
   {
-    text: "This app is Amazing, Rovv is Taking Over. Low Fares and Courteous drivers",
-    author: 'Kennedy Ighodalo',
-    role: 'Rider, Lagos',
+    text: "Rovv has made navigating Lagos traffic so much easier! The drivers know the best routes, and I always get to my meetings on time. No more haggling over prices—everything is clear upfront.",
+    author: 'Sarah Okonkwo',
+    role: 'Marketing Manager, Lekki',
   },
   {
-    text: "nice app with rates just need more drivers on the plartform",
-    author: 'Kelvin Martins',
-    role: 'Rider, Benin',
+    text: "As a UNILAG student, Rovv is perfect for my budget. The app works smoothly even with poor network, and drivers are always respectful. I use it to get to campus and back home safely every day.",
+    author: 'James Adeleke',
+    role: 'Student, Yaba',
   },
   {
-    text: "ROVV came into my life when I needed a breakthrough the most. I had lost my previous job and didn’t know how to support my family. Driving with ROVV not only helped me get back on my feet.",
-    author: 'Samuel Ben',
-    role: 'Driver, Abuja',
+    text: "I depend on Rovv for business trips across Lagos. Rain or shine, my driver arrives on time. The cashless payment is convenient, and I get receipts instantly for my records. Rovv is reliable!",
+    author: 'Patricia Eze',
+    role: 'Business Owner, Ikeja',
   },
-]
+  {
+    text: "At my age, I wasn’t sure about these apps, but Rovv made it simple. The drivers are courteous and patient. I feel safe traveling around Lagos, and my children can track my trips.",
+    author: 'Marcus Bello',
+    role: 'Retiree, Victoria Island',
+  },
+  {
+    text: "Working night shifts at the hospital, I need safe transport at odd hours. Rovv has never failed me. The drivers are professional, and the cars are always clean. It’s my trusted way to get home.",
+    author: 'Emily Adeyemi',
+    role: 'Nurse, Surulere',
+  },
+
+  // --- DRIVER TESTIMONIALS ---
+  {
+    text: "Rovv treats drivers like partners, not just workers. They listen to our complaints and actually make changes. The instant payment feature helps when I need cash immediately.",
+    author: 'Tunde Babatunde',
+    role: 'Driver (4 years), Lagos',
+  },
+  {
+    text: "Rovv pays better than other platforms in Lagos. The weekly earnings are fair, and support team actually responds when I call. I can support my family comfortably driving with Rovv.",
+    author: 'David Ogunleye',
+    role: 'Driver (2 years), Lagos',
+  },
+  {
+    text: "As a female driver, I feel safe with Rovv. The passenger verification is good, and support is just a call away. The flexibility lets me pick up my children from school between rides.",
+    author: 'Joke Akintola',
+    role: 'Driver (8 months), Lagos',
+  },
+  {
+    text: "Switched from another platform to Rovv—best decision ever! Riders are better mannered, earnings are higher, and the weekly bonuses for good ratings motivate me.",
+    author: 'Blessing Okoro',
+    role: 'Driver (6 months), Lagos',
+  },
+  {
+    text: "What I love about Rovv is the respect. They don’t exploit drivers to make profit. I earn enough to pay rent, school fees, and save small. Rovv has truly changed my life!",
+    author: 'Amaka Nnamdi',
+    role: 'Driver (3 years), Lagos',
+  }
+];
 
 export default function TestimonialsSection() {
   const [index, setIndex] = useState(0)

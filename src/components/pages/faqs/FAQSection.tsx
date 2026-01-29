@@ -7,10 +7,11 @@ import sideImg from '../../../assets/images/new--1.png'
 
 const faqs = [
   { q: "How does ROVV work?", a: "ROVV connects riders and drivers seamlessly through a simple mobile app. Riders can book a ride instantly or bid their preferred fare price, while verified drivers nearby respond based on availability. Every trip is secured with real-time tracking, safety features, and a reliable payment system, making your journey smooth, safe, and flexible." },
-  { q: "How do I become a ROVV driver?", a: "Sign up online, submit documents..." },
+  { q: "How do I become a ROVV driver?", a: "Sign up online, submit documents." },
   { q: "Can I schedule a ride ahead of time?", a: "Yes, you can schedule ride for later by selecting the 'Schedule' option before booking" },
-  { q: "How are fares calculated on ROVV?", a: "Fares are transparent and based on..." },
-  { q: "What safety measures does ROVV provide?", a: "We have ride OTP, SOS button, 24/7 support..." },
+  { q: "What if i was charged incorrectly?", a: "You can report fare issues under 'Past Rides' -> 'Report Issue' -> 'Fare Concern'." },
+  { q: "What if i feel unsafe during a ride?", a: "Use the in-app safety button to share your trip or contact emergency services. " },
+  { q: "What if my driver cancels the ride?", a: "You'll automatically be matched with the next available driver. if none are available, try booking again" },
 ]
 
 export default function FAQSection() {
