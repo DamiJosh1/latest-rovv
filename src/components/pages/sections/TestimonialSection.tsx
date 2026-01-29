@@ -38,17 +38,17 @@ const testimonials = [
   {
     text: "Rovv treats drivers like partners, not just workers. They listen to our complaints and actually make changes. The instant payment feature helps when I need cash immediately.",
     author: 'Tunde Babatunde',
-    role: 'Driver , Lagos',
+    role: 'Driver, Lagos',
   },
   {
     text: "Rovv pays better than other platforms in Lagos. The weekly earnings are fair, and support team actually responds when I call. I can support my family comfortably driving with Rovv.",
     author: 'David Ogunleye',
-    role: 'Driver , Lagos',
+    role: 'Driver, Lagos',
   },
   {
     text: "As a female driver, I feel safe with Rovv. The passenger verification is good, and support is just a call away. The flexibility lets me pick up my children from school between rides.",
     author: 'Joke Akintola',
-    role: 'Driver , Lagos',
+    role: 'Driver, Lagos',
   },
   {
     text: "Switched from another platform to Rovv—best decision ever! Riders are better mannered, earnings are higher, and the weekly bonuses for good ratings motivate me.",
