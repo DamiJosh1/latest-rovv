@@ -1,50 +1,36 @@
 @import "tailwindcss";
 
-/* 1. PREVENT HORIZONTAL SCROLL & ENABLE SMOOTH MOTION */
+/* Ensure smooth scrolling and fix horizontal wobble */
 html {
-  
   scroll-behavior: smooth;
 }
 
 body {
-  /* Fixes horizontal wobble/sea-moving effect */
+  margin: 0;
+  padding: 0;
   width: 100%;
   overflow-x: hidden;
-  
   position: relative;
-  
-  /* Optional: Fixes font smoothing for a cleaner look while scrolling */
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* === IMPORT INTER FROM FONTSOURCE === */
+/* Fix for background images or large elements causing gaps */
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* 2. FONTS */
 @import '@fontsource/inter/400.css';
 @import '@fontsource/inter/500.css';
 @import '@fontsource/inter/600.css';
 @import '@fontsource/inter/700.css';
 @import '@fontsource/inter/900.css';
 
-
-
-/* === NOHEMI FONTS (FROM public/fonts/) === */
-/* Replace with your actual file names */
 @font-face {
   font-family: 'Nohemi';
   src: url('../fonts/Nohemi-Regular.woff') format('woff');
   font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Nohemi';
-  src: url('../fonts/Nohemi-Medium.woff') format('woff');
-  font-weight: 500;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Nohemi';
-  src: url('../fonts/Nohemi-SemiBold-BF6438cc57db2ff.woff') format('woff');
-  font-weight: 600;
   font-display: swap;
 }
 @font-face {
@@ -54,7 +40,7 @@ body {
   font-display: swap;
 }
 
-/* === CSS VARIABLES (SAFE, NO CONFLICT) === */
+/* 3. THEME VARIABLES */
 @theme {
   --color-primary: #5E239D;
   --color-accent: #FF6A00;
@@ -68,192 +54,17 @@ body {
   --color-back: #FFF2DE;
 }
 
-/* === TAILWIND HELPER CLASSES (OPTIONAL) === */
-.text-primary { color: var(--color-primary); }
-.text-accent { color: var(--color-accent); }
-.bg-bg { background-color: var(--color-bg); }
-.font-nohemi { font-family: 'Nohemi', sans-serif; }
-.font-sans { font-family: 'Inter', system-ui, sans-serif; }
+/* 4. UTILITIES */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-hide{
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
- .nav-link-bounce {
-          position: relative;
-          overflow: hidden;
-          display: inline-block;
-          height: 1.5em;
-          line-height: 1.5em;
-        }
-
-        .nav-link-text {
-          display: block;
-          transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-        }
-
-        .nav-link-bounce:hover .nav-link-text {
-          transform: translateY(-100%);
-        }
-
-        .nav-link-bounce::before {
-          content: attr(data-text);
-          position: absolute;
-          left: 0;
-          top: 100%;
-          width: 100%;
-          transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-        }
-
-        .nav-link-bounce:hover::before {
-          transform: translateY(-100%);
-        }
-
-        /* Hamburger Menu Button */
-        .hamburger-btn {
-          width: 44px;
-          height: 44px;
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 5px;
-          background: transparent;
-          border: none;
-          cursor: pointer;
-          padding: 0;
-        }
-
-        .hamburger-line {
-          width: 24px;
-          height: 3px;
-          background: #270F42;
-          border-radius: 2px;
-          transition: all 0.4s ease;
-          transform-origin: center;
-        }
-
-        .hamburger-btn.open .hamburger-line:nth-child(1) {
-          transform: translateY(8px) rotate(45deg) scale(1.1);
-        }
-
-        .hamburger-btn.open .hamburger-line:nth-child(2) {
-          opacity: 0;
-          transform: scale(0) rotate(90deg);
-        }
-
-        .hamburger-btn.open .hamburger-line:nth-child(3) {
-          transform: translateY(-8px) rotate(-45deg) scale(1.1);
-        }
-
-        @media (min-width: 768px) {
-          .hamburger-btn {
-            gap: 6px;
-          }
-
-          .hamburger-line {
-            width: 32px;
-            height: 4px;
-          }
-
-          .hamburger-btn.open .hamburger-line:nth-child(1) {
-            transform: translateY(10px) rotate(45deg) scale(1.1);
-          }
-
-          .hamburger-btn.open .hamburger-line:nth-child(3) {
-            transform: translateY(-10px) rotate(-45deg) scale(1.1);
-          }
-        }
-      
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.animate-fade-in-right {
-  animation: fadeInRight 0.8s ease-out forwards;
-}
-
-.levitate-letter {
-  display: inline-block;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.levitate-letter:hover {
-  transform: translateY(-8px);
-}
-
-/* Nest Hub & Nest Hub Max (1024px - 1280px) */
-@media (min-width: 1024px) and (max-width: 1280px) {
-  .max-w-\[1276px\] {
-    max-width: 1000px !important;
-  }
-  
-  .lg\:max-w-\[443px\] {
-    max-width: 380px !important;
-  }
-  
-  .lg\:w-\[628px\] {
-    width: 520px !important;
-  }
-  
-  .lg\:h-\[572px\] {
-    height: 480px !important;
-  }
-}
-
-/* Better mobile responsiveness for all phone sizes */
-@media (max-width: 430px) {
-  .max-w-\[414px\] {
-    max-width: 100% !important;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  .ml-9 {
-    margin-left: 0 !important;
-  }
-  
-  .w-\[343px\] {
-    width: 100% !important;
-    max-width: 343px;
-  }
-}
-/* src/styles/globals.css */
-
+/* 5. NAVIGATION ANIMATIONS */
 .nav-link-bounce {
   position: relative;
   overflow: hidden;
   display: inline-block;
-  height: 1em;
-  line-height: 1em;
+  height: 1.5em;
+  line-height: 1.5em;
 }
 
 .nav-link-text {
@@ -261,10 +72,7 @@ body {
   transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
-.nav-link-bounce:hover .nav-link-text,
-.nav-link-bounce:hover::before {
-  transform: translateY(-100%);
-}
+.nav-link-bounce:hover .nav-link-text { transform: translateY(-100%); }
 
 .nav-link-bounce::before {
   content: attr(data-text);
@@ -272,9 +80,12 @@ body {
   left: 0;
   top: 100%;
   width: 100%;
+  transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
-/* Hamburger */
+.nav-link-bounce:hover::before { transform: translateY(-100%); }
+
+/* 6. HAMBURGER MENU (Consolidated) */
 .hamburger-btn {
   width: 44px;
   height: 44px;
@@ -282,169 +93,58 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0;
 }
 
 .hamburger-line {
   width: 24px;
-  height: 3.43px;
-  background: #270f42;
+  height: 3px;
+  background: #270F42;
   border-radius: 2px;
   transition: all 0.4s ease;
-  transform-origin: center;
 }
 
-.hamburger-btn.open .hamburger-line:nth-child(1) {
-  transform: translateY(11.43px) rotate(45deg) scale(1.1);
-}
+.hamburger-btn.open .hamburger-line:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.hamburger-btn.open .hamburger-line:nth-child(2) { opacity: 0; }
+.hamburger-btn.open .hamburger-line:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-.hamburger-btn.open .hamburger-line:nth-child(2) {
-  opacity: 0;
-  transform: scale(0);
-}
+@media (min-width: 1024px) { .hamburger-btn { display: none; } }
 
-.hamburger-btn.open .hamburger-line:nth-child(3) {
-  transform: translateY(-11.43px) rotate(-45deg) scale(1.1);
-}
-
-/* Tablet */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .hamburger-btn {
-    width: 40px;
-    height: 40px;
-    gap: 8px;
-  }
-  .hamburger-line {
-    width: 32px;
-    height: 4px;
-  }
-  .hamburger-btn.open .hamburger-line:nth-child(1) {
-    transform: translateY(12px) rotate(45deg) scale(1.1);
-  }
-  .hamburger-btn.open .hamburger-line:nth-child(3) {
-    transform: translateY(-12px) rotate(-45deg) scale(1.1);
-  }
-}
-
-
-/* src/index.css */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-/* src/index.css */
-@keyframes fadeScaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.7);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
+/* 7. GLOBAL ANIMATIONS (Unique only) */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-#safety-section {
-  transition: all 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.service-card {
-  opacity: 0;
-  transform: translateX(48px);
-  transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.service-card.animate-in {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-
-/* ANIMATIONS */
-.animate-fade-scale-in {
-  animation: fadeScaleIn 0.4s ease-out forwards;
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.4s ease-out forwards;
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.4s ease-out both;
-}
-
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-.delay-500 { animation-delay: 0.5s; }
-.delay-600 { animation-delay: 0.6s; } 
-
-@keyframes loadBar {
-  from {
-    width: 0;
-  }
-  to {
-    width: 8rem;
-  }
-}
-.animate-loadBar{
-  animation: loadBar 2.8s linear forwards;
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes blobPulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-}
-.animate-blob-pulse {
-  animation: blobPulse 6s ease-in-out infinite;
+  50% { transform: scale(1.05); }
 }
 
-@keyframes fadeScaleIn {
-  from { opacity: 0; transform: scale(0.7); }
-  to { opacity: 1; transform: scale(1); }
-}
+.animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+.animate-fade-in-right { animation: fadeInRight 0.8s ease-out forwards; }
+.animate-blob-pulse { animation: blobPulse 6s ease-in-out infinite; }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Hide hamburger on desktop */
-@media (min-width: 1024px) {
-  .hamburger-btn {
-    display: none;
+/* 8. RESPONSIVE OVERRIDES (CLEANED) */
+@media (min-width: 768px) and (max-width: 1280px) {
+  .hero-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 0rem;
   }
+  /* Avoid fixed pixel widths like 1276px here, use % instead */
 }
+
+@media (max-width: 480px) {
+  .hero-text-container h1 { font-size: 2rem !important; }
+  .ml-9 { margin-left: 0 !important; }
+}
+
