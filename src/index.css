@@ -1,16 +1,22 @@
 @import "tailwindcss";
 
+/* 1. PREVENT HORIZONTAL SCROLL & ENABLE SMOOTH MOTION */
 html {
-  /* This ensures smooth scrolling when clicking anchor links */
+  /* Enables smooth scrolling for "Back to Top" and Anchor links */
   scroll-behavior: smooth;
 }
 
 body {
-  /* Prevent horizontal wobble, allow vertical scrolling */
-  overflow: hidden;
+  /* Fixes horizontal wobble/sea-moving effect */
   width: 100%;
-  margin: 0;
-  padding: 0;
+  overflow-x: hidden;
+  
+  /* Ensures all relative/absolute elements stay contained */
+  position: relative;
+  
+  /* Optional: Fixes font smoothing for a cleaner look while scrolling */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* === IMPORT INTER FROM FONTSOURCE === */
