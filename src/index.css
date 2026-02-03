@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+html {
+  /* This ensures smooth scrolling when clicking anchor links */
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Prevent horizontal wobble, allow vertical scrolling */
+  overflow-x: hidden; 
+  overflow-y: auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 /* === IMPORT INTER FROM FONTSOURCE === */
 @import '@fontsource/inter/400.css';
 @import '@fontsource/inter/500.css';
