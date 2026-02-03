@@ -14,40 +14,45 @@ const cities = [
 
 export default function CitiesSection() {
   return (
-    <section className="py-20 lg:py-20 md:py-20 bg-bg overflow-hidden">
+    // Added px-6 to match your header/hero padding
+    <section className="py-20 bg-bg overflow-hidden px-6 md:px-12 lg:px-20">
       <div className="max-w-6xl mx-auto">
 
-        <div className="grid md:grid-cols-1 lg:grid-cols-2 lg:gap-12 items-center justify-center lg:justify-between">
-          {/* Map image with scroll animation and lazy load */}
+        {/* Changed md:grid-cols-2 so iPad Pro shows desktop layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+          
+          {/* Map image */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.7 }}
+            className="w-full"
           >
             <img
               src={mapImg}
               alt="Nigeria Map"
               loading="lazy"
-              className="w-[90%] mx-auto md:w-[95%] md:mx-auto lg:w-full lg:mx-0"
+              // Removed complex mx-auto logic, let the grid handle it
+              className="w-full h-auto object-contain"
             />
           </motion.div>
 
-          {/* Text and cities list with scroll animations */}
-          <div className="lg:ml-10 text-center space-y-6">
+          {/* Text and cities list */}
+          <div className="text-center md:text-left space-y-6">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 0.6 }}
-              className="lg:mb-12"
             >
-              <h3 className="text-[20px] lg:text-[40px] md:text-[35px] font-bold font-nohemi text-dark">
+              <h3 className="text-[28px] md:text-[35px] lg:text-[40px] font-bold font-nohemi text-dark leading-tight">
                 Cities We Operate In
               </h3>
             </motion.div>
 
-            <div className="flex flex-wrap gap-3 scale-80 md:scale-none sm:ml-2 justify-center md:w-[539px] md:translate-x-27 md:justify-center lg:justify-center lg:w-full lg:translate-x-0 lg:scale-none">
+            {/* Fixed the City Badges: Removed translates and scales that cause overflow */}
+            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
               {cities.map((item, i) => (
                 <motion.div
                   key={i}
@@ -55,11 +60,9 @@ export default function CitiesSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="flex items-start px-4 py-2 gap-4 border border-light rounded-3xl"
+                  className="flex items-center px-4 py-2 gap-2 border border-light rounded-3xl whitespace-nowrap"
                 >
-                  <div>
-                    <item.icon className="w-6 h-6 text-bg fill-light" />
-                  </div>
+                  <item.icon className="w-5 h-5 text-bg fill-light" />
                   <p className="text-medium text-[16px] font-normal font-sans">{item.label}</p>
                 </motion.div>
               ))}
@@ -70,7 +73,7 @@ export default function CitiesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="scale-80 lg:scale-100 lg:text-[20px] lg:translate-x-10 font-normal font-nohemi text-medium"
+              className="text-[16px] lg:text-[20px] font-normal font-nohemi text-medium"
             >
               We’re expanding fast, more cities launching soon!
             </motion.p>
