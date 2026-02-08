@@ -28,7 +28,6 @@ export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [qrType, setQrType] = useState<'for passenger' | 'for driver'>('for passenger')
-  const extralink= "https://book.getrovv.com";
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-bg backdrop-blur-md border-b border-bg">
@@ -99,35 +98,67 @@ export default function Header() {
       </header>
 
       {/* MOBILE MENU */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {mobileOpen && (
-          <>
+          <div className="lg:hidden">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setMobileOpen(false)} className="fixed inset-0 bg-black/50 z-40" />
-            <motion.div initial={{ y: '-100%' }} animate={{ y: 0 }} exit={{ y: '-100%' }} className="fixed top-20 left-0 right-0 w-full bg-white z-40 shadow-2xl">
+            <motion.div initial={{ y: '-100%' }} animate={{ y: 0 }} exit={{ y: '-100%' }} className="fixed top-20 left-0 right-0 w-full bg-white z-40 shadow-2xl max-h-[80vh] overflow-y-auto">
               <nav className="px-6 py-8 space-y-4">
                 {navItems.map((item) => (
-                  <a key={item.name} href={item.href || '#'} className="block text-dark text-2xl font-bold font-nohemi">
-                    {item.name}
-                  </a>
+                  <div key={item.name}>
+                    {item.items ? (
+                      <>
+                        <button
+                          onClick={() => setDropdownOpen(!dropdownOpen)}
+                          className="flex items-center gap-1 text-dark text-2xl font-medium font-sans"
+                        >
+                          <span>{item.name}</span>
+                          <ChevronDown size={24} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+                        </button>
+                        
+                        <AnimatePresence>
+                          {dropdownOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              className="overflow-hidden pl-4 w-[250px] flex flex-col gap-4 mt-4 bg-white rounded-xl py-4 shadow-2xl"
+                            >
+                              {item.items.map((sub) => (
+                                <a key={sub.name} href={sub.href} className="text-dark text-xl font-medium font-sans">
+                                  {sub.name}
+                                </a>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </>
+                    ) : (
+                      <a href={item.href || '#'} className="block text-dark text-2xl font-medium font-sans">
+                        {item.name}
+                      </a>
+                    )}
+                  </div>
                 ))}
+
                 <button onClick={() => { setShowModal(true); setMobileOpen(false); }} className="w-full mt-4 bg-primary text-white py-4 rounded-xl font-bold">
                   Get the app
                 </button>
-                  
-                 <div className="flex justify-center w-full">
-  <a 
-    href="https://book.getrovv.com" 
-    className="w-full mt-2 bg-accent text-white py-4 rounded-xl font-bold text-center inline-block"
-  >
-    Web Booking
-  </a>
-</div>
+
+                <div className="flex justify-center w-full">
+                  <a
+                    href="https://book.getrovv.com"
+                    className="w-full mt-2 bg-accent text-white py-4 rounded-xl font-bold text-center inline-block"
+                  >
+                    Web Booking
+                  </a>
+                </div>
               </nav>
             </motion.div>
-          </>
+          </div>
         )}
       </AnimatePresence>
-
       {/* HEADER MODAL (Shared Logic with Footer) */}
        {/* Modal Overlay (Fixed QR Image Swap) */}
               <AnimatePresence>
