@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
-import missionImg from '../../../assets/images/ima.jpg'
+import missionImg from '../../../assets/images/ima.png'
 
 const passengerFeatures = [
   { title: "Download the ROVV App", desc: "Get the app to start booking rides instantly." },
